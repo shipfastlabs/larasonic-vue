@@ -2,7 +2,7 @@
 import AppLayout from '@/Layouts/AppLayout.vue';
 import DeleteUserForm from '@/Pages/Profile/Partials/DeleteUserForm.vue';
 import LogoutOtherBrowserSessionsForm from '@/Pages/Profile/Partials/LogoutOtherBrowserSessionsForm.vue';
-import SectionBorder from '@/Components/SectionBorder.vue';
+import Separator from '@/Components/shadcn/ui/separator/Separator.vue';
 import TwoFactorAuthenticationForm from '@/Pages/Profile/Partials/TwoFactorAuthenticationForm.vue';
 import UpdatePasswordForm from '@/Pages/Profile/Partials/UpdatePasswordForm.vue';
 import UpdateProfileInformationForm from '@/Pages/Profile/Partials/UpdateProfileInformationForm.vue';
@@ -26,28 +26,26 @@ defineProps({
                 <div v-if="$page.props.jetstream.canUpdateProfileInformation">
                     <UpdateProfileInformationForm :user="$page.props.auth.user" />
 
-                    <SectionBorder />
+                    <Separator class='my-8 hidden sm:block' />
                 </div>
 
                 <div v-if="$page.props.jetstream.canUpdatePassword">
                     <UpdatePasswordForm class="mt-10 sm:mt-0" />
 
-                    <SectionBorder />
+                    <Separator class='my-8 hidden sm:block' />
                 </div>
 
                 <div v-if="$page.props.jetstream.canManageTwoFactorAuthentication">
-                    <TwoFactorAuthenticationForm
-                        :requires-confirmation="confirmsTwoFactorAuthentication"
-                        class="mt-10 sm:mt-0"
-                    />
+                    <TwoFactorAuthenticationForm :requires-confirmation="confirmsTwoFactorAuthentication"
+                        class="mt-10 sm:mt-0" />
 
-                    <SectionBorder />
+                    <Separator class='my-8 hidden sm:block' />
                 </div>
 
                 <LogoutOtherBrowserSessionsForm :sessions="sessions" class="mt-10 sm:mt-0" />
 
                 <template v-if="$page.props.jetstream.hasAccountDeletionFeatures">
-                    <SectionBorder />
+                    <Separator class='my-8 hidden sm:block' />
 
                     <DeleteUserForm class="mt-10 sm:mt-0" />
                 </template>

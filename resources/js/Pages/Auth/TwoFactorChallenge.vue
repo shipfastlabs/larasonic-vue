@@ -4,9 +4,10 @@ import { Head, useForm } from '@inertiajs/vue3';
 import AuthenticationCard from '@/Components/AuthenticationCard.vue';
 import AuthenticationCardLogo from '@/Components/AuthenticationCardLogo.vue';
 import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
+import Label from '@/Components/shadcn/ui/label/Label.vue';
+
+import Button from '@/Components/shadcn/ui/button/Button.vue';
+import Input from '@/Components/shadcn/ui/input/Input.vue';
 
 const recovery = ref(false);
 
@@ -57,8 +58,8 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <div v-if="! recovery">
-                <InputLabel for="code" value="Code" />
-                <TextInput
+                <Label for="code">Code</Label>
+                <Input
                     id="code"
                     ref="codeInput"
                     v-model="form.code"
@@ -72,8 +73,8 @@ const submit = () => {
             </div>
 
             <div v-else>
-                <InputLabel for="recovery_code" value="Recovery Code" />
-                <TextInput
+                <Label for="recovery_code">Recovery Code</Label>
+                <Input
                     id="recovery_code"
                     ref="recoveryCodeInput"
                     v-model="form.recovery_code"
@@ -95,9 +96,9 @@ const submit = () => {
                     </template>
                 </button>
 
-                <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                <Button class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     Log in
-                </PrimaryButton>
+                </Button>
             </div>
         </form>
     </AuthenticationCard>

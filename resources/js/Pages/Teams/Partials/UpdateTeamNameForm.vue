@@ -3,9 +3,10 @@ import { useForm } from '@inertiajs/vue3';
 import ActionMessage from '@/Components/ActionMessage.vue';
 import FormSection from '@/Components/FormSection.vue';
 import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
+import Label from '@/Components/shadcn/ui/label/Label.vue';
+
+import Button from '@/Components/shadcn/ui/button/Button.vue';
+import Input from '@/Components/shadcn/ui/input/Input.vue';
 
 const props = defineProps({
     team: Object,
@@ -37,10 +38,13 @@ const updateTeamName = () => {
         <template #form>
             <!-- Team Owner Information -->
             <div class="col-span-6">
-                <InputLabel value="Team Owner" />
+                <Label value="Team Owner" />
 
                 <div class="flex items-center mt-2">
-                    <img class="size-12 rounded-full object-cover" :src="team.owner.profile_photo_url" :alt="team.owner.name">
+                    <Avatar>
+                        <AvatarImage :src="team.owner.profile_photo_url" alt="profile photo" />
+                        <AvatarFallback class="bg-secondary p-2 rounded-full">{{ team.name.charAt(0) }}</AvatarFallback>
+                    </Avatar>
 
                     <div class="ms-4 leading-tight">
                         <div class="text-gray-900 dark:text-white">{{ team.owner.name }}</div>
@@ -52,16 +56,11 @@ const updateTeamName = () => {
             </div>
 
             <!-- Team Name -->
-            <div class="col-span-6 sm:col-span-4">
-                <InputLabel for="name" value="Team Name" />
+            <div class="col-span-6 sm:col-span-4 ">
+                <Label for="name">Team Name</Label>
 
-                <TextInput
-                    id="name"
-                    v-model="form.name"
-                    type="text"
-                    class="mt-1 block w-full"
-                    :disabled="! permissions.canUpdateTeam"
-                />
+                <Input id="name" v-model="form.name" type="text" class="mt-1 block w-full"
+                    :disabled="! permissions.canUpdateTeam" />
 
                 <InputError :message="form.errors.name" class="mt-2" />
             </div>
@@ -72,9 +71,9 @@ const updateTeamName = () => {
                 Saved.
             </ActionMessage>
 
-            <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+            <Button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                 Save
-            </PrimaryButton>
+            </Button>
         </template>
     </FormSection>
 </template>

@@ -2,11 +2,11 @@
 import { Head, Link, useForm } from '@inertiajs/vue3';
 import AuthenticationCard from '@/Components/AuthenticationCard.vue';
 import AuthenticationCardLogo from '@/Components/AuthenticationCardLogo.vue';
-import Checkbox from '@/Components/Checkbox.vue';
 import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
+import Label from '@/Components/shadcn/ui/label/Label.vue';
+import Button from '@/Components/shadcn/ui/button/Button.vue';
+import Input from '@/Components/shadcn/ui/input/Input.vue';
+import Checkbox from '@/Components/shadcn/ui/checkbox/Checkbox.vue';
 
 defineProps({
     canResetPassword: Boolean,
@@ -43,8 +43,8 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <div>
-                <InputLabel for="email" value="Email" />
-                <TextInput
+                <Label for="email">Email</Label>
+                <Input
                     id="email"
                     v-model="form.email"
                     type="email"
@@ -57,8 +57,8 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password" value="Password" />
-                <TextInput
+                <Label for="password">Password</Label>
+                <Input
                     id="password"
                     v-model="form.password"
                     type="password"
@@ -70,10 +70,19 @@ const submit = () => {
             </div>
 
             <div class="block mt-4">
-                <label class="flex items-center">
-                    <Checkbox v-model:checked="form.remember" name="remember" />
-                    <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">Remember me</span>
-                </label>
+                <div class="flex items-center space-x-2">
+                    <Checkbox
+                        id="remember"
+                        v-model:checked="form.remember"
+                        name="remember"
+                    />
+                    <label
+                        for="remember"
+                        class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-gray-600 dark:text-gray-400"
+                    >
+                        Remember me
+                    </label>
+                </div>
             </div>
 
             <div class="flex items-center justify-end mt-4">
@@ -81,9 +90,9 @@ const submit = () => {
                     Forgot your password?
                 </Link>
 
-                <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                <Button class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     Log in
-                </PrimaryButton>
+                </Button>
             </div>
         </form>
     </AuthenticationCard>

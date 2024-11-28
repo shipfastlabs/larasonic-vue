@@ -1,66 +1,62 @@
 <script setup>
 import { useForm } from '@inertiajs/vue3';
-import FormSection from '@/Components/FormSection.vue';
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
+import { ref } from 'vue';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from '@/Components/shadcn/ui/dialog';
+import { Label } from '@/Components/shadcn/ui/label';
+import { Button } from '@/Components/shadcn/ui/button';
+import { Input } from '@/Components/shadcn/ui/input';
 
+const showNewTeamDialog = ref(false);
 const form = useForm({
     name: '',
+    plan: 'free'
 });
 
 const createTeam = () => {
     form.post(route('teams.store'), {
         errorBag: 'createTeam',
         preserveScroll: true,
+        onSuccess: () => showNewTeamDialog.value = false,
     });
 };
 </script>
 
 <template>
-    <FormSection @submitted="createTeam">
-        <template #title>
-            Team Details
-        </template>
-
-        <template #description>
-            Create a new team to collaborate with others on projects.
-        </template>
-
-        <template #form>
-            <div class="col-span-6">
-                <InputLabel value="Team Owner" />
-
-                <div class="flex items-center mt-2">
-                    <img class="object-cover size-12 rounded-full" :src="$page.props.auth.user.profile_photo_url" :alt="$page.props.auth.user.name">
-
-                    <div class="ms-4 leading-tight">
-                        <div class="text-gray-900 dark:text-white">{{ $page.props.auth.user.name }}</div>
-                        <div class="text-sm text-gray-700 dark:text-gray-300">
-                            {{ $page.props.auth.user.email }}
-                        </div>
+    <Dialog v-model:open="showNewTeamDialog">
+        <DialogContent>
+            <DialogHeader>
+                <DialogTitle>Create team</DialogTitle>
+                <DialogDescription>
+                    Create a new team to collaborate with your team members.
+                </DialogDescription>
+            </DialogHeader>
+            <div>
+                <div class="space-y-4 py-2 pb-4">
+                    <div class="space-y-2">
+                        <Label for="name">Team name</Label>
+                        <Input
+                            id="name"
+                            v-model="form.name"
+                            placeholder="Acme Inc."
+                        />
                     </div>
                 </div>
             </div>
-
-            <div class="col-span-6 sm:col-span-4">
-                <InputLabel for="name" value="Team Name" />
-                <TextInput
-                    id="name"
-                    v-model="form.name"
-                    type="text"
-                    class="block w-full mt-1"
-                    autofocus
-                />
-                <InputError :message="form.errors.name" class="mt-2" />
-            </div>
-        </template>
-
-        <template #actions>
-            <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                Create
-            </PrimaryButton>
-        </template>
-    </FormSection>
+            <DialogFooter>
+                <Button variant="outline" @click="showNewTeamDialog = false">
+                    Cancel
+                </Button>
+                <Button type="submit" @click="createTeam" :disabled="form.processing">
+                    Continue
+                </Button>
+            </DialogFooter>
+        </DialogContent>
+    </Dialog>
 </template>

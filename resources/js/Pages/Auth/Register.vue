@@ -2,11 +2,12 @@
 import { Head, Link, useForm } from '@inertiajs/vue3';
 import AuthenticationCard from '@/Components/AuthenticationCard.vue';
 import AuthenticationCardLogo from '@/Components/AuthenticationCardLogo.vue';
-import Checkbox from '@/Components/Checkbox.vue';
 import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
+import Label from '@/Components/shadcn/ui/label/Label.vue';
+
+import Button from '@/Components/shadcn/ui/button/Button.vue';
+import Input from '@/Components/shadcn/ui/input/Input.vue';
+import Checkbox from '@/Components/shadcn/ui/checkbox/Checkbox.vue';
 
 const form = useForm({
     name: '',
@@ -33,8 +34,8 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <div>
-                <InputLabel for="name" value="Name" />
-                <TextInput
+                <Label for="name">Name</Label>
+                <Input
                     id="name"
                     v-model="form.name"
                     type="text"
@@ -47,8 +48,8 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <InputLabel for="email" value="Email" />
-                <TextInput
+                <Label for="email">Email</Label>
+                <Input
                     id="email"
                     v-model="form.email"
                     type="email"
@@ -60,8 +61,8 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password" value="Password" />
-                <TextInput
+                <Label for="password">Password</Label>
+                <Input
                     id="password"
                     v-model="form.password"
                     type="password"
@@ -73,8 +74,8 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password_confirmation" value="Confirm Password" />
-                <TextInput
+                <Label for="password_confirmation">Confirm Password</Label>
+                <Input
                     id="password_confirmation"
                     v-model="form.password_confirmation"
                     type="password"
@@ -86,16 +87,21 @@ const submit = () => {
             </div>
 
             <div v-if="$page.props.jetstream.hasTermsAndPrivacyPolicyFeature" class="mt-4">
-                <InputLabel for="terms">
-                    <div class="flex items-center">
-                        <Checkbox id="terms" v-model:checked="form.terms" name="terms" required />
-
-                        <div class="ms-2">
-                            I agree to the <a target="_blank" :href="route('terms.show')" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">Terms of Service</a> and <a target="_blank" :href="route('policy.show')" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">Privacy Policy</a>
-                        </div>
-                    </div>
-                    <InputError class="mt-2" :message="form.errors.terms" />
-                </InputLabel>
+                <div class="flex items-center space-x-2">
+                    <Checkbox
+                        id="terms"
+                        v-model:checked="form.terms"
+                        name="terms"
+                        required
+                    />
+                    <label
+                        for="terms"
+                        class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    >
+                        I agree to the <a target="_blank" :href="route('terms.show')" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">Terms of Service</a> and <a target="_blank" :href="route('policy.show')" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">Privacy Policy</a>
+                    </label>
+                </div>
+                <InputError class="mt-2" :message="form.errors.terms" />
             </div>
 
             <div class="flex items-center justify-end mt-4">
@@ -103,9 +109,9 @@ const submit = () => {
                     Already registered?
                 </Link>
 
-                <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                <Button class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     Register
-                </PrimaryButton>
+                </Button>
             </div>
         </form>
     </AuthenticationCard>

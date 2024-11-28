@@ -13,6 +13,6 @@
   "framework": "laravel",
   "aliases": {
     "components": "resources/js/Components/shadcn",
-    "utils": "resources/js/lib/utils"
+    "utils": "@/lib/utils"
   }
 }
