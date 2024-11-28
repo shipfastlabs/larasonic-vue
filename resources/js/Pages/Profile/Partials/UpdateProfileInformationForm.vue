@@ -5,9 +5,8 @@ import ActionMessage from '@/Components/ActionMessage.vue';
 import FormSection from '@/Components/FormSection.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import SecondaryButton from '@/Components/SecondaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
+import Button from '@/Components/shadcn/ui/button/Button.vue';
+import Input from '@/Components/shadcn/ui/input/Input.vue';
 
 const props = defineProps({
     user: Object,
@@ -112,18 +111,24 @@ const clearPhotoFileInput = () => {
                     />
                 </div>
 
-                <SecondaryButton class="mt-2 me-2" type="button" @click.prevent="selectNewPhoto">
+                <Button
+                    variant="secondary"
+                    class="mt-2 me-2"
+                    type="button"
+                    @click.prevent="selectNewPhoto"
+                >
                     Select A New Photo
-                </SecondaryButton>
+                </Button>
 
-                <SecondaryButton
+                <Button
+                    variant="secondary"
                     v-if="user.profile_photo_path"
                     type="button"
                     class="mt-2"
                     @click.prevent="deletePhoto"
                 >
                     Remove Photo
-                </SecondaryButton>
+                </Button>
 
                 <InputError :message="form.errors.photo" class="mt-2" />
             </div>
@@ -131,7 +136,7 @@ const clearPhotoFileInput = () => {
             <!-- Name -->
             <div class="col-span-6 sm:col-span-4">
                 <InputLabel for="name" value="Name" />
-                <TextInput
+                <Input
                     id="name"
                     v-model="form.name"
                     type="text"
@@ -145,7 +150,7 @@ const clearPhotoFileInput = () => {
             <!-- Email -->
             <div class="col-span-6 sm:col-span-4">
                 <InputLabel for="email" value="Email" />
-                <TextInput
+                <Input
                     id="email"
                     v-model="form.email"
                     type="email"
@@ -156,21 +161,21 @@ const clearPhotoFileInput = () => {
                 <InputError :message="form.errors.email" class="mt-2" />
 
                 <div v-if="$page.props.jetstream.hasEmailVerification && user.email_verified_at === null">
-                    <p class="text-sm mt-2 dark:text-white">
+                    <p class="text-sm mt-2">
                         Your email address is unverified.
 
                         <Link
                             :href="route('verification.send')"
                             method="post"
                             as="button"
-                            class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+                            class="underline text-sm rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2"
                             @click.prevent="sendEmailVerification"
                         >
                             Click here to re-send the verification email.
                         </Link>
                     </p>
 
-                    <div v-show="verificationLinkSent" class="mt-2 font-medium text-sm text-green-600 dark:text-green-400">
+                    <div v-show="verificationLinkSent" class="mt-2 font-medium text-sm">
                         A new verification link has been sent to your email address.
                     </div>
                 </div>
@@ -182,9 +187,9 @@ const clearPhotoFileInput = () => {
                 Saved.
             </ActionMessage>
 
-            <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+            <Button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                 Save
-            </PrimaryButton>
+            </Button>
         </template>
     </FormSection>
 </template>

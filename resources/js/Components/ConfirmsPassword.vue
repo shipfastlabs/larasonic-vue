@@ -2,9 +2,8 @@
 import { ref, reactive, nextTick } from 'vue';
 import DialogModal from './DialogModal.vue';
 import InputError from './InputError.vue';
-import PrimaryButton from './PrimaryButton.vue';
-import SecondaryButton from './SecondaryButton.vue';
-import TextInput from './TextInput.vue';
+import Button from './shadcn/ui/button/Button.vue';
+import Input from '@/Components/shadcn/ui/input/Input.vue';
 
 const emit = defineEmits(['confirmed']);
 
@@ -85,33 +84,22 @@ const closeModal = () => {
                 {{ content }}
 
                 <div class="mt-4">
-                    <TextInput
-                        ref="passwordInput"
-                        v-model="form.password"
-                        type="password"
-                        class="mt-1 block w-3/4"
-                        placeholder="Password"
-                        autocomplete="current-password"
-                        @keyup.enter="confirmPassword"
-                    />
+                    <Input ref="passwordInput" v-model="form.password" type="password" class="mt-1 block w-3/4"
+                        placeholder="Password" autocomplete="current-password" @keyup.enter="confirmPassword" />
 
                     <InputError :message="form.error" class="mt-2" />
                 </div>
             </template>
 
             <template #footer>
-                <SecondaryButton @click="closeModal">
+                <Button variant="secondary" @click="closeModal">
                     Cancel
-                </SecondaryButton>
+                </Button>
 
-                <PrimaryButton
-                    class="ms-3"
-                    :class="{ 'opacity-25': form.processing }"
-                    :disabled="form.processing"
-                    @click="confirmPassword"
-                >
+                <Button class="ms-3" :class="{ 'opacity-25': form.processing }" :disabled="form.processing"
+                    @click="confirmPassword">
                     {{ button }}
-                </PrimaryButton>
+                </Button>
             </template>
         </DialogModal>
     </span>

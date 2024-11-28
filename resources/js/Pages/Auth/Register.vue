@@ -5,8 +5,8 @@ import AuthenticationCardLogo from '@/Components/AuthenticationCardLogo.vue';
 import Checkbox from '@/Components/Checkbox.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
+import Button from '@/Components/shadcn/ui/button/Button.vue';
+import Input from '@/Components/shadcn/ui/input/Input.vue';
 
 const form = useForm({
     name: '',
@@ -34,7 +34,7 @@ const submit = () => {
         <form @submit.prevent="submit">
             <div>
                 <InputLabel for="name" value="Name" />
-                <TextInput
+                <Input
                     id="name"
                     v-model="form.name"
                     type="text"
@@ -48,7 +48,7 @@ const submit = () => {
 
             <div class="mt-4">
                 <InputLabel for="email" value="Email" />
-                <TextInput
+                <Input
                     id="email"
                     v-model="form.email"
                     type="email"
@@ -61,7 +61,7 @@ const submit = () => {
 
             <div class="mt-4">
                 <InputLabel for="password" value="Password" />
-                <TextInput
+                <Input
                     id="password"
                     v-model="form.password"
                     type="password"
@@ -74,7 +74,7 @@ const submit = () => {
 
             <div class="mt-4">
                 <InputLabel for="password_confirmation" value="Confirm Password" />
-                <TextInput
+                <Input
                     id="password_confirmation"
                     v-model="form.password_confirmation"
                     type="password"
@@ -103,9 +103,9 @@ const submit = () => {
                     Already registered?
                 </Link>
 
-                <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                <Button class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     Register
-                </PrimaryButton>
+                </Button>
             </div>
         </form>
     </AuthenticationCard>

@@ -4,14 +4,14 @@ import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 
 <template>
     <div>
-        <div class="p-6 lg:p-8 bg-white dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
+        <div class="p-6 lg:p-8 border-b border-secondary">
             <ApplicationLogo class="block h-12 w-auto" />
 
-            <h1 class="mt-8 text-2xl font-medium text-gray-900 dark:text-white">
+            <h1 class="mt-8 text-2xl font-medium">
                 Welcome to your Jetstream application!
             </h1>
 
-            <p class="mt-6 text-gray-500 dark:text-gray-400 leading-relaxed">
+            <p class="mt-6 leading-relaxed">
                 Laravel Jetstream provides a beautiful, robust starting point for your next Laravel application. Laravel is designed
                 to help you build your application using a development environment that is simple, powerful, and enjoyable. We believe
                 you should love expressing your creativity through programming, so we have spent time carefully crafting the Laravel
@@ -19,7 +19,7 @@ import ApplicationLogo from '@/Components/ApplicationLogo.vue';
             </p>
         </div>
 
-        <div class="bg-gray-200 dark:bg-gray-800 bg-opacity-25 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 p-6 lg:p-8">
+        <div class="bg-opacity-25 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 p-6 lg:p-8">
             <div>
                 <div class="flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="size-6 stroke-gray-400">
@@ -30,7 +30,7 @@ import ApplicationLogo from '@/Components/ApplicationLogo.vue';
                     </h2>
                 </div>
 
-                <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+                <p class="mt-4 text-sm leading-relaxed">
                     Laravel has wonderful documentation covering every aspect of the framework. Whether you're new to the framework or have previous experience, we recommend reading all of the documentation from beginning to end.
                 </p>
 
@@ -50,12 +50,12 @@ import ApplicationLogo from '@/Components/ApplicationLogo.vue';
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="size-6 stroke-gray-400">
                         <path stroke-linecap="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" />
                     </svg>
-                    <h2 class="ms-3 text-xl font-semibold text-gray-900 dark:text-white">
+                    <h2 class="ms-3 text-xl font-semibold">
                         <a href="https://laracasts.com">Laracasts</a>
                     </h2>
                 </div>
 
-                <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+                <p class="mt-4 text-sm leading-relaxed">
                     Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
                 </p>
 

@@ -3,8 +3,8 @@ import { useForm } from '@inertiajs/vue3';
 import FormSection from '@/Components/FormSection.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
+import Button from '@/Components/shadcn/ui/button/Button.vue';
+import Input from '@/Components/shadcn/ui/input/Input.vue';
 
 const form = useForm({
     name: '',
@@ -46,7 +46,7 @@ const createTeam = () => {
 
             <div class="col-span-6 sm:col-span-4">
                 <InputLabel for="name" value="Team Name" />
-                <TextInput
+                <Input
                     id="name"
                     v-model="form.name"
                     type="text"
@@ -58,9 +58,9 @@ const createTeam = () => {
         </template>
 
         <template #actions>
-            <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+            <Button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                 Create
-            </PrimaryButton>
+            </Button>
         </template>
     </FormSection>
 </template>

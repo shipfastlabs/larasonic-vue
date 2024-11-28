@@ -4,8 +4,8 @@ import ActionMessage from '@/Components/ActionMessage.vue';
 import FormSection from '@/Components/FormSection.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
+import Button from '@/Components/shadcn/ui/button/Button.vue';
+import Input from '@/Components/shadcn/ui/input/Input.vue';
 
 const props = defineProps({
     team: Object,
@@ -55,7 +55,7 @@ const updateTeamName = () => {
             <div class="col-span-6 sm:col-span-4">
                 <InputLabel for="name" value="Team Name" />
 
-                <TextInput
+                <Input
                     id="name"
                     v-model="form.name"
                     type="text"
@@ -72,9 +72,9 @@ const updateTeamName = () => {
                 Saved.
             </ActionMessage>
 
-            <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+            <Button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                 Save
-            </PrimaryButton>
+            </Button>
         </template>
     </FormSection>
 </template>

@@ -1,5 +1,6 @@
 <script setup>
 import { onMounted, ref } from 'vue';
+import Input from '@/Components/shadcn/ui/input/Input.vue';
 
 defineProps({
     modelValue: String,

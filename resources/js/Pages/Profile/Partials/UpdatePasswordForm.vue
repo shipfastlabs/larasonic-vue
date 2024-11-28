@@ -5,8 +5,8 @@ import ActionMessage from '@/Components/ActionMessage.vue';
 import FormSection from '@/Components/FormSection.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
+import Button from '@/Components/shadcn/ui/button/Button.vue';
+import Input from '@/Components/shadcn/ui/input/Input.vue';
 
 const passwordInput = ref(null);
 const currentPasswordInput = ref(null);
@@ -50,7 +50,7 @@ const updatePassword = () => {
         <template #form>
             <div class="col-span-6 sm:col-span-4">
                 <InputLabel for="current_password" value="Current Password" />
-                <TextInput
+                <Input
                     id="current_password"
                     ref="currentPasswordInput"
                     v-model="form.current_password"
@@ -63,7 +63,7 @@ const updatePassword = () => {
 
             <div class="col-span-6 sm:col-span-4">
                 <InputLabel for="password" value="New Password" />
-                <TextInput
+                <Input
                     id="password"
                     ref="passwordInput"
                     v-model="form.password"
@@ -76,7 +76,7 @@ const updatePassword = () => {
 
             <div class="col-span-6 sm:col-span-4">
                 <InputLabel for="password_confirmation" value="Confirm Password" />
-                <TextInput
+                <Input
                     id="password_confirmation"
                     v-model="form.password_confirmation"
                     type="password"
@@ -92,9 +92,9 @@ const updatePassword = () => {
                 Saved.
             </ActionMessage>
 
-            <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+            <Button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                 Save
-            </PrimaryButton>
+            </Button>
         </template>
     </FormSection>
 </template>

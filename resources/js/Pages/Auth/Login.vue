@@ -5,8 +5,8 @@ import AuthenticationCardLogo from '@/Components/AuthenticationCardLogo.vue';
 import Checkbox from '@/Components/Checkbox.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
+import Button from '@/Components/shadcn/ui/button/Button.vue';
+import Input from '@/Components/shadcn/ui/input/Input.vue';
 
 defineProps({
     canResetPassword: Boolean,
@@ -44,7 +44,7 @@ const submit = () => {
         <form @submit.prevent="submit">
             <div>
                 <InputLabel for="email" value="Email" />
-                <TextInput
+                <Input
                     id="email"
                     v-model="form.email"
                     type="email"
@@ -58,7 +58,7 @@ const submit = () => {
 
             <div class="mt-4">
                 <InputLabel for="password" value="Password" />
-                <TextInput
+                <Input
                     id="password"
                     v-model="form.password"
                     type="password"
@@ -81,9 +81,9 @@ const submit = () => {
                     Forgot your password?
                 </Link>
 
-                <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                <Button class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     Log in
-                </PrimaryButton>
+                </Button>
             </div>
         </form>
     </AuthenticationCard>
