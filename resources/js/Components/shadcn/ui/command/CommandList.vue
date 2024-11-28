@@ -1,7 +1,7 @@
 <script setup>
-import { cn } from '@/lib/utils';
-import { ComboboxContent, useForwardPropsEmits } from 'radix-vue';
-import { computed } from 'vue';
+import { cn } from '@/lib/utils'
+import { ComboboxContent, useForwardPropsEmits } from 'radix-vue'
+import { computed } from 'vue'
 
 const props = defineProps({
   forceMount: { type: Boolean, required: false },
@@ -24,21 +24,21 @@ const props = defineProps({
   as: { type: null, required: false },
   disableOutsidePointerEvents: { type: Boolean, required: false },
   class: { type: null, required: false },
-});
+})
 const emits = defineEmits([
   'escapeKeyDown',
   'pointerDownOutside',
   'focusOutside',
   'interactOutside',
-]);
+])
 
 const delegatedProps = computed(() => {
-  const { class: _, ...delegated } = props;
+  const { class: _, ...delegated } = props
 
-  return delegated;
-});
+  return delegated
+})
 
-const forwarded = useForwardPropsEmits(delegatedProps, emits);
+const forwarded = useForwardPropsEmits(delegatedProps, emits)
 </script>
 
 <template>

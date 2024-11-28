@@ -1,91 +1,91 @@
 {
-    "name": "pushpak1300/larasonic",
-    "type": "project",
-    "description": "The Simple, Fast & Smart Laravel Fullstack Kit. 🚀",
-    "keywords": [
-        "sass",
-        "starter kit",
-        "laeavel"
+  "name": "pushpak1300/larasonic",
+  "type": "project",
+  "description": "The Simple, Fast & Smart Laravel Fullstack Kit. 🚀",
+  "keywords": [
+    "sass",
+    "starter kit",
+    "laeavel"
+  ],
+  "license": "MIT",
+  "require": {
+    "php": "^8.3",
+    "inertiajs/inertia-laravel": "2.x-dev",
+    "laravel/framework": "^11.9",
+    "laravel/jetstream": "^5.3",
+    "laravel/octane": "^2.5",
+    "laravel/sanctum": "^4.0",
+    "laravel/tinker": "^2.9",
+    "tightenco/ziggy": "^2.0"
+  },
+  "require-dev": {
+    "barryvdh/laravel-ide-helper": "^3.2",
+    "fakerphp/faker": "^1.23",
+    "larastan/larastan": "^3.0",
+    "laravel/pail": "^1.1",
+    "laravel/pint": "^1.13",
+    "laravel/sail": "^1.26",
+    "mockery/mockery": "^1.6",
+    "nunomaduro/collision": "^8.1",
+    "pestphp/pest": "^3.5",
+    "pestphp/pest-plugin-laravel": "^3.0",
+    "rector/rector": "2.0.0-rc1"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/",
+      "Database\\Factories\\": "database/factories/",
+      "Database\\Seeders\\": "database/seeders/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "post-autoload-dump": [
+      "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+      "@php artisan package:discover --ansi"
     ],
-    "license": "MIT",
-    "require": {
-        "php": "^8.3",
-        "inertiajs/inertia-laravel": "2.x-dev",
-        "laravel/framework": "^11.9",
-        "laravel/jetstream": "^5.3",
-        "laravel/octane": "^2.5",
-        "laravel/sanctum": "^4.0",
-        "laravel/tinker": "^2.9",
-        "tightenco/ziggy": "^2.0"
-    },
-    "require-dev": {
-        "barryvdh/laravel-ide-helper": "^3.2",
-        "fakerphp/faker": "^1.23",
-        "larastan/larastan": "^3.0",
-        "laravel/pail": "^1.1",
-        "laravel/pint": "^1.13",
-        "laravel/sail": "^1.26",
-        "mockery/mockery": "^1.6",
-        "nunomaduro/collision": "^8.1",
-        "pestphp/pest": "^3.5",
-        "pestphp/pest-plugin-laravel": "^3.0",
-        "rector/rector": "2.0.0-rc1"
-    },
-    "autoload": {
-        "psr-4": {
-            "App\\": "app/",
-            "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/"
-        }
-    },
-    "scripts": {
-        "post-autoload-dump": [
-            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
-        ],
-        "post-update-cmd": [
-            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
-            "@php artisan ide-helper:generate",
-            "@php artisan ide-helper:meta"
-        ],
-        "post-root-package-install": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-        ],
-        "post-create-project-cmd": [
-            "@php artisan key:generate --ansi",
-            "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
-            "@php artisan migrate --graceful --ansi"
-        ],
-        "dev": [
-            "Composer\\Config::disableProcessTimeout",
-            "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite"
-        ],
-        "lint": [
-            "./vendor/bin/phpstan analyse -c phpstan.neon --ansi"
-        ],
-        "format": [
-            "./vendor/bin/pint"
-        ]
-    },
-    "extra": {
-        "laravel": {
-            "dont-discover": []
-        }
-    },
-    "config": {
-        "optimize-autoloader": true,
-        "preferred-install": "dist",
-        "sort-packages": true,
-        "allow-plugins": {
-            "pestphp/pest-plugin": true,
-            "php-http/discovery": true
-        }
-    },
-    "minimum-stability": "stable",
-    "prefer-stable": true
+    "post-update-cmd": [
+      "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+      "@php artisan ide-helper:generate",
+      "@php artisan ide-helper:meta"
+    ],
+    "post-root-package-install": [
+      "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+    ],
+    "post-create-project-cmd": [
+      "@php artisan key:generate --ansi",
+      "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
+      "@php artisan migrate --graceful --ansi"
+    ],
+    "dev": [
+      "Composer\\Config::disableProcessTimeout",
+      "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite"
+    ],
+    "lint": [
+      "./vendor/bin/phpstan analyse -c phpstan.neon --ansi"
+    ],
+    "format": [
+      "./vendor/bin/pint"
+    ]
+  },
+  "extra": {
+    "laravel": {
+      "dont-discover": []
+    }
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "allow-plugins": {
+      "pestphp/pest-plugin": true,
+      "php-http/discovery": true
+    }
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
 }

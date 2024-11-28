@@ -1,22 +1,22 @@
 <script setup>
-import { cn } from '@/lib/utils';
-import { ChevronUp } from 'lucide-vue-next';
-import { SelectScrollUpButton, useForwardProps } from 'radix-vue';
-import { computed } from 'vue';
+import { cn } from '@/lib/utils'
+import { ChevronUp } from 'lucide-vue-next'
+import { SelectScrollUpButton, useForwardProps } from 'radix-vue'
+import { computed } from 'vue'
 
 const props = defineProps({
   asChild: { type: Boolean, required: false },
   as: { type: null, required: false },
   class: { type: null, required: false },
-});
+})
 
 const delegatedProps = computed(() => {
-  const { class: _, ...delegated } = props;
+  const { class: _, ...delegated } = props
 
-  return delegated;
-});
+  return delegated
+})
 
-const forwardedProps = useForwardProps(delegatedProps);
+const forwardedProps = useForwardProps(delegatedProps)
 </script>
 
 <template>
@@ -27,7 +27,7 @@ const forwardedProps = useForwardProps(delegatedProps);
     "
   >
     <slot>
-      <ChevronUp class="h-4 w-4" />
+      <ChevronUp class="size-4" />
     </slot>
   </SelectScrollUpButton>
 </template>

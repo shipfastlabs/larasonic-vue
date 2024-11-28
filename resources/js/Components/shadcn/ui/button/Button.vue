@@ -1,7 +1,7 @@
 <script setup>
-import { cn } from '@/lib/utils';
-import { Primitive } from 'radix-vue';
-import { buttonVariants } from '.';
+import { cn } from '@/lib/utils'
+import { Primitive } from 'radix-vue'
+import { buttonVariants } from '.'
 
 const props = defineProps({
   variant: { type: null, required: false },
@@ -9,7 +9,7 @@ const props = defineProps({
   class: { type: null, required: false },
   asChild: { type: Boolean, required: false },
   as: { type: null, required: false, default: 'button' },
-});
+})
 </script>
 
 <template>
