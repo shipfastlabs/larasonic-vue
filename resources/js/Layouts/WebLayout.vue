@@ -45,9 +45,11 @@ function toggleMenu() {
     >
       <div class="container flex h-16 items-center justify-between">
         <div class="flex items-center">
-          <a class="flex items-center space-x-2" href="/" aria-label="Larasonic">
+          <a class="flex items-center space-x-2" href="/" :aria-label="$page.props.name">
             <Icon icon="lucide:rocket" class="h-6 w-6" aria-hidden="true" />
-            <span class="hidden font-bold sm:inline-block">Larasonic</span>
+            <span class="hidden font-bold sm:inline-block">
+                {{ $page.props.name }}
+            </span>
           </a>
           <nav class="hidden md:flex items-center space-x-6 text-sm font-medium sm:ml-4">
             <a

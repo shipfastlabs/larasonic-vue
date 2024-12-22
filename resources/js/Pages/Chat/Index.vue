@@ -10,13 +10,12 @@ import Skeleton from '@/Components/shadcn/ui/skeleton/Skeleton.vue'
 import { Textarea } from '@/Components/shadcn/ui/textarea'
 import AppLayout from '@/Layouts/AppLayout.vue'
 import { Icon } from '@iconify/vue'
-import { router } from '@inertiajs/vue3'
+import { router, usePage } from '@inertiajs/vue3'
 import { useFetch } from '@vueuse/core'
 import { inject, onMounted, ref } from 'vue'
 import { toast } from 'vue-sonner'
 import ModelSelector from './Components/ModelSelector.vue'
 import TemperatureSelector from './Components/TemperatureSelector.vue'
-
 const props = defineProps({
   systemPrompt: String,
   models: Array,
@@ -79,13 +78,15 @@ onMounted(() => {
     })
   }
 })
+
+const title = `${usePage().props.name} - AI Playground`
 </script>
 
 <template>
-  <AppLayout title="Larasonic AI Playground">
+  <AppLayout :title="title">
     <template #header>
       <h2 class="text-xl font-semibold leading-tight">
-        Larasonic AI Playground
+        {{ $page.props.name }} AI Playground
       </h2>
     </template>
     <div class="h-full flex-col flex">

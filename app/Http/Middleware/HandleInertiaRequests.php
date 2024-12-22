@@ -39,6 +39,7 @@ final class HandleInertiaRequests extends Middleware
     {
         /** @var array<string, mixed> */
         return array_merge(parent::share($request), [
+            'name' => config('app.name', 'Larasonic'),
             'flash' => [
                 'message' => fn () => $request->session()->get('message'),
                 'success' => fn () => $request->session()->get('success'),
