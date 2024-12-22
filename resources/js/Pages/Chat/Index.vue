@@ -16,6 +16,7 @@ import { inject, onMounted, ref } from 'vue'
 import { toast } from 'vue-sonner'
 import ModelSelector from './Components/ModelSelector.vue'
 import TemperatureSelector from './Components/TemperatureSelector.vue'
+
 const props = defineProps({
   systemPrompt: String,
   models: Array,

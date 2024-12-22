@@ -6,6 +6,7 @@ namespace App\Http\Middleware;
 
 use Inertia\Middleware;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 
 final class HandleInertiaRequests extends Middleware
 {
@@ -39,7 +40,7 @@ final class HandleInertiaRequests extends Middleware
     {
         /** @var array<string, mixed> */
         return array_merge(parent::share($request), [
-            'name' => config('app.name', 'Larasonic'),
+            'name' => Config::get('app.name', 'Larasonic'),
             'flash' => [
                 'message' => fn () => $request->session()->get('message'),
                 'success' => fn () => $request->session()->get('success'),
