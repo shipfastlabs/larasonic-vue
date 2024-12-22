@@ -75,7 +75,10 @@ function toggleMenu() {
               Dashboard
             </Button>
           </div>
-          <Button variant="ghost" size="icon" aria-label="Toggle Theme" @click="mode = mode === 'dark' ? 'light' : 'dark'">
+          <Button
+            variant="ghost" size="icon" aria-label="Toggle Theme"
+            @click="mode = mode === 'dark' ? 'light' : 'dark'"
+          >
             <Icon
               class="text-muted-foreground h-6 w-6"
               :icon="mode === 'dark' ? 'lucide:sun' : 'lucide:moon'"
@@ -118,7 +121,7 @@ function toggleMenu() {
             Dashboard
           </Button>
           <a
-            href="https://github.com/pushpak1300/larasonic/" target="_blank" rel="noreferrer"
+            :href="githubUrl" target="_blank" rel="noreferrer"
             class="flex items-center space-x-2 text-sm font-medium" @click="toggleMobileMenu"
           >
             <Icon icon="mdi:github" class="h-5 w-5" />
