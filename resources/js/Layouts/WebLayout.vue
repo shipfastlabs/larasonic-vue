@@ -118,7 +118,7 @@ function toggleMenu() {
             Dashboard
           </Button>
           <a
-            href="https://github.com/your-repo" target="_blank" rel="noreferrer"
+            href="https://github.com/pushpak1300/larasonic/" target="_blank" rel="noreferrer"
             class="flex items-center space-x-2 text-sm font-medium" @click="toggleMobileMenu"
           >
             <Icon icon="mdi:github" class="h-5 w-5" />
