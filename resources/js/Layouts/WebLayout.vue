@@ -41,7 +41,7 @@ function toggleMenu() {
 <template>
   <div class="min-h-screen">
     <header
-      class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+      class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur-sm supports-backdrop-filter:bg-background/60"
     >
       <div class="container flex h-16 items-center justify-between">
         <div class="flex items-center">

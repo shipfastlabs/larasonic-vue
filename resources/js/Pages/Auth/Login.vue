@@ -93,7 +93,7 @@ useSeoMetaTags({
 <template>
   <Sonner position="top-center" />
 
-  <div class="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-background/50 to-background">
+  <div class="flex min-h-screen flex-col items-center justify-center bg-linear-to-b from-background/50 to-background">
     <Card class="mx-auto w-[420px] shadow-lg transition-all duration-300 hover:shadow-xl">
       <!-- Header -->
       <CardHeader>

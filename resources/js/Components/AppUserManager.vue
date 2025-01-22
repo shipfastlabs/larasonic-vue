@@ -46,7 +46,7 @@ function logout() {
       </SidebarMenuButton>
     </DropdownMenuTrigger>
     <DropdownMenuContent
-      class="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
+      class="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
       side="bottom" align="end" :side-offset="4"
     >
       <DropdownMenuLabel class="p-0 font-normal">

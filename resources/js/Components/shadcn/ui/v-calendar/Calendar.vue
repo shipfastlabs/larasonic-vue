@@ -53,7 +53,7 @@ const vCalendarSlots = computed(() => {
   <div class="relative">
     <div
       v-if="$attrs.mode !== 'time'"
-      class="absolute flex justify-between w-full px-4 top-3 z-[1]"
+      class="absolute flex justify-between w-full px-4 top-3 z-1"
     >
       <button
         :class="
@@ -166,7 +166,7 @@ const vCalendarSlots = computed(() => {
   @apply rounded-md;
 }
 .calendar .vc-day-content {
-  @apply text-center text-sm p-0 relative focus-within:relative focus-within:z-20 inline-flex items-center justify-center ring-offset-background hover:transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 hover:bg-accent hover:text-accent-foreground h-9 w-9 font-normal aria-selected:opacity-100 select-none;
+  @apply text-center text-sm p-0 relative focus-within:relative focus-within:z-20 inline-flex items-center justify-center ring-offset-background hover:transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 hover:bg-accent hover:text-accent-foreground h-9 w-9 font-normal aria-selected:opacity-100 select-none;
 }
 .calendar .vc-day-content:not(.vc-highlight-content-light) {
   @apply rounded-md;
@@ -307,7 +307,7 @@ const vCalendarSlots = computed(() => {
   @apply mr-1 text-primary stroke-primary;
 }
 .vc-time-select-group select {
-  @apply bg-primary-foreground p-1 appearance-none outline-none text-center;
+  @apply bg-primary-foreground p-1 appearance-none outline-hidden text-center;
 }
 .vc-time-weekday {
   @apply text-muted-foreground tracking-wide;

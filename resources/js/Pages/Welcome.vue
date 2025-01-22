@@ -118,7 +118,7 @@ const githubUrl = 'https://github.com/pushpak1300/larasonic'
         <!-- Badge -->
         <div class="mb-8 inline-flex justify-center">
           <Badge variant="outline" class="rounded-full border bg-primary/10 px-4 py-1 text-xs sm:text-sm">
-            ✨ Using PHP 8.3+, Laravel 11, Inertia 2.0 and Tailwind CSS 3.4+
+            ✨ Using PHP 8.3+, Laravel 11, Inertia 2.0 and Tailwind CSS 4+
           </Badge>
         </div>
 
@@ -130,7 +130,7 @@ const githubUrl = 'https://github.com/pushpak1300/larasonic'
           >
             <span class="block text-foreground">Modern Laravel</span>
             <span
-              class="mt-2 block bg-gradient-to-r from-red-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent"
+              class="mt-2 block bg-linear-to-r from-red-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent"
             >
               SaaS Starter Kit
             </span>

@@ -10,7 +10,7 @@ const props = defineProps({
   <div
     :class="
       cn(
-        'relative [&>[data-slot=input]]:has-[[data-slot=increment]]:pr-5 [&>[data-slot=input]]:has-[[data-slot=decrement]]:pl-5',
+        'relative has-data-[slot=increment]:*:data-[slot=input]:pr-5 has-data-[slot=decrement]:*:data-[slot=input]:pl-5',
         props.class,
       )
     "

@@ -16,7 +16,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="flex flex-col items-left text-left rounded-lg border bg-card p-6 shadow-sm">
+  <div class="flex flex-col items-left text-left rounded-lg border bg-card p-6 shadow-xs">
     <div class="h-12 w-12 text-primary text-3xl">
       {{ icon }}
     </div>

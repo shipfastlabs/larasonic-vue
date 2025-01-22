@@ -49,7 +49,7 @@ function switchToTeam(team) {
       </SidebarMenuButton>
     </DropdownMenuTrigger>
     <DropdownMenuContent
-      class="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg p-0"
+      class="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg p-0"
       align="start" side="bottom" :side-offset="4"
     >
       <Command :filter-function="(list, term) => list.filter(i => i?.name?.toLowerCase()?.includes(term))">

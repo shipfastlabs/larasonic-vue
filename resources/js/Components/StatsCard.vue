@@ -31,7 +31,7 @@ defineProps({
     target="_blank"
     rel="noopener"
   >
-    <Card class="hover:shadow">
+    <Card class="hover:shadow-sm">
       <CardHeader class="flex flex-row items-center justify-between space-y-0 pb-2">
         <CardTitle class="text-sm font-medium">
           <Icon

@@ -17,7 +17,7 @@
     </div>
 
     <div class="mt-5 md:col-span-2 md:mt-0">
-      <div class="border px-4 py-5 shadow rounded-lg sm:p-6">
+      <div class="border px-4 py-5 shadow-sm rounded-lg sm:p-6">
         <slot name="content" />
       </div>
     </div>

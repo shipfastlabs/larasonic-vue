@@ -151,7 +151,7 @@ function displayableRole(role) {
             <div class="relative z-0 mt-1 cursor-pointer rounded-lg border">
               <button
                 v-for="(role, i) in availableRoles" :key="role.key" type="button"
-                class="relative inline-flex w-full rounded-lg px-4 py-3 focus:z-10 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary dark:focus:border-primary dark:focus:ring-primary"
+                class="relative inline-flex w-full rounded-lg px-4 py-3 focus:z-10 focus:border-primary focus:outline-hidden focus:ring-2 focus:ring-primary dark:focus:border-primary dark:focus:ring-primary"
                 :class="{ 'rounded-t-none border-t focus:border-none ': i > 0, 'rounded-b-none': i !== Object.keys(availableRoles).length - 1 }"
                 @click="addTeamMemberForm.role = role.key"
               >
@@ -231,7 +231,7 @@ function displayableRole(role) {
                 <!-- Cancel Team Invitation -->
                 <button
                   v-if="userPermissions.canRemoveTeamMembers"
-                  class="ms-6 cursor-pointer text-sm text-red-500 focus:outline-none"
+                  class="ms-6 cursor-pointer text-sm text-red-500 focus:outline-hidden"
                   @click="cancelTeamInvitation(invitation)"
                 >
                   Cancel
@@ -320,7 +320,7 @@ function displayableRole(role) {
           <div class="relative z-0 mt-1 cursor-pointer rounded-lg border border-primary">
             <button
               v-for="(role, i) in availableRoles" :key="role.key" type="button"
-              class="relative inline-flex w-full rounded-lg px-4 py-3 focus:z-10 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary"
+              class="relative inline-flex w-full rounded-lg px-4 py-3 focus:z-10 focus:border-primary focus:outline-hidden focus:ring-2 focus:ring-primary"
               :class="{ 'rounded-t-none border-t focus:border-none': i > 0, 'rounded-b-none': i !== Object.keys(availableRoles).length - 1 }"
               @click="updateRoleForm.role = role.key"
             >

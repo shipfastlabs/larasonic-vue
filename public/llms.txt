@@ -1,5 +1,5 @@
 # Modern Laravel SaaS Starter Kit
-✨ Using PHP 8.3+, Laravel 11, Inertia 2.0 and Tailwind CSS 3.4+
+✨ Using PHP 8.3+, Laravel 11, Inertia 2.0 and Tailwind CSS 4+
 Ship faster production-ready applications 10x faster with starter kit powered by Laravel Jetstream, Inertia V2, and Shadcn/ui.
 
 [View Demo](https://larasonic.com/dashboard) [Github](https://github.com/pushpak1300/larasonic)

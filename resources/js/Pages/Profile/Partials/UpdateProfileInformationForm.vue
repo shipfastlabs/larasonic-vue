@@ -154,7 +154,7 @@ function clearPhotoFileInput() {
 
             <Link
               :href="route('verification.send')" method="post" as="button"
-              class="rounded-md text-sm underline focus:outline-none focus:ring-2 focus:ring-offset-2"
+              class="rounded-md text-sm underline focus:outline-hidden focus:ring-2 focus:ring-offset-2"
               @click.prevent="sendEmailVerification"
             >
               Click here to re-send the verification email.
