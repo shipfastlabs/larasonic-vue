@@ -44,7 +44,7 @@ test('admin can list all users', function (): void {
 
     $response->assertOk()
         ->assertJson(
-            fn (AssertableJson $json): \Illuminate\Testing\Fluent\AssertableJson => $json->has(3) // admin + writer + reader
+            fn (AssertableJson $json): AssertableJson => $json->has(3) // admin + writer + reader
                 ->first(
                     fn ($json) => $json->where('id', $this->admin->id)
                         ->where('name', $this->admin->name)
@@ -68,7 +68,7 @@ test('admin can create new user', function (): void {
 
     $response->assertCreated()
         ->assertJson(
-            fn (AssertableJson $json): \Illuminate\Testing\Fluent\AssertableJson => $json->where('name', $userData['name'])
+            fn (AssertableJson $json): AssertableJson => $json->where('name', $userData['name'])
                 ->where('email', $userData['email'])
                 ->etc()
         );
@@ -81,7 +81,7 @@ test('admin can view specific user', function (): void {
 
     $response->assertOk()
         ->assertJson(
-            fn (AssertableJson $json): \Illuminate\Testing\Fluent\AssertableJson => $json->where('id', $this->writer->id)
+            fn (AssertableJson $json): AssertableJson => $json->where('id', $this->writer->id)
                 ->where('name', $this->writer->name)
                 ->where('email', $this->writer->email)
                 ->etc()
@@ -100,7 +100,7 @@ test('admin can update user', function (): void {
 
     $response->assertOk()
         ->assertJson(
-            fn (AssertableJson $json): \Illuminate\Testing\Fluent\AssertableJson => $json->where('name', $updateData['name'])
+            fn (AssertableJson $json): AssertableJson => $json->where('name', $updateData['name'])
                 ->where('email', $updateData['email'])
                 ->etc()
         );
