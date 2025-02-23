@@ -10,7 +10,6 @@
   "license": "MIT",
   "require": {
     "php": "^8.3",
-    "blaspsoft/blasp": "^1.2",
     "echolabsdev/prism": "^0.26.0",
     "filament/filament": "^3.2",
     "inertiajs/inertia-laravel": "^2.0",

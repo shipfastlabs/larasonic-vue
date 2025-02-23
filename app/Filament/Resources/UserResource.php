@@ -41,13 +41,11 @@ final class UserResource extends Resource
                         Forms\Components\TextInput::make('name')
                             ->required()
                             ->maxLength(255)
-                            ->rules(['blasp_check'])
                             ->placeholder('Enter full name'),
                         Forms\Components\TextInput::make('email')
                             ->email()
                             ->required()
                             ->unique(ignoreRecord: true)
-                            ->rules(['blasp_check'])
                             ->maxLength(255)
                             ->placeholder('email@example.com'),
                         Forms\Components\TextInput::make('password')
