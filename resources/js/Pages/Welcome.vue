@@ -30,59 +30,58 @@ useSeoMetaTags(props.seo)
 
 const features = [
   {
-    icon: '🚀',
-    title: '10x Dev Experience',
-    description: 'Ship faster with opinionated Laravel Pint, maximum PHPStan level, and Rector for enhanced code quality and developer productivity.',
+    icon: '📚',
+    title: 'Comprehensive Course Management',
+    description: 'Easily manage your courses, assignments, and grades with our intuitive interface designed for both faculty and students.',
   },
   {
-    icon: '🐳',
-    title: 'Production Docker Ready',
-    description: 'Optimized Docker images with Laravel Octane and Sail for lightning-fast development and deployment.',
+    icon: '👩‍🏫',
+    title: 'Faculty Collaboration Tools',
+    description: 'Empower faculty members with tools for collaboration, communication, and resource sharing to enhance the learning experience.',
   },
   {
-    icon: '🔑',
-    title: 'Advanced Authentication',
-    description: 'Complete authentication system with social login, and role-based access control.',
+    icon: '🗓️',
+    title: 'Streamlined Scheduling',
+    description: 'Access a centralized calendar for classes, exams, and events, ensuring you never miss an important date.',
   },
   {
-    icon: '💳',
-    title: 'Payment Ready',
-    description: 'Integrated Laravel Cashier for subscription billing and payment processing so you can focus on building your product.',
-  },
-  {
-    icon: '🌐',
-    title: 'API Ready',
-    description: 'RESTful API endpoints with Laravel Sanctum authentication and comprehensive documentation.',
-  },
-  {
-    icon: '🎨',
-    title: 'Customizable UI',
-    description: 'Built with shadcn/ui components, making UI customization a breeze. Easily modify themes, styles, and components to match your brand.',
-  },
-  {
-    icon: '🧠',
-    title: 'AI Integration Ready',
-    description: 'Pre-configured LLM integrations for OpenAI, Anthropic, and more. Build AI-powered features into your app with minimal setup.',
+    icon: '💬',
+    title: 'Real-time Communication',
+    description: 'Stay connected with peers and instructors through integrated messaging and notification systems.',
   },
   {
     icon: '📊',
-    title: 'FilamentPHP Admin',
-    description: 'Beautiful admin panel powered by FilamentPHP with CRUD operations, charts, and detailed analytics.',
+    title: 'Performance Tracking',
+    description: 'Monitor your academic progress with detailed analytics and reports, helping you stay on track for success.',
+  },
+  {
+    icon: '🔒',
+    title: 'Secure Access',
+    description: 'Your data is protected with top-notch security measures, ensuring a safe environment for all users.',
+  },
+  {
+    icon: '🌐',
+    title: 'Accessible Anywhere',
+    description: "Access the portal from any device, whether you're at home, in class, or on the go, making learning flexible and convenient.",
+  },
+  {
+    icon: '🎓',
+    title: 'Community Engagement',
+    description: 'Join a vibrant community of learners and educators, fostering collaboration and support throughout your academic journey.',
   },
   {
     icon: '✨',
-    title: 'Evolving Features',
-    description: 'This is just the beginning. Regular updates bring new features, integrations, and improvements to supercharge your development.',
+    title: 'Continuous Improvement',
+    description: 'We are committed to evolving our platform based on user feedback, ensuring that DCCPHub meets the needs of our community.',
   },
 ]
 
 const pricingFeatures = [
-  'Production-ready Docker setup',
-  'Advanced authentication system',
-  'AI Integrations',
-  'Payment integration ready',
-  'API endpoints with Sanctum',
-  'Comprehensive documentation',
+  'Free access for all students and faculty',
+  'Comprehensive support and resources',
+  'Regular updates and new features',
+  'User-friendly interface',
+  'Dedicated community forums',
 ]
 const sponsorLinks = {
   github: 'https://github.com/sponsors/pushpak1300',
@@ -92,22 +91,22 @@ const sponsorLinks = {
 const faqItems = [
   {
     value: 'item-1',
-    title: 'Is Larasonic really free?',
-    content: 'Yes! Larasonic is completely free and open source under the MIT license. You can use it for personal or commercial projects without any restrictions. Feel free to star the repo for showing your intrest.',
+    title: 'Is DCCPHub really free?',
+    content: 'Yes! DCCPHub is completely free for all students and faculty members, providing essential tools without any hidden fees.',
   },
   {
     value: 'item-2',
     title: 'How can I contribute?',
-    content: 'You can contribute by submitting pull requests, reporting bugs, suggesting features, or helping with documentation. Every contribution is valuable!',
+    content: 'You can contribute by providing feedback, suggesting features, or participating in community discussions. Your input is invaluable!',
   },
   {
     value: 'item-3',
-    title: 'Why should I sponsor?',
-    content: 'Sponsoring helps ensure the project\'s long-term sustainability. Your support enables continued maintenance, new features, and improvements that benefit the entire community.',
+    title: 'Why should I use DCCPHub?',
+    content: 'DCCPHub simplifies your academic life, providing all the tools you need in one place, enhancing your learning experience and productivity.',
   },
 ]
 
-const githubUrl = 'https://github.com/pushpak1300/larasonic'
+const githubUrl = 'https://github.com/pushpak1300/dccphub'
 </script>
 
 <template>
@@ -118,7 +117,7 @@ const githubUrl = 'https://github.com/pushpak1300/larasonic'
         <!-- Badge -->
         <div class="mb-8 inline-flex justify-center">
           <Badge variant="outline" class="rounded-full border bg-primary/10 px-4 py-1 text-xs sm:text-sm">
-            ✨ Using PHP 8.3+, Laravel 11, Inertia 2.0 and Tailwind CSS 4+
+            ✨ Empowering Education with DCCPHub
           </Badge>
         </div>
 
@@ -128,11 +127,11 @@ const githubUrl = 'https://github.com/pushpak1300/larasonic'
             class="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
             :style="{ contain: 'layout paint' }"
           >
-            <span class="block text-foreground">Modern Laravel</span>
+            <span class="block text-foreground">DCCPHub</span>
             <span
-              class="mt-2 block bg-linear-to-r from-red-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent"
+              class="mt-2 block bg-linear-to-r from-blue-500 via-green-500 to-yellow-500 bg-clip-text text-transparent"
             >
-              SaaS Starter Kit
+              Your School Portal
             </span>
           </h1>
         </div>
@@ -143,31 +142,30 @@ const githubUrl = 'https://github.com/pushpak1300/larasonic'
           :style="{ contain: 'layout paint' }"
           fetchpriority="high"
         >
-          Ship faster production-ready applications 10x faster with starter kit powered
-          by Laravel Jetstream, Inertia V2, and Shadcn/ui.
+          Seamlessly manage your academic journey with DCCPHub, designed for both faculty and students to enhance learning and collaboration.
         </p>
 
         <!-- CTA Buttons -->
         <div class="mt-10 flex items-center justify-center gap-4 flex-row">
           <Button
-            as="a" href="https://larasonic.com/dashboard" target="_blank" size="lg"
+            as="a" href="https://dccphub.com/dashboard" target="_blank" size="lg"
             class="w-full sm:w-auto"
           >
-            View Demo
+            Explore DCCPHub
           </Button>
           <Button
             as="a" :href="githubUrl" target="_blank" size="lg" variant="outline"
             class="w-full sm:w-auto"
           >
             <Icon icon="lucide:github" class="size-4" aria-hidden="true" />
-            Github
+            GitHub
           </Button>
         </div>
 
         <!-- Trust Badges -->
         <div class="mt-16 sm:mt-24">
           <p class="text-sm text-muted-foreground">
-            Trusted by developers worldwide
+            Trusted by educators and students alike
           </p>
           <div class="mt-4 flex flex-wrap items-center justify-center gap-6 sm:gap-8">
             <Icon
@@ -201,10 +199,10 @@ const githubUrl = 'https://github.com/pushpak1300/larasonic'
     <!-- Features Grid -->
     <section id="features" class="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
       <h2 class="text-center text-2xl font-bold tracking-tight sm:text-4xl">
-        Features ✨
+        Features of DCCPHub 🌟
       </h2>
       <p class="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
-        Everything you need to ship faste to production without any hassle.
+        Discover the powerful features designed to enhance your educational experience.
       </p>
 
       <div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -214,7 +212,7 @@ const githubUrl = 'https://github.com/pushpak1300/larasonic'
         />
       </div>
       <div class="mt-6 flex justify-center gap-2">
-        <Button as="a" href="https://docs.larasonic.com" target="_blank" rel="noopener noreferrer">
+        <Button as="a" href="https://docs.dccphub.com" target="_blank" rel="noopener noreferrer">
           <Icon icon="lucide:book-open" class="size-4" aria-hidden="true" />
           Documentation
         </Button>
@@ -233,16 +231,16 @@ const githubUrl = 'https://github.com/pushpak1300/larasonic'
         <!-- Header -->
         <div class="mx-auto max-w-3xl text-center">
           <h2 class="text-center text-2xl font-bold tracking-tight sm:text-4xl">
-            Proudly Open Source 🤑
+            Always Free for Students and Faculty 🎓
           </h2>
           <p class="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
-            Larasonic is and will always be open source. No hidden fees, no premium features.
+            DCCPHub is committed to providing essential tools for free, ensuring accessibility for all.
           </p>
         </div>
 
         <!-- Pricing Card -->
         <PricingCard
-          class="mx-auto mt-16" :features="pricingFeatures" :price="0" plan="What's included ?"
+          class="mx-auto mt-16" :features="pricingFeatures" :price="0" plan="What's included?"
           billing-period="Free Forever"
         >
           <template #action>
@@ -262,7 +260,7 @@ const githubUrl = 'https://github.com/pushpak1300/larasonic'
                 </Button>
                 <Button variant="outline" as="a" :href="sponsorLinks.x" target="_blank">
                   <Icon icon="ri:twitter-x-line" class="mr-2 size-4" aria-hidden="true" />
-                  Follow Me
+                  Follow Us
                 </Button>
               </div>
             </div>
@@ -293,11 +291,10 @@ const githubUrl = 'https://github.com/pushpak1300/larasonic'
         <div class="rounded-2xl px-6 py-12 sm:p-16">
           <div class="mx-auto max-w-2xl text-center">
             <h2 class="text-3xl font-bold tracking-tight sm:text-6xl">
-              Ready to ship faster?
+              Ready to Enhance Your Learning Experience?
             </h2>
             <p class="mx-auto mt-4 max-w-xl text-lg">
-              You're already blazing fast with Laravel.<br> Larasonic is about to make your shipping speed
-              supersonic. 🚀
+              Join DCCPHub today and unlock the full potential of your academic journey. 🚀
             </p>
             <div class="mt-8 flex justify-center gap-4">
               <Button as="a" :href="githubUrl" target="_blank" rel="noopener noreferrer">
