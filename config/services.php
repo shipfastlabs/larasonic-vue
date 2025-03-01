@@ -56,4 +56,10 @@ return [
         'redirect' => env('GITLAB_REDIRECT_URI', '/auth/callback/gitlab'),
     ],
 
+    'facebook' => [
+        'client_id' => env('FACEBOOK_CLIENT_ID'),
+        'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
+        'redirect' => env('FACEBOOK_REDIRECT_URI', '/auth/callback/facebook'),
+    ],
+
 ];

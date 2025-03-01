@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\ApiUserController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\User\OauthController;
@@ -38,3 +39,4 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         ->names('subscriptions')
         ->only(['index', 'create', 'store', 'show']);
 });
+

@@ -7,6 +7,10 @@ namespace App\Actions\Fortify;
 use App\Models\Team;
 use App\Models\User;
 use Stripe\Customer;
+use App\Models\Faculty;
+use App\Models\Student;
+use App\Models\Students;
+use App\Models\ShsStudents;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Laravel\Jetstream\Jetstream;
@@ -29,17 +33,28 @@ final class CreateNewUser implements CreatesNewUsers
     {
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => Arr::get($input, 'password') ? $this->passwordRules() : 'sometimes',
-            'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:accounts'],
+            'phone' => ['nullable', 'string', 'max:20'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'role' => ['required', 'string'],
+            'id' => ['required', 'integer'],
+            // 'person_type' => ['required', 'string'],
         ])->validate();
+                // Determine person type
+                $personType = $this->determinePersonType($input['id']);
 
         return DB::transaction(fn () => tap(User::query()->create([
             'name' => $input['name'],
             'email' => $input['email'],
-            'password' => Arr::get($input, 'password') ? Hash::make($input['password']) : Str::random(12),
+            'username' => $input['name'],
+            'phone' => $input['phone'],
+            'password' => Hash::make($input['password']),
+            'role' => $personType === Faculty::class ? 'faculty' : 'student',
+            'is_active' => true,
+            'person_id' => $input['id'],
+            'person_type' => $personType,
         ]), function (User $user): void {
-            $this->createTeam($user);
+            // $this->createTeam($user);
             $this->createCustomer($user);
         }));
     }
@@ -71,5 +86,35 @@ final class CreateNewUser implements CreatesNewUsers
         $user->update([
             'stripe_id' => $stripeCustomer->id,
         ]);
+    }
+
+    private function determineRole(int $roleId): string
+    {
+        if (Students::where('id', $roleId)->exists()) {
+            return 'student';
+        } elseif (Faculty::where('id', $roleId)->exists()) {
+            return 'faculty';
+        }
+        return 'guest';
+    }
+
+    /**
+     * Determine the person type based on the ID.
+     */
+    private function determinePersonType(string $studentId): ?string
+    {
+        if (Students::where('id', $studentId)->exists()) {
+            return Students::class;
+        }
+
+        if (Faculty::where('id', $studentId)->exists()) {
+            return Faculty::class;
+        }
+
+        if (ShsStudents::where('student_lrn', $studentId)->exists()) {
+            return ShsStudents::class;
+        }
+
+        return null;
     }
 }

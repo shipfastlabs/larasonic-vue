@@ -72,10 +72,7 @@ function logout() {
           <Icon icon="lucide:settings" />
           Settings
         </DropdownMenuItem>
-        <DropdownMenuItem :as="Link" :href="route('api-tokens.index')">
-          <Icon icon="lucide:key" />
-          API Tokens
-        </DropdownMenuItem>
+      
         <DropdownMenuItem :as="Link" :href="route('subscriptions.create')">
           <Icon icon="lucide:credit-card" />
           Billing

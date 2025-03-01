@@ -1,106 +1,151 @@
-<script setup>
-import InputError from '@/Components/InputError.vue'
-import AuthenticationCardLogo from '@/Components/LogoRedirect.vue'
-import Button from '@/Components/shadcn/ui/button/Button.vue'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/Components/shadcn/ui/card'
+<script setup lang="ts">
+import InputError from '@/Components/InputError.vue';
+import TextLink from '@/Components/TextLink.vue';
+import { Button } from '@/Components/shadcn/ui/button';
+import { Input } from '@/Components/shadcn/ui/input';
+import { Label } from '@/Components/shadcn/ui/label';
+import AuthBase from '@/Layouts/AuthLayout.vue';
+import { Head, useForm } from '@inertiajs/vue3';
+import { LoaderCircle } from 'lucide-vue-next';
+import { ref } from 'vue';
+import { toast } from 'vue-sonner';
+import axios from 'axios';
 
-import Checkbox from '@/Components/shadcn/ui/checkbox/Checkbox.vue'
-import Input from '@/Components/shadcn/ui/input/Input.vue'
-import Label from '@/Components/shadcn/ui/label/Label.vue'
-import { useSeoMetaTags } from '@/Composables/useSeoMetaTags.js'
-import { Link, useForm } from '@inertiajs/vue3'
-import { inject } from 'vue'
+const step = ref(1);
+const userType = ref('');
+const emailForm = useForm({
+    email: '',
+});
+const idForm = useForm({
+    id: '',
+});
+const finalForm = useForm({
+    id: '',
+    email: '',
+    name: '',
+    phone: '',
+    password: '',
+    password_confirmation: '',
+    role: '',
+    person_id: '',
+    person_type: '',
+});
 
-useSeoMetaTags({
-  title: 'Register',
-})
+const nextStep = async () => {
+    try {
+        if (step.value === 1) {
+            if (!userType.value) {
+                toast.error('Please select a user type.');
+                return;
+            }
+            finalForm.role = userType.value;
+            step.value++;
+        } else if (step.value === 2) {
+            if (!emailForm.email) {
+                toast.error('Please enter your email.');
+                return;
+            }
 
-const route = inject('route')
-const form = useForm({
-  name: '',
-  email: '',
-  password: '',
-  password_confirmation: '',
-  terms: false,
-})
+            const response = await axios.post('/api/check-email', { email: emailForm.email, userType: userType.value });
+            if (response.data.success) {
+                toast.success(response.data.success);
+                finalForm.email = emailForm.email;
+                step.value++;
+            } else {
+                toast.error(response.data.error);
+            }
+        } else if (step.value === 3) {
+            const response = await axios.post('/api/check-id', { id: idForm.id, userType: userType.value });
+            if (response.data.success) {
+                toast.success(response.data.success);
+                finalForm.id = idForm.id;
+                finalForm.name = response.data.fullName;
+                step.value++;
+            } else {
+                toast.error(response.data.error);
+            }
+        }
+    } catch (error) {
+        console.error('Error during API call:', error);
+        toast.error('An error occurred while processing your request. Please try again.');
+    }
+};
 
-function submit() {
-  form.post(route('register'), {
-    onFinish: () => form.reset('password', 'password_confirmation'),
-  })
-}
+const submit = () => {
+    finalForm.post(route('register'), {
+        onFinish: () => finalForm.reset('password', 'password_confirmation'),
+    });
+};
 </script>
 
 <template>
-  <div class="flex min-h-screen flex-col items-center justify-center">
-    <Card class="mx-auto max-w-lg">
-      <CardHeader>
-        <CardTitle class="flex justify-center">
-          <AuthenticationCardLogo />
-        </CardTitle>
-        <CardDescription class="text-center text-2xl">
-          Create your account
-        </CardDescription>
-      </CardHeader>
+    <AuthBase title="Create an account" description="Enter your details below to create your account">
+        <Head title="Register" />
 
-      <CardContent>
-        <form @submit.prevent="submit">
-          <div class="grid gap-4">
-            <div class="grid gap-2">
-              <Label for="name">Name</Label>
-              <Input id="name" v-model="form.name" type="text" required autofocus autocomplete="name" />
-              <InputError :message="form.errors.name" />
+        <form @submit.prevent="step === 4 ? submit() : nextStep()" class="flex flex-col gap-6">
+            <div v-if="step === 1" class="flex flex-col">
+                <Label>Select your role:</Label>
+                <div class="flex gap-4 mt-2">
+                    <label class="flex items-center">
+                        <input type="radio" value="student" v-model="userType" required class="mr-2" />
+                        Student
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" value="instructor" v-model="userType" required class="mr-2" />
+                        Instructor
+                    </label>
+                </div>
             </div>
 
-            <div class="grid gap-2">
-              <Label for="email">Email</Label>
-              <Input id="email" v-model="form.email" type="email" required autocomplete="username" />
-              <InputError :message="form.errors.email" />
+            <div v-if="step === 2" class="flex flex-col">
+                <Label for="email">Email Address</Label>
+                <Input id="email" type="email" required v-model="emailForm.email" placeholder="email@example.com" class="mt-2" />
+                <InputError :message="emailForm.errors.email" />
             </div>
 
-            <div class="grid gap-2">
-              <Label for="password">Password</Label>
-              <Input
-                id="password" v-model="form.password" type="password" required
-                autocomplete="new-password"
-              />
-              <InputError :message="form.errors.password" />
+            <div v-if="step === 3" class="flex flex-col">
+                <Label for="id">Your ID</Label>
+                <Input id="id" type="text" required v-model="idForm.id" placeholder="Enter your ID" class="mt-2" />
+                <InputError :message="idForm.errors.id" />
             </div>
 
-            <div class="grid gap-2">
-              <Label for="password_confirmation">Confirm Password</Label>
-              <Input
-                id="password_confirmation" v-model="form.password_confirmation" type="password"
-                required autocomplete="new-password"
-              />
-              <InputError :message="form.errors.password_confirmation" />
+            <div v-if="step === 4" class="flex flex-col">
+                <Label for="name">Full Name</Label>
+                <Input id="name" type="text" required v-model="finalForm.name" placeholder="Your full name" class="mt-2" />
+                <InputError :message="finalForm.errors.name" />
             </div>
 
-            <div v-if="$page.props.jetstream.hasTermsAndPrivacyPolicyFeature">
-              <div class="flex items-center space-x-2">
-                <Checkbox id="terms" v-model:checked="form.terms" name="terms" required />
-                <label for="terms" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                  I agree to the
-                  <a target="_blank" :href="route('terms.show')" class="rounded-md text-sm underline">Terms of Service</a>
-                  and
-                  <a target="_blank" :href="route('policy.show')" class="rounded-md text-sm underline">Privacy Policy</a>
-                </label>
-              </div>
-              <InputError :message="form.errors.terms" />
+            <div v-if="step === 4" class="flex flex-col">
+                <Label for="phone">Phone Number</Label>
+                <Input id="phone" type="text" v-model="finalForm.phone" placeholder="Your phone number" class="mt-2" />
+                <InputError :message="finalForm.errors.phone" />
             </div>
 
-            <div class="flex items-center justify-end gap-4">
-              <Link :href="route('login')" class="text-sm underline">
-                Already registered?
-              </Link>
-
-              <Button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                Register
-              </Button>
+            <div v-if="step === 4" class="flex flex-col">
+                <Label for="password">Password</Label>
+                <Input id="password" type="password" required v-model="finalForm.password" placeholder="Password" class="mt-2" />
+                <InputError :message="finalForm.errors.password" />
             </div>
-          </div>
+
+            <div v-if="step === 4" class="flex flex-col">
+                <Label for="password_confirmation">Confirm Password</Label>
+                <Input id="password_confirmation" type="password" required v-model="finalForm.password_confirmation" placeholder="Confirm Password" class="mt-2" />
+                <InputError :message="finalForm.errors.password_confirmation" />
+            </div>
+
+            <Button type="submit" class="mt-4 w-full" :disabled="emailForm.processing || idForm.processing || finalForm.processing">
+                <LoaderCircle v-if="emailForm.processing || idForm.processing || finalForm.processing" class="h-4 w-4 animate-spin" />
+                {{ step === 4 ? 'Create Account' : 'Next' }}
+            </Button>
+
+            <div class="text-center text-sm text-muted-foreground mt-4">
+                Already have an account?
+                <TextLink :href="route('login')" class="underline underline-offset-4">Log in</TextLink>
+            </div>
         </form>
-      </CardContent>
-    </Card>
-  </div>
+    </AuthBase>
 </template>
+
+<style scoped>
+/* Add any additional styles for the radio buttons or layout here */
+</style>

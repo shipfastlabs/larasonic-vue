@@ -24,16 +24,10 @@ const navigationConfig = [
     items: [
       { name: 'Dashboard', icon: 'lucide:layout-dashboard', route: 'dashboard' },
       { name: 'Settings', icon: 'lucide:settings', route: 'profile.show' },
-      { name: 'Chat', icon: 'lucide:message-circle', route: 'chat.index' },
+    
     ],
   },
-  {
-    label: 'API',
-    items: [
-      { name: 'API Tokens', icon: 'lucide:key', route: 'api-tokens.index' },
-      { name: 'API Documentation', icon: 'lucide:book-heart', route: 'scribe', external: true },
-    ],
-  },
+ 
   {
     label: null,
     class: 'mt-auto',

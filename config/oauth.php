@@ -6,12 +6,12 @@ return [
     'providers' => [
         [
             'slug' => 'github',
-            'active' => true,
+            'active' => false,
             'icon' => 'mdi:github', // Icons from https://iconify.design/
         ],
         [
             'slug' => 'google',
-            'active' => false,
+            'active' => true,
             'icon' => 'mdi:google', // Icons from https://iconify.design/
         ],
         [
@@ -21,7 +21,7 @@ return [
         ],
         [
             'slug' => 'gitlab',
-            'active' => true,
+            'active' => false,
             'icon' => 'mdi:gitlab', // Icons from https://iconify.design/
         ],
         [
@@ -33,6 +33,11 @@ return [
             'slug' => 'discord',
             'active' => false,
             'icon' => 'mdi:discord', // Icons from https://iconify.design/
+        ],
+        [
+            'slug' => 'facebook',
+            'active' => true,
+            'icon' => 'mdi:facebook', // Icons from https://iconify.design/
         ],
     ],
 ];

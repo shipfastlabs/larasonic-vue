@@ -12,19 +12,21 @@ use Laravel\Cashier\Subscription;
 use Laravel\Sanctum\HasApiTokens;
 use Database\Factories\UserFactory;
 use Laravel\Jetstream\HasProfilePhoto;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\PersonalAccessToken;
+use function Illuminate\Events\queueable;
 use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Database\Eloquent\Collection;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\DatabaseNotificationCollection;
-
-use function Illuminate\Events\queueable;
 
 /**
  * @property int $id
@@ -105,16 +107,22 @@ final class User extends Authenticatable implements FilamentUser, MustVerifyEmai
     use Notifiable;
     use TwoFactorAuthenticatable;
 
+
+    protected $table = 'accounts';
     /**
      * The attributes that are mass assignable.
      *
      * @var list<string>
      */
-    protected $guarded = [
-        'id',
-        'created_at',
-        'updated_at',
-
+    protected $fillable = [
+        'name',
+        'email',
+        'phone',
+        'password',
+        'role',
+        'is_active',
+        'person_id',
+        'person_type',
     ];
 
     /**
@@ -133,6 +141,14 @@ final class User extends Authenticatable implements FilamentUser, MustVerifyEmai
         'trial_ends_at',
     ];
 
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array<int, string>
+     */
+    protected $appends = [
+        'profile_photo_url',
+    ];
     /**
      * Get the team that the invitation belongs to.
      *
@@ -170,6 +186,15 @@ final class User extends Authenticatable implements FilamentUser, MustVerifyEmai
         }));
     }
 
+   
+
+    // public function getPhotoUrl(): Attribute
+    // {
+    //     return Attribute::get(fn() => $this->profile_photo_path
+    //         ? Storage::disk('s3')->url($this->profile_photo_path)
+    //         : null);
+    // }
+
     /**
      * Get the attributes that should be cast.
      *
@@ -181,5 +206,50 @@ final class User extends Authenticatable implements FilamentUser, MustVerifyEmai
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+    
+    public function person()
+    {
+        return $this->morphTo();
+    }
+
+    // public function getAvatarUrlAttribute()
+    // {
+    //     if ($this->profile_photo_url) {
+    //         return $this->profile_photo_url;
+    //     } else {
+    //         $avatar = new Avatar();
+    //         return $avatar->create($this->name)->toBase64();
+    //     }
+
+    // }
+    public function UserPerson()
+    {
+        return $this->morphTo();
+    }
+
+    public function student()
+    {
+        return $this->belongsTo(Students::class, "person_id");
+    }
+
+    public function faculty()
+    {
+        return $this->belongsTo(Faculty::class, "person_id");
+    }
+
+    public function shsStudent()
+    {
+        return $this->belongsTo(ShsStudents::class, "person_id");
+    }
+
+
+    public function getIsStudentAttribute()
+    {
+        return $this->hasOne(Students::class, "person_id");
+    }
+    public function getIsFacultyAttribute()
+    {
+        return $this->hasOne(Faculty::class, "person_id");
     }
 }

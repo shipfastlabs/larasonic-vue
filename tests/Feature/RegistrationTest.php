@@ -1,25 +1,33 @@
 <?php
 
-declare(strict_types=1);
+namespace Tests\Feature;
 
-use Laravel\Fortify\Features;
-use Laravel\Jetstream\Jetstream;
+use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
-test('registration screen can be rendered', function (): void {
-    $response = $this->get('/register');
+class RegistrationTest extends TestCase
+{
+    // use RefreshDatabase;
 
-    $response->assertStatus(200);
-})->skip(fn (): bool => ! Features::enabled(Features::registration()), 'Registration support is not enabled.');
+    /** @test */
+    public function it_checks_email_existence()
+    {
+        $response = $this->postJson('/api/check-email', [
+            'email' => 'test@example.com',
+            'userType' => 'student', // or 'instructor'
+        ]);
 
-test('new users can register', function (): void {
-    $response = $this->post('/register', [
-        'name' => fake()->name(),
-        'email' => fake()->unique()->safeEmail(),
-        'password' => 'password',
-        'password_confirmation' => 'password',
-        'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature(),
-    ]);
+        $response->assertStatus(200); // Check for a successful response
+    }
 
-    $this->assertAuthenticated();
-    $response->assertRedirect(route('dashboard', absolute: false));
-});
+    /** @test */
+    public function it_checks_id_existence()
+    {
+        $response = $this->postJson('/api/check-id', [
+            'id' => '12345',
+            'userType' => 'student', // or 'instructor'
+        ]);
+
+        $response->assertStatus(200); // Check for a successful response
+    }
+}
