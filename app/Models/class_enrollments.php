@@ -42,7 +42,7 @@ class class_enrollments extends Model
 
     public function student()
     {
-        return $this->belongsTo(Student::class);
+        return $this->belongsTo(Students::class);
     }
 
     public function ShsStudent()

@@ -24,7 +24,9 @@ const navigationConfig = [
     items: [
       { name: 'Dashboard', icon: 'lucide:layout-dashboard', route: 'dashboard' },
       { name: 'Settings', icon: 'lucide:settings', route: 'profile.show' },
-    
+      { name: 'Schedule', icon: 'lucide:calendar', route: 'schedule.index' },
+      { name: 'Tuition', icon: 'lucide:banknote', route: 'tuition.index' },
+      { name: 'Subjects', icon: 'lucide:book', route: 'subjects.index' },
     ],
   },
  
@@ -35,14 +37,14 @@ const navigationConfig = [
       {
         name: 'Support',
         icon: 'lucide:life-buoy',
-        href: 'https://github.com/pushpak1300/larasonic/issues',
+        href: 'https://github.com/yukazakiri/DccpHubv2/issues',
         external: true,
       },
       {
-        name: 'Documentation',
-        icon: 'lucide:book-marked',
-        href: 'https://docs.larasonic.com',
-        external: true,
+        name: 'Change-Log',
+        icon: 'lucide:file-text',
+        route: 'changelog.index',
+        external: false,
       },
     ],
   },

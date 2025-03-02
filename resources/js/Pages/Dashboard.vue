@@ -15,15 +15,55 @@ import {
 import { Checkbox } from '@/Components/shadcn/ui/checkbox';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/Components/shadcn/ui/tabs';
 import { Badge } from '@/Components/shadcn/ui/badge';
+import { Link } from '@inertiajs/vue3';
 
+// Define props
+const props = defineProps({
+    student: {
+        type: Object,
+        required: true,
+    },
+    stats: {
+        type: Array,
+        required: true,
+    },
+    todaysClasses: {
+        type: Array,
+        required: true,
+    },
+    currentClass: {
+        type: Object,
+        default: null, // Can be null
+    },
+    recentGrades: {
+        type: Array,
+        required: true
+    },
+    assignments: { // Keep as placeholders
+        type: String,
+        required: true,
+    },
+    exams: { // Keep as placeholders
+        type: String,
+        required: true,
+    },
+    announcements: { // Keep as placeholders
+        type: String,
+        required: true,
+    },
+    resources: {
+        type: String, // Keep as placeholders
+        required: true
+    }
+});
 
-// Sample data - expanded with more relevant student information
-const student = {
-  name: 'Alex Johnson',
-  grade: '10th Grade',
-  avatarUrl: '/api/placeholder/80/80',
-  streak: 5, // Days in a row logging in
-};
+// Sample data - expanded with more relevant student information - REMOVE
+// const student = {
+//   name: 'Alex Johnson',
+//   grade: '10th Grade',
+//   avatarUrl: '/api/placeholder/80/80',
+//   streak: 5, // Days in a row logging in
+// };
 
 const currentDate = new Date().toLocaleDateString('en-US', {
   weekday: 'long',
@@ -32,65 +72,65 @@ const currentDate = new Date().toLocaleDateString('en-US', {
   day: 'numeric'
 });
 
-// Assignments with priority and completion status
-const assignments = ref([
-  { id: 1, title: 'Math Homework - Calculus', dueDate: '2023-10-15', subject: 'Math', priority: 'High', completed: false },
-  { id: 2, title: 'Science Lab Report', dueDate: '2023-10-20', subject: 'Science', priority: 'Medium', completed: false },
-  { id: 3, title: 'English Essay - Shakespeare', dueDate: '2023-10-22', subject: 'English', priority: 'Medium', completed: false },
-  { id: 4, title: 'History Research Paper', dueDate: '2023-10-25', subject: 'History', priority: 'Low', completed: false },
-]);
+// Assignments with priority and completion status - REMOVE
+// const assignments = ref([
+//   { id: 1, title: 'Math Homework - Calculus', dueDate: '2023-10-15', subject: 'Math', priority: 'High', completed: false },
+//   { id: 2, title: 'Science Lab Report', dueDate: '2023-10-20', subject: 'Science', priority: 'Medium', completed: false },
+//   { id: 3, title: 'English Essay - Shakespeare', dueDate: '2023-10-22', subject: 'English', priority: 'Medium', completed: false },
+//   { id: 4, title: 'History Research Paper', dueDate: '2023-10-25', subject: 'History', priority: 'Low', completed: false },
+// ]);
 
-// Upcoming exams
-const exams = [
-  { id: 1, subject: 'Math', topic: 'Algebra II', date: '2023-10-18', time: '9:00 AM' },
-  { id: 2, subject: 'Science', topic: 'Chemistry', date: '2023-10-21', time: '10:30 AM' },
-];
+// Upcoming exams - REMOVE
+// const exams = [
+//   { id: 1, subject: 'Math', topic: 'Algebra II', date: '2023-10-18', time: '9:00 AM' },
+//   { id: 2, subject: 'Science', topic: 'Chemistry', date: '2023-10-21', time: '10:30 AM' },
+// ];
 
-// Expanded grades with more details
-const grades = [
-  { id: 1, subject: 'Math', assignment: 'Quiz 1', grade: 'A', score: '95/100', date: '2023-10-05' },
-  { id: 2, subject: 'Science', assignment: 'Lab Report', grade: 'B+', score: '88/100', date: '2023-10-08' },
-  { id: 3, subject: 'English', assignment: 'Essay', grade: 'A-', score: '91/100', date: '2023-10-10' },
-];
+// Expanded grades with more details - REMOVE
+// const grades = [
+//   { id: 1, subject: 'Math', assignment: 'Quiz 1', grade: 'A', score: '95/100', date: '2023-10-05' },
+//   { id: 2, subject: 'Science', assignment: 'Lab Report', grade: 'B+', score: '88/100', date: '2023-10-08' },
+//   { id: 3, subject: 'English', assignment: 'Essay', grade: 'A-', score: '91/100', date: '2023-10-10' },
+// ];
 
-// Class schedule for today
-const todayClasses = [
-  { id: 1, subject: 'Math', room: '301', time: '8:00 AM - 9:30 AM', teacher: 'Ms. Johnson' },
-  { id: 2, subject: 'English', room: '205', time: '9:45 AM - 11:15 AM', teacher: 'Mr. Williams' },
-  { id: 3, subject: 'Lunch', room: 'Cafeteria', time: '11:15 AM - 12:00 PM', teacher: null },
-  { id: 4, subject: 'Science', room: 'Lab 2', time: '12:15 PM - 1:45 PM', teacher: 'Dr. Martinez' },
-  { id: 5, subject: 'History', room: '108', time: '2:00 PM - 3:30 PM', teacher: 'Mrs. Thompson' },
-];
+// Class schedule for today - REMOVE
+// const todayClasses = [
+//   { id: 1, subject: 'Math', room: '301', time: '8:00 AM - 9:30 AM', teacher: 'Ms. Johnson' },
+//   { id: 2, subject: 'English', room: '205', time: '9:45 AM - 11:15 AM', teacher: 'Mr. Williams' },
+//   { id: 3, subject: 'Lunch', room: 'Cafeteria', time: '11:15 AM - 12:00 PM', teacher: null },
+//   { id: 4, subject: 'Science', room: 'Lab 2', time: '12:15 PM - 1:45 PM', teacher: 'Dr. Martinez' },
+//   { id: 5, subject: 'History', room: '108', time: '2:00 PM - 3:30 PM', teacher: 'Mrs. Thompson' },
+// ];
 
-// Announcements
-const announcements = [
-  { id: 1, title: 'Spirit Week Next Week', date: '2023-10-12', content: 'Don\'t forget to participate in theme days!' },
-  { id: 2, title: 'Winter Break Dates', date: '2023-10-10', content: 'Winter break will be from Dec 20 to Jan 5' },
-];
+// Announcements - REMOVE
+// const announcements = [
+//   { id: 1, title: 'Spirit Week Next Week', date: '2023-10-12', content: 'Don\'t forget to participate in theme days!' },
+//   { id: 2, title: 'Winter Break Dates', date: '2023-10-10', content: 'Winter break will be from Dec 20 to Jan 5' },
+// ];
 
-// Resources by subject
-const resources = {
-  Math: [
-    { id: 1, title: 'Algebra Formula Sheet', type: 'PDF' },
-    { id: 2, title: 'Calculus Tutorial Videos', type: 'Video' },
-  ],
-  Science: [
-    { id: 3, title: 'Periodic Table Reference', type: 'PDF' },
-    { id: 4, title: 'Lab Safety Guidelines', type: 'PDF' },
-  ],
-  English: [
-    { id: 5, title: 'Essay Writing Guide', type: 'PDF' },
-    { id: 6, title: 'Shakespeare Analysis Resources', type: 'Link' },
-  ]
-};
+// Resources by subject - REMOVE
+// const resources = {
+//   Math: [
+//     { id: 1, title: 'Algebra Formula Sheet', type: 'PDF' },
+//     { id: 2, title: 'Calculus Tutorial Videos', type: 'Video' },
+//   ],
+//   Science: [
+//     { id: 3, title: 'Periodic Table Reference', type: 'PDF' },
+//     { id: 4, title: 'Lab Safety Guidelines', type: 'PDF' },
+//   ],
+//   English: [
+//     { id: 5, title: 'Essay Writing Guide', type: 'PDF' },
+//     { id: 6, title: 'Shakespeare Analysis Resources', type: 'Link' },
+//   ]
+// };
 
-// Stats for quick overview
-const stats = [
-  { label: 'GPA', value: '3.8' },
-  { label: 'Attendance', value: '98%' },
-  { label: 'Assignments Due', value: assignments.value.filter(a => !a.completed).length },
-  { label: 'Upcoming Exams', value: exams.length },
-];
+// Stats for quick overview - REMOVE
+// const stats = [
+//   { label: 'GPA', value: '3.8' },
+//   { label: 'Attendance', value: '98%' },
+//   { label: 'Assignments Due', value: assignments.value.filter(a => !a.completed).length },
+//   { label: 'Upcoming Exams', value: exams.length },
+// ];
 
 // Helper function to get priority color
 const getPriorityColor = (priority) => {
@@ -102,23 +142,22 @@ const getPriorityColor = (priority) => {
   }
 };
 
-// Toggle assignment completion
+// Toggle assignment completion - KEEP, but modify to work with the "Coming Soon" state
 const toggleCompletion = (id) => {
-  const index = assignments.value.findIndex(a => a.id === id);
-  if (index !== -1) {
-    assignments.value[index].completed = !assignments.value[index].completed;
-  }
+    // Since assignments are "coming soon", this function won't do anything for now.
+    // You can add a console.log or a temporary message if you want.
+    console.log("Toggle completion clicked for assignment ID:", id); // Debugging
 };
 
-// Filter assignments based on completion status
-const completedAssignments = computed(() => assignments.value.filter(a => a.completed));
-const pendingAssignments = computed(() => assignments.value.filter(a => !a.completed));
+// Filter assignments based on completion status - KEEP, but modify to work with "Coming Soon"
+const completedAssignments = computed(() => []); // Return empty array
+const pendingAssignments = computed(() => []);   // Return empty array
 
-// Get current/next class based on time
-const currentClass = computed(() => {
-  // This would normally use actual time comparison
-  return todayClasses[1]; // Mock for demonstration
-});
+// Get current/next class based on time - REMOVE
+// const currentClass = computed(() => {
+//   // This would normally use actual time comparison
+//   return todayClasses[1]; // Mock for demonstration
+// });
 </script>
 
 <template>
@@ -174,7 +213,7 @@ const currentClass = computed(() => {
       <!-- Today's Schedule and Current Class -->
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <!-- Current/Next Class Card -->
-        <Card class="lg:col-span-1">
+        <Card v-if="currentClass" class="lg:col-span-1">
           <CardHeader>
             <CardTitle>Current Class</CardTitle>
           </CardHeader>
@@ -193,21 +232,33 @@ const currentClass = computed(() => {
             <Button class="w-full">View Class Materials</Button>
           </CardContent>
         </Card>
+        <Card v-else class="lg:col-span-1">
+            <CardHeader>
+                <CardTitle>No Current Class</CardTitle>
+            </CardHeader>
+            <CardContent>
+                <p class="text-muted-foreground">
+                    There is no class in session at this time.
+                </p>
+            </CardContent>
+        </Card>
 
         <!-- Today's Schedule -->
         <Card class="lg:col-span-2">
           <CardHeader class="flex flex-row items-center justify-between">
             <CardTitle>Today's Schedule</CardTitle>
-            <Button variant="ghost" size="sm" class="flex items-center">
-              View Full Schedule
-              <ChevronRightIcon class="w-4 h-4 ml-1" />
-            </Button>
+            <Link :href="route('schedule.index')">
+                <Button variant="link" size="sm" class="flex items-center">
+                    View Full Schedule
+                    <ChevronRightIcon class="w-4 h-4 ml-1" />
+                </Button>
+            </Link>
           </CardHeader>
           <CardContent>
             <div class="space-y-3 max-h-72 overflow-y-auto">
-              <div v-for="(class_item, index) in todayClasses" :key="class_item.id"
+              <div v-for="(class_item, index) in todaysClasses" :key="class_item.id"
                 class="flex items-center p-3 border-l-4 rounded"
-                :class="[index === 1 ? 'border-indigo-500' : 'border-gray-200']">
+                :class="[index === 1 ? 'border-indigo-500' : 'border-gray-200']"> <!-- Consider dynamic highlighting -->
                 <div class="w-16 flex-shrink-0 flex flex-col items-center justify-center">
                   <span class="text-sm font-bold">{{ class_item.time.split(' - ')[0] }}</span>
                 </div>
@@ -219,6 +270,9 @@ const currentClass = computed(() => {
                   <p v-if="class_item.teacher" class="text-sm text-muted-foreground">{{ class_item.teacher }}</p>
                 </div>
               </div>
+                <div v-if="todaysClasses.length === 0" class="text-center py-4 text-muted-foreground">
+                    No classes scheduled for today.
+                </div>
             </div>
           </CardContent>
         </Card>
@@ -242,45 +296,18 @@ const currentClass = computed(() => {
                 </TabsList>
                 <TabsContent value="pending">
                   <div class="space-y-3 max-h-80 overflow-y-auto">
-                    <div v-for="assignment in pendingAssignments" :key="assignment.id"
-                      class="flex items-center p-3 border rounded-lg hover:bg-gray-50 transition">
-                      <div class="mr-3">
-                        <Checkbox :checked="assignment.completed" @update:checked="toggleCompletion(assignment.id)" />
-                      </div>
-                      <div class="flex-grow">
-                        <div class="flex justify-between">
-                          <h4 class="font-medium">{{ assignment.title }}</h4>
-                          <Badge :class="getPriorityColor(assignment.priority)">{{ assignment.priority }}</Badge>
-                        </div>
-                        <div class="flex justify-between text-sm text-muted-foreground mt-1">
-                          <span>{{ assignment.subject }}</span>
-                          <span>Due: {{ assignment.dueDate }}</span>
-                        </div>
-                      </div>
-                    </div>
+                    <!--  REMOVED v-for -->
                     <div v-if="pendingAssignments.length === 0" class="text-center py-4 text-muted-foreground">
-                      No pending assignments!
+                      Coming Soon!
                     </div>
                   </div>
                 </TabsContent>
                 <TabsContent value="completed">
                   <div class="space-y-3 max-h-80 overflow-y-auto">
-                    <div v-for="assignment in completedAssignments" :key="assignment.id"
-                         class="flex items-center p-3 border rounded-lg hover:bg-gray-50 transition">
-                      <div class="mr-3">
-                        <Checkbox :checked="assignment.completed" @update:checked="toggleCompletion(assignment.id)" />
+                    <!-- REMOVED v-for -->
+                      <div  class="text-center py-4 text-muted-foreground">
+                        Coming Soon
                       </div>
-                      <div class="flex-grow">
-                        <div class="flex justify-between">
-                          <h4 class="font-medium">{{ assignment.title }}</h4>
-                          <Badge :class="getPriorityColor(assignment.priority)">{{ assignment.priority }}</Badge>
-                        </div>
-                        <div class="flex justify-between text-sm text-muted-foreground mt-1">
-                          <span>{{ assignment.subject }}</span>
-                          <span>Due: {{ assignment.dueDate }}</span>
-                        </div>
-                      </div>
-                    </div>
                   </div>
                 </TabsContent>
               </Tabs>
@@ -294,19 +321,10 @@ const currentClass = computed(() => {
             </CardHeader>
             <CardContent>
               <div class="space-y-3">
-                <div v-for="exam in exams" :key="exam.id"
-                  class="p-4 border rounded-lg bg-gray-50 flex justify-between items-center">
-                  <div>
-                    <h4 class="font-bold">{{ exam.subject }} - {{ exam.topic }}</h4>
-                    <p class="text-sm text-muted-foreground flex items-center mt-1">
-                      <CalendarIcon class="w-4 h-4 mr-1" />
-                      {{ exam.date }} at {{ exam.time }}
-                    </p>
+                <!-- REMOVED v-for -->
+                  <div class="text-center py-4 text-muted-foreground">
+                    Coming Soon!
                   </div>
-                  <div>
-                    <Button variant="outline" size="sm">Study Resources</Button>
-                  </div>
-                </div>
               </div>
             </CardContent>
           </Card>
@@ -325,7 +343,7 @@ const currentClass = computed(() => {
             </CardHeader>
             <CardContent>
               <div class="space-y-3">
-                <div v-for="grade in grades" :key="grade.id" class="p-3 border rounded-lg">
+                <div v-for="grade in recentGrades" :key="grade.id" class="p-3 border rounded-lg">
                   <div class="flex justify-between items-center">
                     <span class="text-lg font-bold" :class="{
                       'text-green-600': grade.grade.startsWith('A'),
@@ -339,6 +357,9 @@ const currentClass = computed(() => {
                   <p class="font-medium">{{ grade.subject }} - {{ grade.assignment }}</p>
                   <p class="text-sm text-muted-foreground">{{ grade.score }}</p>
                 </div>
+                  <div v-if="recentGrades.length === 0" class="text-center py-4 text-muted-foreground">
+                      No recent grades available.
+                  </div>
               </div>
             </CardContent>
           </Card>
@@ -350,13 +371,10 @@ const currentClass = computed(() => {
             </CardHeader>
             <CardContent>
               <div class="space-y-3">
-                <div v-for="announcement in announcements" :key="announcement.id" class="p-3 border-l-4 border-yellow-400 bg-yellow-50 rounded-r-lg">
-                  <div class="flex justify-between">
-                    <h4 class="font-bold">{{ announcement.title }}</h4>
-                    <span class="text-xs text-muted-foreground">{{ announcement.date }}</span>
+                <!-- REMOVED v-for -->
+                  <div class="text-center py-4 text-muted-foreground">
+                    Coming Soon!
                   </div>
-                  <p class="text-sm text-muted-foreground mt-1">{{ announcement.content }}</p>
-                </div>
               </div>
             </CardContent>
           </Card>
@@ -377,32 +395,29 @@ const currentClass = computed(() => {
                 </TabsList>
                 <TabsContent value="math">
                     <div class="space-y-2">
-                        <div v-for="resource in resources.Math" :key="resource.id" class="flex items-center p-2 border rounded-lg hover:bg-gray-50 transition">
-                            <div class="mr-3 text-indigo-600">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
-                            </svg>
+                        <!-- REMOVED v-for -->
+                            <div class="text-center py-4 text-muted-foreground">
+                                Coming Soon!
                             </div>
-                            <div class="flex-grow">
-                            <h4 class="font-medium text-gray-800">{{ resource.title }}</h4>
-                            <span class="text-xs text-gray-500">{{ resource.type }}</span>
-                            </div>
-                            <Button variant="ghost" size = "icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                            </svg>
-                            </Button>
-                        </div>
                     </div>
                 </TabsContent>
                 <TabsContent value="science">
                     <!--  Science resources here -->
+                    <div class="text-center py-4 text-muted-foreground">
+                        Coming Soon!
+                    </div>
                 </TabsContent>
                 <TabsContent value="english">
                     <!-- English resources here -->
+                    <div class="text-center py-4 text-muted-foreground">
+                        Coming Soon!
+                    </div>
                 </TabsContent>
                 <TabsContent value="history">
                     <!--  History resources here -->
+                    <div class="text-center py-4 text-muted-foreground">
+                        Coming Soon!
+                    </div>
                 </TabsContent>
               </Tabs>
             </CardContent>

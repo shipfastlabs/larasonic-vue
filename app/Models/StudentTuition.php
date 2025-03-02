@@ -48,6 +48,7 @@ class StudentTuition extends Model
         'discount',
         'downpayment',
         'overall_tuition',
+        'due_date',
     ];
 
     public function student()

@@ -79,4 +79,10 @@ class Transaction extends Model
     {
         return $this->hasMany(StudentTransactions::class, 'transaction_id');
     }
+
+    // New method to access individual settlement amounts
+    public function getSettlementAmount(string $key): float
+    {
+        return (float) ($this->settlements[$key] ?? 0.0);
+    }
 }
