@@ -5,7 +5,7 @@ import { onMounted, ref } from 'vue'
 const terminalStep = ref(0)
 const copied = ref(false)
 const terminalSteps = [
-  'git clone https://github.com/pushpak1300/larasonic',
+  'git clone https://github.com/shipfastlabs/larasonic-vue',
   'cd larasonic && composer install',
   '.vendor/bin/sail up',
   '.vendor/bin/sail composer setup',

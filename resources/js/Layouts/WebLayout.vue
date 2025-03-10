@@ -28,7 +28,7 @@ const navLinks = [
   { label: 'Docs', href: 'https://docs.larasonic.com/introduction', external: true },
 ]
 
-const githubUrl = 'https://github.com/pushpak1300/Larasonic'
+const githubUrl = 'https://github.com/shipfastlabs/larasonic-vue'
 const twitterUrl = 'https://x.com/pushpak1300?ref=larasonic'
 
 const isMenuOpen = ref(false)

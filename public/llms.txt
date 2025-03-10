@@ -2,7 +2,7 @@
 ✨ Using PHP 8.3+, Laravel 11, Inertia 2.0 and Tailwind CSS 4+
 Ship faster production-ready applications 10x faster with starter kit powered by Laravel Jetstream, Inertia V2, and Shadcn/ui.
 
-[View Demo](https://larasonic.com/dashboard) [Github](https://github.com/pushpak1300/larasonic)
+[View Demo](https://larasonic.com/dashboard) [Github](https://github.com/shipfastlabs/larasonic-vue)
 
 Trusted by developers worldwide
 
@@ -64,7 +64,7 @@ Beautiful admin panel powered by FilamentPHP with CRUD operations, charts, and d
 
 This is just the beginning. Regular updates bring new features, integrations, and improvements to supercharge your development.
 
-[Documentation](https://docs.larasonic.com) [Roadmap](https://github.com/pushpak1300/larasonic/discussions/categories/roadmap)
+[Documentation](https://docs.larasonic.com) [Roadmap](https://github.com/shipfastlabs/larasonic-vue/discussions/categories/roadmap)
 
 ## Proudly Open Source 🤑
 
@@ -96,9 +96,9 @@ You're already blazing fast with Laravel.
 
 Larasonic is about to make your shipping speed supersonic. 🚀
 
-[View on GitHub](https://github.com/pushpak1300/larasonic)
+[View on GitHub](https://github.com/shipfastlabs/larasonic-vue)
 
-$ git clone https://github.com/pushpak1300/larasonic
+$ git clone https://github.com/shipfastlabs/larasonic-vue
 
 $ cd larasonic && composer install
 

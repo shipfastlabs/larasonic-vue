@@ -12,19 +12,19 @@ const stats = [
   {
     value: 'GitHub Repository',
     description: 'Star us on GitHub',
-    link: 'https://github.com/pushpak1300/Larasonic',
+    link: 'https://github.com/shipfastlabs/larasonic-vue',
     icon: 'lucide:github',
   },
   {
     value: 'Roadmap',
     description: 'See what\'s coming next',
-    link: 'https://github.com/pushpak1300/Larasonic/discussions/categories/roadmap',
+    link: 'https://github.com/shipfastlabs/larasonic-vue/discussions/categories/roadmap',
     icon: 'lucide:map',
   },
   {
     value: 'Join Us',
     description: 'Be part of our growing community',
-    link: 'https://github.com/pushpak1300/Larasonic/discussions',
+    link: 'https://github.com/shipfastlabs/larasonic-vue/discussions',
     icon: 'lucide:users',
   },
 ]

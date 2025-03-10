@@ -1,9 +1,10 @@
 {
-  "name": "pushpak1300/larasonic",
+  "name": "shipfastlabs/larasonic-vue",
   "type": "project",
-  "description": "The Simple, Fast & Smart Laravel Fullstack Kit. \ud83d\ude80",
+  "description": "The ultimate VILT starter kit for Laravel.",
   "keywords": [
     "sass",
+    "VILT",
     "starter kit",
     "laeavel"
   ],

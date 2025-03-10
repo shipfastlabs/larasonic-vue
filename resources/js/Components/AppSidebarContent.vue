@@ -41,7 +41,7 @@ const navigationConfig = [
       {
         name: 'Support',
         icon: 'lucide:life-buoy',
-        href: 'https://github.com/pushpak1300/larasonic/issues',
+        href: 'https://github.com/shipfastlabs/larasonic-vue/issues',
         external: true,
       },
       {

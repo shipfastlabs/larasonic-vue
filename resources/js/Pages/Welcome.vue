@@ -107,7 +107,7 @@ const faqItems = [
   },
 ]
 
-const githubUrl = 'https://github.com/pushpak1300/larasonic'
+const githubUrl = 'https://github.com/shipfastlabs/larasonic-vue'
 </script>
 
 <template>
