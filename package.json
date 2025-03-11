@@ -49,7 +49,6 @@
     "@antfu/eslint-config": "^3.16.0",
     "eslint": "^9.22.0",
     "eslint-plugin-format": "^0.1.3",
-    "eslint-plugin-tailwindcss": "^3.18.0",
     "eslint-plugin-vue": "^9.33.0",
     "laravel-vite-plugin": "^1.2.0"
   }
