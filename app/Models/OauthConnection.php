@@ -20,7 +20,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @property Collection<string, mixed> $data
  * @property string|null $token
  * @property string|null $refresh_token
- * @property string|null $expires_at
+ * @property CarbonImmutable|null $expires_at
  * @property CarbonImmutable|null $created_at
  * @property CarbonImmutable|null $updated_at
  * @property-read User $user
@@ -56,6 +56,7 @@ final class OauthConnection extends Model
      */
     protected $casts = [
         'data' => AsCollection::class,
+        'expires_at' => 'datetime',
     ];
 
     /**
