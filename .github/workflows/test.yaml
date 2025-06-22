@@ -25,14 +25,11 @@ jobs:
           tools: composer:v2
           coverage: xdebug
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-          cache: 'npm'
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
 
       - name: Install Node Dependencies
-        run: npm ci
+        run: bun install
 
       - name: Install Dependencies
         run: composer install --no-interaction --prefer-dist --optimize-autoloader
@@ -47,7 +44,7 @@ jobs:
         run: php artisan ziggy:generate
 
       - name: Build Assets
-        run: npm run build
+        run: bun run build
 
       - name: Tests
         run: ./vendor/bin/phpunit

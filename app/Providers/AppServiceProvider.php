@@ -5,25 +5,25 @@ declare(strict_types=1);
 namespace App\Providers;
 
 use App\Models\User;
+use Prism\Prism\Prism;
 use Carbon\CarbonImmutable;
 use Knuckles\Scribe\Scribe;
 use Illuminate\Http\Request;
 use Laravel\Sanctum\Sanctum;
+use Prism\Prism\Enums\Provider;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Vite;
+use Prism\Prism\Facades\PrismServer;
+use Prism\Prism\Text\PendingRequest;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Support\Facades\RateLimiter;
 use Knuckles\Camel\Extraction\ExtractedEndpointData;
-use Prism\Prism\Enums\Provider;
 use Symfony\Component\HttpFoundation\Request as HttpFoundationRequest;
-use Prism\Prism\Facades\PrismServer;
-use Prism\Prism\Prism;
-use Prism\Prism\Text\PendingRequest;
 
 final class AppServiceProvider extends ServiceProvider
 {
@@ -140,21 +140,21 @@ final class AppServiceProvider extends ServiceProvider
     {
         PrismServer::register(
             'Larasonic Small',
-            fn(): PendingRequest => Prism::text()->using(Provider::Gemini, 'gemini-2.0-flash-lite')
+            fn (): PendingRequest => Prism::text()->using(Provider::Gemini, 'gemini-2.0-flash-lite')
                 ->withSystemPrompt(view('prompts.system')->render())
                 ->withMaxTokens(100)
         );
 
         PrismServer::register(
             'Larasonic Medium',
-            fn(): PendingRequest => Prism::text()->using(Provider::Gemini, 'gemini-2.0-flash-lite')
+            fn (): PendingRequest => Prism::text()->using(Provider::Gemini, 'gemini-2.0-flash-lite')
                 ->withSystemPrompt(view('prompts.system')->render())
                 ->withMaxTokens(150)
         );
 
         PrismServer::register(
             'Larasonic Large',
-            fn(): PendingRequest => Prism::text()->using(Provider::Gemini, 'gemini-2.0-flash-lite')
+            fn (): PendingRequest => Prism::text()->using(Provider::Gemini, 'gemini-2.0-flash-lite')
                 ->withSystemPrompt(view('prompts.system')->render())
                 ->withMaxTokens(250)
         );
