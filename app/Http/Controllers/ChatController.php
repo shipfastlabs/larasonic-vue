@@ -8,7 +8,7 @@ use App\Models\User;
 use Inertia\Inertia;
 use Inertia\Response;
 use Illuminate\Support\Facades\Auth;
-use EchoLabs\Prism\Facades\PrismServer;
+use Prism\Prism\Facades\PrismServer;
 
 final class ChatController extends Controller
 {
