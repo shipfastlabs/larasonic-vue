@@ -1,10 +1,10 @@
 <script setup>
-import PricingCard from '@/componentsPricingCard.vue'
-import Alert from '@/componentsui/alert/Alert.vue'
-import AlertTitle from '@/componentsui/alert/AlertTitle.vue'
-import Button from '@/componentsui/button/Button.vue'
 import { Icon } from '@iconify/vue'
 import { inject } from 'vue'
+import PricingCard from '@/components/PricingCard.vue'
+import Alert from '@/components/ui/alert/Alert.vue'
+import AlertTitle from '@/components/ui/alert/AlertTitle.vue'
+import Button from '@/components/ui/button/Button.vue'
 
 defineProps({
   activeSubscriptions: {

@@ -1,12 +1,12 @@
 <script setup>
-import FormSection from '@/componentsFormSection.vue'
-import InputError from '@/componentsInputError.vue'
-import Button from '@/componentsui/button/Button.vue'
-import Input from '@/componentsui/input/Input.vue'
-import Label from '@/componentsui/label/Label.vue'
 import { Link, router, useForm } from '@inertiajs/vue3'
 import { inject, ref } from 'vue'
 import { toast } from 'vue-sonner'
+import FormSection from '@/components/FormSection.vue'
+import InputError from '@/components/InputError.vue'
+import Button from '@/components/ui/button/Button.vue'
+import Input from '@/components/ui/input/Input.vue'
+import Label from '@/components/ui/label/Label.vue'
 
 const props = defineProps({
   user: Object,

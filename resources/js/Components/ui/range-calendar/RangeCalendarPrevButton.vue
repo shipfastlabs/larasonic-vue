@@ -4,7 +4,7 @@ import { reactiveOmit } from '@vueuse/core'
 import { ChevronLeft } from 'lucide-vue-next'
 import { RangeCalendarPrev, type RangeCalendarPrevProps, useForwardProps } from 'reka-ui'
 import { cn } from '@/lib/utils'
-import { buttonVariants } from '@/componentsui/button'
+import { buttonVariants } from '@/components/ui/button'
 
 const props = defineProps<RangeCalendarPrevProps & { class?: HTMLAttributes['class'] }>()
 

@@ -1,11 +1,11 @@
 <script setup>
-import ActionSection from '@/componentsActionSection.vue'
-import ConfirmsPassword from '@/componentsConfirmsPassword.vue'
-import Button from '@/componentsui/button/Button.vue'
 import { Icon } from '@iconify/vue'
 import { useForm } from '@inertiajs/vue3'
 import { inject } from 'vue'
 import { toast } from 'vue-sonner'
+import ActionSection from '@/components/ActionSection.vue'
+import ConfirmsPassword from '@/components/ConfirmsPassword.vue'
+import Button from '@/components/ui/button/Button.vue'
 
 defineProps({
   sessions: Array,

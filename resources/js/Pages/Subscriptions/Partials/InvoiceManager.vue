@@ -1,7 +1,7 @@
 <script setup>
 import { Icon } from '@iconify/vue'
-import ActionSection from '@/componentsActionSection.vue'
-import Button from '@/componentsui/button/Button.vue'
+import ActionSection from '@/components/ActionSection.vue'
+import Button from '@/components/ui/button/Button.vue'
 import {
   Table,
   TableBody,
@@ -9,7 +9,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/componentsui/table'
+} from '@/components/ui/table'
 
 defineProps({
   invoices: {

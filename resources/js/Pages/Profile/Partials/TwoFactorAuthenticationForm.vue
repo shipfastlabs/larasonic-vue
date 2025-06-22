@@ -1,14 +1,14 @@
 <script setup>
-import ActionSection from '@/componentsActionSection.vue'
-import ConfirmsPassword from '@/componentsConfirmsPassword.vue'
-import InputError from '@/componentsInputError.vue'
-import Button from '@/componentsui/button/Button.vue'
-import Input from '@/componentsui/input/Input.vue'
-import Label from '@/componentsui/label/Label.vue'
-
 import { router, useForm, usePage } from '@inertiajs/vue3'
 import axios from 'axios'
 import { computed, inject, ref, watch } from 'vue'
+import ActionSection from '@/components/ActionSection.vue'
+import ConfirmsPassword from '@/components/ConfirmsPassword.vue'
+import InputError from '@/components/InputError.vue'
+
+import Button from '@/components/ui/button/Button.vue'
+import Input from '@/components/ui/input/Input.vue'
+import Label from '@/components/ui/label/Label.vue'
 
 const props = defineProps({
   requiresConfirmation: Boolean,

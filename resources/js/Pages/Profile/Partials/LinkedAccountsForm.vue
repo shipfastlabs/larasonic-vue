@@ -1,12 +1,12 @@
 <script setup>
-import ActionSection from '@/componentsActionSection.vue'
-import Label from '@/componentsui/label/Label.vue'
-import Switch from '@/componentsui/switch/Switch.vue'
 import { Icon } from '@iconify/vue'
 import { router, usePage } from '@inertiajs/vue3'
 import { useChangeCase } from '@vueuse/integrations/useChangeCase'
 import { inject, onMounted, ref } from 'vue'
 import { toast } from 'vue-sonner'
+import ActionSection from '@/components/ActionSection.vue'
+import Label from '@/components/ui/label/Label.vue'
+import Switch from '@/components/ui/switch/Switch.vue'
 
 const props = defineProps({
   availableProviders: {

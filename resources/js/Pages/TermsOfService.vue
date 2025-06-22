@@ -1,6 +1,6 @@
 <script setup>
-import AuthenticationCardLogo from '@/componentsLogoRedirect.vue'
-import { useSeoMetaTags } from '@/Composables/useSeoMetaTags'
+import AuthenticationCardLogo from '@/components/LogoRedirect.vue'
+import { useSeoMetaTags } from '@/composables/useSeoMetaTags'
 
 defineProps({
   terms: String,

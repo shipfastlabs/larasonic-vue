@@ -1,9 +1,9 @@
 <script setup>
-import Button from '@/componentsui/button/Button.vue'
 import { Icon } from '@iconify/vue'
 import { Link } from '@inertiajs/vue3'
 import { useColorMode } from '@vueuse/core'
 import { ref } from 'vue'
+import Button from '@/components/ui/button/Button.vue'
 
 defineProps({
   canLogin: {

@@ -1,17 +1,17 @@
 import { inject } from 'vue'
 
 <script setup>
-import InputError from '@/componentsInputError.vue'
-import AuthenticationCardLogo from '@/componentsLogoRedirect.vue'
-import Button from '@/componentsui/button/Button.vue'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/componentsui/card'
-import Input from '@/componentsui/input/Input.vue'
-
-import Label from '@/componentsui/label/Label.vue'
-import { useSeoMetaTags } from '@/Composables/useSeoMetaTags.js'
-import { cn } from '@/lib/utils'
 import { useForm } from '@inertiajs/vue3'
 import { inject } from 'vue'
+import InputError from '@/components/InputError.vue'
+import AuthenticationCardLogo from '@/components/LogoRedirect.vue'
+import Button from '@/components/ui/button/Button.vue'
+
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import Input from '@/components/ui/input/Input.vue'
+import Label from '@/components/ui/label/Label.vue'
+import { useSeoMetaTags } from '@/composables/useSeoMetaTags.js'
+import { cn } from '@/lib/utils'
 
 const props = defineProps({
   email: String,

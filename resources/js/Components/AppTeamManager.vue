@@ -1,23 +1,23 @@
 <script setup>
-import { Avatar, AvatarFallback } from '@/componentsui/avatar'
+import { Icon } from '@iconify/vue'
+import { Link, router } from '@inertiajs/vue3'
+import { inject, ref } from 'vue'
+import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import {
   Command,
   CommandGroup,
   CommandInput,
   CommandItem,
   CommandSeparator,
-} from '@/componentsui/command'
-import CommandEmpty from '@/componentsui/command/CommandEmpty.vue'
-import CommandList from '@/componentsui/command/CommandList.vue'
+} from '@/components/ui/command'
+import CommandEmpty from '@/components/ui/command/CommandEmpty.vue'
+import CommandList from '@/components/ui/command/CommandList.vue'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
-} from '@/componentsui/dropdown-menu'
-import SidebarMenuButton from '@/componentsui/sidebar/SidebarMenuButton.vue'
-import { Icon } from '@iconify/vue'
-import { Link, router } from '@inertiajs/vue3'
-import { inject, ref } from 'vue'
+} from '@/components/ui/dropdown-menu'
+import SidebarMenuButton from '@/components/ui/sidebar/SidebarMenuButton.vue'
 
 const route = inject('route')
 const open = ref(false)

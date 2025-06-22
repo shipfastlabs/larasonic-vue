@@ -6,7 +6,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@/componentsui/dialog'
+} from '@/components/ui/dialog'
 
 defineProps({
   show: {

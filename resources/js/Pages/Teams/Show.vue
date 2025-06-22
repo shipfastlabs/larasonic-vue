@@ -1,5 +1,5 @@
 <script setup>
-import Separator from '@/componentsui/separator/Separator.vue'
+import Separator from '@/components/ui/separator/Separator.vue'
 import AppLayout from '@/Layouts/AppLayout.vue'
 import DeleteTeamForm from '@/Pages/Teams/Partials/DeleteTeamForm.vue'
 import TeamMemberManager from '@/Pages/Teams/Partials/TeamMemberManager.vue'

@@ -1,12 +1,12 @@
 <script setup>
-import FormSection from '@/componentsFormSection.vue'
-import InputError from '@/componentsInputError.vue'
-import { Avatar, AvatarFallback, AvatarImage } from '@/componentsui/avatar'
-import Button from '@/componentsui/button/Button.vue'
-import Input from '@/componentsui/input/Input.vue'
-import Label from '@/componentsui/label/Label.vue'
 import { useForm } from '@inertiajs/vue3'
 import { inject } from 'vue'
+import FormSection from '@/components/FormSection.vue'
+import InputError from '@/components/InputError.vue'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import Button from '@/components/ui/button/Button.vue'
+import Input from '@/components/ui/input/Input.vue'
+import Label from '@/components/ui/label/Label.vue'
 
 const route = inject('route')
 

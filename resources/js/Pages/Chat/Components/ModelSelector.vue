@@ -1,5 +1,6 @@
 <script setup>
-import Label from '@/componentsui/label/Label.vue'
+import { ref, watch } from 'vue'
+import Label from '@/components/ui/label/Label.vue'
 import {
   Select,
   SelectContent,
@@ -7,8 +8,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/componentsui/select'
-import { ref, watch } from 'vue'
+} from '@/components/ui/select'
 
 const props = defineProps({
   models: {

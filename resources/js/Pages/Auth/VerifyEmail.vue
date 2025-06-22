@@ -1,10 +1,10 @@
 <script setup>
-import AuthenticationCardLogo from '@/componentsLogoRedirect.vue'
-import Button from '@/componentsui/button/Button.vue'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/componentsui/card'
-import { useSeoMetaTags } from '@/Composables/useSeoMetaTags.js'
 import { Link, useForm } from '@inertiajs/vue3'
 import { computed, inject } from 'vue'
+import AuthenticationCardLogo from '@/components/LogoRedirect.vue'
+import Button from '@/components/ui/button/Button.vue'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { useSeoMetaTags } from '@/composables/useSeoMetaTags.js'
 
 const props = defineProps({
   status: String,

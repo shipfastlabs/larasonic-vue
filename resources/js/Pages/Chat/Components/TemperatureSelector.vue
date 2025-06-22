@@ -1,12 +1,12 @@
 <script setup>
+import { ref } from 'vue'
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from '@/componentsui/hover-card'
-import { Label } from '@/componentsui/label'
-import { Slider } from '@/componentsui/slider'
-import { ref } from 'vue'
+} from '@/components/ui/hover-card'
+import { Label } from '@/components/ui/label'
+import { Slider } from '@/components/ui/slider'
 
 const props = defineProps({
   defaultValue: {

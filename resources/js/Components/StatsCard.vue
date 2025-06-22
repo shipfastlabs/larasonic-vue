@@ -1,9 +1,9 @@
 <script setup>
-import Card from '@/componentsui/card/Card.vue'
-import CardContent from '@/componentsui/card/CardContent.vue'
-import CardHeader from '@/componentsui/card/CardHeader.vue'
-import CardTitle from '@/componentsui/card/CardTitle.vue'
 import { Icon } from '@iconify/vue'
+import Card from '@/components/ui/card/Card.vue'
+import CardContent from '@/components/ui/card/CardContent.vue'
+import CardHeader from '@/components/ui/card/CardHeader.vue'
+import CardTitle from '@/components/ui/card/CardTitle.vue'
 
 defineProps({
   value: {

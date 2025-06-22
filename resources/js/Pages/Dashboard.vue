@@ -1,6 +1,6 @@
 <script setup>
-import StatsCard from '@/componentsStatsCard.vue'
-import AppLayout from '@/Layouts/AppLayout.vue'
+import StatsCard from '@/components/StatsCard.vue'
+import AppLayout from '@/layouts/AppLayout.vue'
 
 const stats = [
   {

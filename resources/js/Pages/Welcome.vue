@@ -1,17 +1,17 @@
 <script setup>
-import FeaturesCard from '@/componentsFeaturesCard.vue'
-import PricingCard from '@/componentsPricingCard.vue'
-import Accordion from '@/componentsui/accordion/Accordion.vue'
-import AccordionContent from '@/componentsui/accordion/AccordionContent.vue'
-import AccordionItem from '@/componentsui/accordion/AccordionItem.vue'
-import AccordionTrigger from '@/componentsui/accordion/AccordionTrigger.vue'
-import Badge from '@/componentsui/badge/Badge.vue'
-import Button from '@/componentsui/button/Button.vue'
-import Terminal from '@/componentsTerminal.vue'
-import { useSeoMetaTags } from '@/Composables/useSeoMetaTags.js'
-import WebLayout from '@/Layouts/WebLayout.vue'
 import { Icon } from '@iconify/vue'
 import { Link } from '@inertiajs/vue3'
+import FeaturesCard from '@/components/FeaturesCard.vue'
+import PricingCard from '@/components/PricingCard.vue'
+import Terminal from '@/components/Terminal.vue'
+import Accordion from '@/components/ui/accordion/Accordion.vue'
+import AccordionContent from '@/components/ui/accordion/AccordionContent.vue'
+import AccordionItem from '@/components/ui/accordion/AccordionItem.vue'
+import AccordionTrigger from '@/components/ui/accordion/AccordionTrigger.vue'
+import Badge from '@/components/ui/badge/Badge.vue'
+import Button from '@/components/ui/button/Button.vue'
+import { useSeoMetaTags } from '@/composables/useSeoMetaTags.js'
+import WebLayout from '@/layouts/WebLayout.vue'
 
 const props = defineProps({
   canLogin: {

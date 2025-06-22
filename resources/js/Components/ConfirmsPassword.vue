@@ -1,10 +1,10 @@
 <script setup>
-import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/componentsui/dialog'
-import Input from '@/componentsui/input/Input.vue'
 import axios from 'axios'
 import { inject, reactive, ref } from 'vue'
-import InputError from './InputError.vue'
-import Button from './shadcn/ui/button/Button.vue'
+import InputError from '@/components/InputError.vue'
+import Button from '@/components/ui/button/Button.vue'
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
+import Input from '@/components/ui/input/Input.vue'
 
 defineProps({
   title: {
