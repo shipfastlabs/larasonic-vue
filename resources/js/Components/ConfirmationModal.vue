@@ -6,7 +6,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@/Components/shadcn/ui/dialog'
+} from '@/componentsui/dialog'
 
 defineProps({
   show: {

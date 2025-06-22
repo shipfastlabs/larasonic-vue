@@ -6,7 +6,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from '@/Components/shadcn/ui/sidebar'
+} from '@/componentsui/sidebar'
 import { Icon } from '@iconify/vue'
 import { Link } from '@inertiajs/vue3'
 import { useColorMode } from '@vueuse/core'

@@ -1,7 +1,7 @@
 <script setup>
-import ActionSection from '@/Components/ActionSection.vue'
-import ConfirmsPassword from '@/Components/ConfirmsPassword.vue'
-import Button from '@/Components/shadcn/ui/button/Button.vue'
+import ActionSection from '@/componentsActionSection.vue'
+import ConfirmsPassword from '@/componentsConfirmsPassword.vue'
+import Button from '@/componentsui/button/Button.vue'
 import { useForm } from '@inertiajs/vue3'
 import { inject } from 'vue'
 

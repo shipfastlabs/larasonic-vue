@@ -1,10 +1,10 @@
 <script setup>
-import ActionSection from '@/Components/ActionSection.vue'
-import ConfirmationModal from '@/Components/ConfirmationModal.vue'
-import FormSection from '@/Components/FormSection.vue'
-import InputError from '@/Components/InputError.vue'
-import Button from '@/Components/shadcn/ui/button/Button.vue'
-import Checkbox from '@/Components/shadcn/ui/checkbox/Checkbox.vue'
+import ActionSection from '@/componentsActionSection.vue'
+import ConfirmationModal from '@/componentsConfirmationModal.vue'
+import FormSection from '@/componentsFormSection.vue'
+import InputError from '@/componentsInputError.vue'
+import Button from '@/componentsui/button/Button.vue'
+import Checkbox from '@/componentsui/checkbox/Checkbox.vue'
 import {
   Dialog,
   DialogContent,
@@ -12,10 +12,10 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@/Components/shadcn/ui/dialog'
-import Input from '@/Components/shadcn/ui/input/Input.vue'
-import Label from '@/Components/shadcn/ui/label/Label.vue'
-import Separator from '@/Components/shadcn/ui/separator/Separator.vue'
+} from '@/componentsui/dialog'
+import Input from '@/componentsui/input/Input.vue'
+import Label from '@/componentsui/label/Label.vue'
+import Separator from '@/componentsui/separator/Separator.vue'
 import { useForm } from '@inertiajs/vue3'
 import { inject, ref } from 'vue'
 import { toast } from 'vue-sonner'

@@ -21,22 +21,7 @@ Larasonic is a modern, open-source SaaS starter kit with Laravel, Vue.js, Tailwi
 ## Quick Start
 
 ```bash
-# Clone the repo
-git clone git@github.com:pushpak1300/Larasonic.git
-cd Larasonic
-
-# Install dependencies
-docker run --rm \
-    -u "$(id -u):$(id -g)" \
-    -v "$(pwd):/var/www/html" \
-    -w /var/www/html \
-    laravelsail/php83-composer:latest \
-    composer install --ignore-platform-reqs
-
-# Setup environment
-cp .env.example .env
-./vendor/bin/sail up -d
-./vendor/bin/sail composer run setup
+laravel new larasonic --using=shipfastlabs/larasonic-vue
 ```
 
 For detailed installation instructions and documentation, visit [docs.larasonic.com](https://docs.larasonic.com).

@@ -1,5 +1,5 @@
 <script setup>
-import { Button } from '@/Components/shadcn/ui/button'
+import { Button } from '@/componentsui/button'
 import { Icon } from '@iconify/vue'
 import { useChangeCase } from '@vueuse/integrations/useChangeCase'
 

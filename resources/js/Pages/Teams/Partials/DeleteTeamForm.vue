@@ -1,7 +1,7 @@
 <script setup>
-import ActionSection from '@/Components/ActionSection.vue'
-import ConfirmationModal from '@/Components/ConfirmationModal.vue'
-import Button from '@/Components/shadcn/ui/button/Button.vue'
+import ActionSection from '@/componentsActionSection.vue'
+import ConfirmationModal from '@/componentsConfirmationModal.vue'
+import Button from '@/componentsui/button/Button.vue'
 import { useForm } from '@inertiajs/vue3'
 import { inject, ref } from 'vue'
 

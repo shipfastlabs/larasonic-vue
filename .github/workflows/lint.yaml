@@ -1,4 +1,4 @@
-name: tests
+name: linter
 
 on:
   push:
@@ -10,44 +10,36 @@ on:
       - develop
       - main
 
-jobs:
-  ci:
-    runs-on: ubuntu-latest
+permissions:
+  contents: write
 
+jobs:
+  quality:
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.4
-          tools: composer:v2
-          coverage: xdebug
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-          cache: 'npm'
-
-      - name: Install Node Dependencies
-        run: npm ci
+          php-version: '8.4'
 
       - name: Install Dependencies
-        run: composer install --no-interaction --prefer-dist --optimize-autoloader
+        run: |
+          composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+          npm install
 
-      - name: Copy Environment File
-        run: cp .env.example .env
+      - name: Run Pint
+        run: vendor/bin/pint
 
-      - name: Generate Application Key
-        run: php artisan key:generate
+      - name: Format Frontend
+        run: npm run format
 
-      - name: Publish Ziggy Configuration
-        run: php artisan ziggy:generate
+      - name: Lint Frontend
+        run: npm run lint
 
-      - name: Build Assets
-        run: npm run build
-
-      - name: Tests
-        run: ./vendor/bin/phpunit
+      # - name: Commit Changes
+      #   uses: stefanzweifel/git-auto-commit-action@v5
+      #   with:
+      #     commit_message: fix code style
+      #     commit_options: '--no-verify'

@@ -1,7 +1,7 @@
 <script setup>
-import AuthenticationCardLogo from '@/Components/LogoRedirect.vue'
-import Button from '@/Components/shadcn/ui/button/Button.vue'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/Components/shadcn/ui/card'
+import AuthenticationCardLogo from '@/componentsLogoRedirect.vue'
+import Button from '@/componentsui/button/Button.vue'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/componentsui/card'
 import { useSeoMetaTags } from '@/Composables/useSeoMetaTags.js'
 import { Link, useForm } from '@inertiajs/vue3'
 import { computed, inject } from 'vue'

@@ -1,10 +1,10 @@
 <script setup>
-import ActionSection from '@/Components/ActionSection.vue'
-import ConfirmsPassword from '@/Components/ConfirmsPassword.vue'
-import InputError from '@/Components/InputError.vue'
-import Button from '@/Components/shadcn/ui/button/Button.vue'
-import Input from '@/Components/shadcn/ui/input/Input.vue'
-import Label from '@/Components/shadcn/ui/label/Label.vue'
+import ActionSection from '@/componentsActionSection.vue'
+import ConfirmsPassword from '@/componentsConfirmsPassword.vue'
+import InputError from '@/componentsInputError.vue'
+import Button from '@/componentsui/button/Button.vue'
+import Input from '@/componentsui/input/Input.vue'
+import Label from '@/componentsui/label/Label.vue'
 
 import { router, useForm, usePage } from '@inertiajs/vue3'
 import axios from 'axios'

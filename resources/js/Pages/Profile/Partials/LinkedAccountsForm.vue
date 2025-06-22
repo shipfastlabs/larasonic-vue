@@ -1,7 +1,7 @@
 <script setup>
-import ActionSection from '@/Components/ActionSection.vue'
-import Label from '@/Components/shadcn/ui/label/Label.vue'
-import Switch from '@/Components/shadcn/ui/switch/Switch.vue'
+import ActionSection from '@/componentsActionSection.vue'
+import Label from '@/componentsui/label/Label.vue'
+import Switch from '@/componentsui/switch/Switch.vue'
 import { Icon } from '@iconify/vue'
 import { router, usePage } from '@inertiajs/vue3'
 import { useChangeCase } from '@vueuse/integrations/useChangeCase'

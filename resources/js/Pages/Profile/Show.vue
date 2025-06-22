@@ -1,5 +1,5 @@
 <script setup>
-import Separator from '@/Components/shadcn/ui/separator/Separator.vue'
+import Separator from '@/componentsui/separator/Separator.vue'
 import AppLayout from '@/Layouts/AppLayout.vue'
 import DeleteUserForm from '@/Pages/Profile/Partials/DeleteUserForm.vue'
 import LinkedAccountsForm from '@/Pages/Profile/Partials/LinkedAccountsForm.vue'

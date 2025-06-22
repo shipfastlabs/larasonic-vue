@@ -3,9 +3,9 @@ import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from '@/Components/shadcn/ui/hover-card'
-import { Label } from '@/Components/shadcn/ui/label'
-import { Slider } from '@/Components/shadcn/ui/slider'
+} from '@/componentsui/hover-card'
+import { Label } from '@/componentsui/label'
+import { Slider } from '@/componentsui/slider'
 import { ref } from 'vue'
 
 const props = defineProps({

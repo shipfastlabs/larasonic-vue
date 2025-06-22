@@ -1,20 +1,20 @@
 <script setup>
-import { Avatar, AvatarFallback } from '@/Components/shadcn/ui/avatar'
+import { Avatar, AvatarFallback } from '@/componentsui/avatar'
 import {
   Command,
   CommandGroup,
   CommandInput,
   CommandItem,
   CommandSeparator,
-} from '@/Components/shadcn/ui/command'
-import CommandEmpty from '@/Components/shadcn/ui/command/CommandEmpty.vue'
-import CommandList from '@/Components/shadcn/ui/command/CommandList.vue'
+} from '@/componentsui/command'
+import CommandEmpty from '@/componentsui/command/CommandEmpty.vue'
+import CommandList from '@/componentsui/command/CommandList.vue'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
-} from '@/Components/shadcn/ui/dropdown-menu'
-import SidebarMenuButton from '@/Components/shadcn/ui/sidebar/SidebarMenuButton.vue'
+} from '@/componentsui/dropdown-menu'
+import SidebarMenuButton from '@/componentsui/sidebar/SidebarMenuButton.vue'
 import { Icon } from '@iconify/vue'
 import { Link, router } from '@inertiajs/vue3'
 import { inject, ref } from 'vue'

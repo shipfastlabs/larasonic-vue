@@ -1,6 +1,6 @@
 <script setup>
-import { Avatar, AvatarFallback } from '@/Components/shadcn/ui/avatar'
-import AvatarImage from '@/Components/shadcn/ui/avatar/AvatarImage.vue'
+import { Avatar, AvatarFallback } from '@/componentsui/avatar'
+import AvatarImage from '@/componentsui/avatar/AvatarImage.vue'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,9 +8,9 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/Components/shadcn/ui/dropdown-menu'
-import DropdownMenuGroup from '@/Components/shadcn/ui/dropdown-menu/DropdownMenuGroup.vue'
-import SidebarMenuButton from '@/Components/shadcn/ui/sidebar/SidebarMenuButton.vue'
+} from '@/componentsui/dropdown-menu'
+import DropdownMenuGroup from '@/componentsui/dropdown-menu/DropdownMenuGroup.vue'
+import SidebarMenuButton from '@/componentsui/sidebar/SidebarMenuButton.vue'
 import { Icon } from '@iconify/vue'
 import { Link, router } from '@inertiajs/vue3'
 import { inject } from 'vue'

@@ -20,7 +20,7 @@ Ship faster with opinionated Laravel Pint, maximum PHPStan level, and Rector for
 
 ### Production Docker Ready
 
-Optimized Docker images with Laravel Octane and Sail for lightning-fast development and deployment.
+Optimized Docker images with Laravel Octane for lightning-fast development and deployment.
 
 🔑
 
@@ -102,6 +102,6 @@ $ git clone https://github.com/shipfastlabs/larasonic-vue
 
 $ cd larasonic && composer install
 
-$ .vendor/bin/sail up
+$ php artisan serve
 
-$ .vendor/bin/sail composer setup
+$ composer run setup

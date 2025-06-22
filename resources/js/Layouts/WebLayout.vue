@@ -1,5 +1,5 @@
 <script setup>
-import Button from '@/Components/shadcn/ui/button/Button.vue'
+import Button from '@/componentsui/button/Button.vue'
 import { Icon } from '@iconify/vue'
 import { Link } from '@inertiajs/vue3'
 import { useColorMode } from '@vueuse/core'

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Providers;
 
 use App\Models\User;
-use EchoLabs\Prism\Prism;
 use Carbon\CarbonImmutable;
 use Knuckles\Scribe\Scribe;
 use Illuminate\Http\Request;
@@ -15,13 +14,10 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Vite;
-use EchoLabs\Prism\Facades\PrismServer;
-use EchoLabs\Prism\Text\PendingRequest;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Support\Facades\RateLimiter;
-use EchoLabs\Prism\Enums\Provider as PrismProvider;
 use Knuckles\Camel\Extraction\ExtractedEndpointData;
 use Symfony\Component\HttpFoundation\Request as HttpFoundationRequest;
 
@@ -138,27 +134,9 @@ final class AppServiceProvider extends ServiceProvider
      */
     private function configurePrisms(): void
     {
-        // This is example of how to register a Prism.
-        PrismServer::register(
-            'Larasonic Small',
-            fn (): PendingRequest => Prism::text()->using(PrismProvider::Gemini, 'gemini-1.5-flash')
-                ->withSystemPrompt(view('prompts.system')->render())
-                ->withMaxTokens(100)
-        );
-
-        PrismServer::register(
-            'Larasonic Medium',
-            fn (): PendingRequest => Prism::text()->using(PrismProvider::Gemini, 'gemini-1.5-flash')
-                ->withSystemPrompt(view('prompts.system')->render())
-                ->withMaxTokens(150)
-        );
-
-        PrismServer::register(
-            'Larasonic Large',
-            fn (): PendingRequest => Prism::text()->using(PrismProvider::Gemini, 'gemini-1.5-flash')
-                ->withSystemPrompt(view('prompts.system')->render())
-                ->withMaxTokens(250)
-        );
+        // TODO: Update Prism configuration for new API
+        // Temporarily commented out until Prism configuration is updated
+        // for the new version
     }
 
     /**

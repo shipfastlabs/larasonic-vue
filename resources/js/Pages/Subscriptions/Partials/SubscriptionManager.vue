@@ -1,8 +1,8 @@
 <script setup>
-import PricingCard from '@/Components/PricingCard.vue'
-import Alert from '@/Components/shadcn/ui/alert/Alert.vue'
-import AlertTitle from '@/Components/shadcn/ui/alert/AlertTitle.vue'
-import Button from '@/Components/shadcn/ui/button/Button.vue'
+import PricingCard from '@/componentsPricingCard.vue'
+import Alert from '@/componentsui/alert/Alert.vue'
+import AlertTitle from '@/componentsui/alert/AlertTitle.vue'
+import Button from '@/componentsui/button/Button.vue'
 import { Icon } from '@iconify/vue'
 import { inject } from 'vue'
 

@@ -1,5 +1,5 @@
 <script setup>
-import StatsCard from '@/Components/StatsCard.vue'
+import StatsCard from '@/componentsStatsCard.vue'
 import AppLayout from '@/Layouts/AppLayout.vue'
 
 const stats = [

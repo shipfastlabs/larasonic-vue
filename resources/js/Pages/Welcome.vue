@@ -1,13 +1,13 @@
 <script setup>
-import FeaturesCard from '@/Components/FeaturesCard.vue'
-import PricingCard from '@/Components/PricingCard.vue'
-import Accordion from '@/Components/shadcn/ui/accordion/Accordion.vue'
-import AccordionContent from '@/Components/shadcn/ui/accordion/AccordionContent.vue'
-import AccordionItem from '@/Components/shadcn/ui/accordion/AccordionItem.vue'
-import AccordionTrigger from '@/Components/shadcn/ui/accordion/AccordionTrigger.vue'
-import Badge from '@/Components/shadcn/ui/badge/Badge.vue'
-import Button from '@/Components/shadcn/ui/button/Button.vue'
-import Terminal from '@/Components/Terminal.vue'
+import FeaturesCard from '@/componentsFeaturesCard.vue'
+import PricingCard from '@/componentsPricingCard.vue'
+import Accordion from '@/componentsui/accordion/Accordion.vue'
+import AccordionContent from '@/componentsui/accordion/AccordionContent.vue'
+import AccordionItem from '@/componentsui/accordion/AccordionItem.vue'
+import AccordionTrigger from '@/componentsui/accordion/AccordionTrigger.vue'
+import Badge from '@/componentsui/badge/Badge.vue'
+import Button from '@/componentsui/button/Button.vue'
+import Terminal from '@/componentsTerminal.vue'
 import { useSeoMetaTags } from '@/Composables/useSeoMetaTags.js'
 import WebLayout from '@/Layouts/WebLayout.vue'
 import { Icon } from '@iconify/vue'
@@ -37,7 +37,7 @@ const features = [
   {
     icon: '🐳',
     title: 'Production Docker Ready',
-    description: 'Optimized Docker images with Laravel Octane and Sail for lightning-fast development and deployment.',
+    description: 'Optimized Docker images with Laravel Octane for lightning-fast development and deployment.',
   },
   {
     icon: '🔑',

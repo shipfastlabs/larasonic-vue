@@ -1,6 +1,6 @@
 <script setup>
-import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/Components/shadcn/ui/dialog'
-import Input from '@/Components/shadcn/ui/input/Input.vue'
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/componentsui/dialog'
+import Input from '@/componentsui/input/Input.vue'
 import axios from 'axios'
 import { inject, reactive, ref } from 'vue'
 import InputError from './InputError.vue'

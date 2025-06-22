@@ -1,9 +1,9 @@
 <script setup>
-import FormSection from '@/Components/FormSection.vue'
-import InputError from '@/Components/InputError.vue'
-import Button from '@/Components/shadcn/ui/button/Button.vue'
-import Input from '@/Components/shadcn/ui/input/Input.vue'
-import Label from '@/Components/shadcn/ui/label/Label.vue'
+import FormSection from '@/componentsFormSection.vue'
+import InputError from '@/componentsInputError.vue'
+import Button from '@/componentsui/button/Button.vue'
+import Input from '@/componentsui/input/Input.vue'
+import Label from '@/componentsui/label/Label.vue'
 
 import { useForm } from '@inertiajs/vue3'
 import { inject, ref } from 'vue'

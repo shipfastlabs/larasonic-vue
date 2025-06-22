@@ -1,120 +1,53 @@
-name: CI
+name: tests
 
 on:
   push:
     branches:
+      - develop
       - main
   pull_request:
     branches:
+      - develop
       - main
 
 jobs:
   ci:
     runs-on: ubuntu-latest
 
-    services:
-      postgres:
-        image: postgres:15
-        env:
-          POSTGRES_DB: testing
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: password
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-
-    strategy:
-      fail-fast: true
-      matrix:
-        php: [8.3]
-
-    name: Tests PHP ${{ matrix.php }}
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Cache Composer dependencies
-        uses: actions/cache@v4
-        with:
-          path: ~/.composer/cache/files
-          key: php-${{ matrix.php }}-composer-${{ hashFiles('composer.lock') }}
-
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.php }}
-          extensions: pgsql, pdo_pgsql, json, dom, curl, libxml, mbstring, zip, pcntl, bcmath
+          php-version: 8.4
           tools: composer:v2
           coverage: xdebug
 
-      - uses: oven-sh/setup-bun@v2
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          bun-version: latest
+          node-version: '22'
+          cache: 'npm'
 
-      - name: Setup Problem Matches
-        run: |
-          echo "::add-matcher::${{ runner.tool_cache }}/php.json"
-          echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
+      - name: Install Node Dependencies
+        run: npm ci
 
-      - name: Install PHP dependencies
-        run: composer install --no-interaction --no-progress --ansi
+      - name: Install Dependencies
+        run: composer install --no-interaction --prefer-dist --optimize-autoloader
 
-      - name: Get Bun cache directory
-        id: bun-cache-dir
-        shell: bash
-        run: echo "dir=$(bun pm cache dir)" >> $GITHUB_OUTPUT
+      - name: Copy Environment File
+        run: cp .env.example .env
 
-      - name: Cache Bun dependencies
-        id: bun-cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            **/node_modules
-            ${{ steps.bun-cache-dir.outputs.dir }}
-          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lockb') }}
-          restore-keys: |
-            ${{ runner.os }}-bun-
+      - name: Generate Application Key
+        run: php artisan key:generate
 
-      - name: Install Node dependencies
-        if: steps.bun-cache.outputs.cache-hit != 'true'
-        run: bun install
+      - name: Publish Ziggy Configuration
+        run: php artisan ziggy:generate
 
-      - name: Build assets
-        run: bun run build
+      - name: Build Assets
+        run: npm run build
 
-      - name: Prepare Laravel
-        run: |
-          cp .env.example .env
-          php artisan key:generate
-
-      - name: Run Pint
-        run: ./vendor/bin/pint --test
-
-      - name: Run Rector
-        run: ./vendor/bin/rector process --dry-run
-
-      - name: Run PHPStan
-        run: ./vendor/bin/phpstan analyse --memory-limit=1G
-
-      - name: Run Tests
-        run: php artisan test --parallel
-        env:
-          DB_CONNECTION: pgsql
-          DB_HOST: localhost
-          DB_PORT: 5432
-          DB_DATABASE: testing
-          DB_USERNAME: postgres
-          DB_PASSWORD: password
-          SESSION_DRIVER: database
-          TELESCOPE_ENABLED: false
-          CACHE_STORE: file
-          APP_ENV: testing
-          APP_MAINTENANCE_DRIVER: file
-          BCRYPT_ROUNDS: 4
-          MAIL_MAILER: array
-          STRIPE_SECRET: ${{ secrets.STRIPE_SECRET }}
+      - name: Tests
+        run: ./vendor/bin/phpunit

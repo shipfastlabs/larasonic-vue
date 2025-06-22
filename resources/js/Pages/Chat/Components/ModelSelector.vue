@@ -1,5 +1,5 @@
 <script setup>
-import Label from '@/Components/shadcn/ui/label/Label.vue'
+import Label from '@/componentsui/label/Label.vue'
 import {
   Select,
   SelectContent,
@@ -7,7 +7,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/Components/shadcn/ui/select'
+} from '@/componentsui/select'
 import { ref, watch } from 'vue'
 
 const props = defineProps({

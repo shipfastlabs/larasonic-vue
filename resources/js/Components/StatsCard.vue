@@ -1,8 +1,8 @@
 <script setup>
-import Card from '@/Components/shadcn/ui/card/Card.vue'
-import CardContent from '@/Components/shadcn/ui/card/CardContent.vue'
-import CardHeader from '@/Components/shadcn/ui/card/CardHeader.vue'
-import CardTitle from '@/Components/shadcn/ui/card/CardTitle.vue'
+import Card from '@/componentsui/card/Card.vue'
+import CardContent from '@/componentsui/card/CardContent.vue'
+import CardHeader from '@/componentsui/card/CardHeader.vue'
+import CardTitle from '@/componentsui/card/CardTitle.vue'
 import { Icon } from '@iconify/vue'
 
 defineProps({
