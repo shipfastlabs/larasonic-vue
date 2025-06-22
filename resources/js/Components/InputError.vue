@@ -1,6 +1,6 @@
 <script setup>
-import { cn } from '@/lib/utils'
 import Label from '@/components/ui/label/Label.vue'
+import { cn } from '@/lib/utils'
 
 defineProps({
   message: String,
