@@ -11,9 +11,9 @@
   "license": "MIT",
   "require": {
     "php": "^8.3",
-    "echolabsdev/prism": "^0",
     "filament/filament": "^3.2",
     "inertiajs/inertia-laravel": "^2.0",
+    "knuckleswtf/scribe": "^5.2",
     "laravel/cashier": "^15.5",
     "laravel/framework": "^12.0",
     "laravel/jetstream": "^5.3",
@@ -22,6 +22,7 @@
     "laravel/socialite": "^5.16",
     "laravel/tinker": "^2.9",
     "pinkary-project/type-guard": "^0.1.0",
+    "prism-php/prism": "^0.76.1",
     "resend/resend-php": "^0.14.0",
     "sentry/sentry-laravel": "^4.10",
     "spatie/laravel-sitemap": "^7.3",

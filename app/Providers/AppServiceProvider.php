@@ -19,7 +19,11 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Support\Facades\RateLimiter;
 use Knuckles\Camel\Extraction\ExtractedEndpointData;
+use Prism\Prism\Enums\Provider;
 use Symfony\Component\HttpFoundation\Request as HttpFoundationRequest;
+use Prism\Prism\Facades\PrismServer;
+use Prism\Prism\Prism;
+use Prism\Prism\Text\PendingRequest;
 
 final class AppServiceProvider extends ServiceProvider
 {
@@ -134,9 +138,26 @@ final class AppServiceProvider extends ServiceProvider
      */
     private function configurePrisms(): void
     {
-        // TODO: Update Prism configuration for new API
-        // Temporarily commented out until Prism configuration is updated
-        // for the new version
+        PrismServer::register(
+            'Larasonic Small',
+            fn(): PendingRequest => Prism::text()->using(Provider::Gemini, 'gemini-2.0-flash-lite')
+                ->withSystemPrompt(view('prompts.system')->render())
+                ->withMaxTokens(100)
+        );
+
+        PrismServer::register(
+            'Larasonic Medium',
+            fn(): PendingRequest => Prism::text()->using(Provider::Gemini, 'gemini-2.0-flash-lite')
+                ->withSystemPrompt(view('prompts.system')->render())
+                ->withMaxTokens(150)
+        );
+
+        PrismServer::register(
+            'Larasonic Large',
+            fn(): PendingRequest => Prism::text()->using(Provider::Gemini, 'gemini-2.0-flash-lite')
+                ->withSystemPrompt(view('prompts.system')->render())
+                ->withMaxTokens(250)
+        );
     }
 
     /**
