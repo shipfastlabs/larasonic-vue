@@ -1,9 +1,9 @@
 <script setup>
-import { Icon } from '@iconify/vue'
 import Card from '@/components/ui/card/Card.vue'
 import CardContent from '@/components/ui/card/CardContent.vue'
 import CardHeader from '@/components/ui/card/CardHeader.vue'
 import CardTitle from '@/components/ui/card/CardTitle.vue'
+import { Icon } from '@iconify/vue'
 
 defineProps({
   value: {
@@ -26,18 +26,13 @@ defineProps({
 </script>
 
 <template>
-  <a
-    :href="link"
-    target="_blank"
-    rel="noopener"
-  >
+  <a :href="link" target="_blank" rel="noopener">
     <Card class="hover:shadow-sm">
-      <CardHeader class="flex flex-row items-center justify-between space-y-0 pb-2">
+      <CardHeader
+        class="flex flex-row items-center justify-between space-y-0 pb-2"
+      >
         <CardTitle class="text-sm font-medium">
-          <Icon
-            :icon="icon"
-            class="size-8"
-          />
+          <Icon :icon="icon" class="size-8" />
         </CardTitle>
       </CardHeader>
       <CardContent>

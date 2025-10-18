@@ -15,7 +15,8 @@
 
     <!-- Structured Data (Example: JSON-LD Schema.org) -->
     <script type="application/ld+json">
-        @verbatim{
+        @verbatim
+        {
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
             "name": "Larasonic",
@@ -30,12 +31,13 @@
                 "priceCurrency": "USD",
                 "category": "Free"
             }
-        }@endverbatim
+        }
+        @endverbatim
     </script>
 
     <!-- Scripts -->
     @routes
-    @vite(['resources/js/app.js', "resources/js/Pages/{$page['component']}.vue"])
+    @vite(['resources/js/app.js', "resources/js/pages/{$page['component']}.vue"])
     @inertiaHead
 </head>
 

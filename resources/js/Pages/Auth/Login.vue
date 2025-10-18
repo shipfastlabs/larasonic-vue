@@ -1,19 +1,25 @@
 <script setup>
-import { Link, useForm, usePage } from '@inertiajs/vue3'
-import { useLocalStorage } from '@vueuse/core'
-import { computed, inject, onMounted } from 'vue'
-import { toast } from 'vue-sonner'
 import InputError from '@/components/InputError.vue'
 import AuthenticationCardLogo from '@/components/LogoRedirect.vue'
 import SocialLoginButton from '@/components/SocialLoginButton.vue'
 import Button from '@/components/ui/button/Button.vue'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 import Checkbox from '@/components/ui/checkbox/Checkbox.vue'
 import Input from '@/components/ui/input/Input.vue'
 import Label from '@/components/ui/label/Label.vue'
 import Sonner from '@/components/ui/sonner/Sonner.vue'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { useSeoMetaTags } from '@/composables/useSeoMetaTags.js'
+import { Link, useForm, usePage } from '@inertiajs/vue3'
+import { useLocalStorage } from '@vueuse/core'
+import { computed, inject, onMounted } from 'vue'
+import { toast } from 'vue-sonner'
 
 const props = defineProps({
   canResetPassword: Boolean,
@@ -37,12 +43,12 @@ const loginLinkForm = useForm({
 })
 
 // Computed
-const hasOauthProviders = computed(() =>
-  Object.keys(props.availableOauthProviders || {}).length > 0,
+const hasOauthProviders = computed(
+  () => Object.keys(props.availableOauthProviders || {}).length > 0,
 )
 
-const isProcessing = computed(() =>
-  passwordForm.processing || loginLinkForm.processing,
+const isProcessing = computed(
+  () => passwordForm.processing || loginLinkForm.processing,
 )
 
 // Methods
@@ -93,8 +99,12 @@ useSeoMetaTags({
 <template>
   <Sonner position="top-center" />
 
-  <div class="flex min-h-screen flex-col items-center justify-center bg-linear-to-b from-background/50 to-background">
-    <Card class="mx-auto w-[420px] shadow-lg transition-all duration-300 hover:shadow-xl">
+  <div
+    class="flex min-h-screen flex-col items-center justify-center bg-linear-to-b from-background/50 to-background"
+  >
+    <Card
+      class="mx-auto w-[420px] shadow-lg transition-all duration-300 hover:shadow-xl"
+    >
       <!-- Header -->
       <CardHeader>
         <CardTitle class="flex justify-center">
@@ -107,7 +117,10 @@ useSeoMetaTags({
 
       <CardContent>
         <!-- Status Message -->
-        <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
+        <div
+          v-if="status"
+          class="mb-4 text-sm font-medium text-green-600"
+        >
           {{ status }}
         </div>
 
@@ -139,16 +152,22 @@ useSeoMetaTags({
                       autofocus
                       autocomplete="username"
                     />
-                    <InputError :message="passwordForm.errors.email" />
+                    <InputError
+                      :message="passwordForm.errors.email"
+                    />
                   </div>
 
                   <!-- Password -->
                   <div class="grid gap-2">
-                    <div class="flex items-center justify-between">
+                    <div
+                      class="flex items-center justify-between"
+                    >
                       <Label for="password">Password</Label>
                       <Link
                         v-if="canResetPassword"
-                        :href="route('password.request')"
+                        :href="
+                          route('password.request')
+                        "
                         class="text-sm text-muted-foreground hover:text-primary hover:underline underline-offset-4"
                       >
                         Forgot password?
@@ -161,17 +180,26 @@ useSeoMetaTags({
                       required
                       autocomplete="current-password"
                     />
-                    <InputError :message="passwordForm.errors.password" />
+                    <InputError
+                      :message="
+                        passwordForm.errors.password
+                      "
+                    />
                   </div>
 
                   <!-- Remember Me -->
                   <div class="flex items-center space-x-2">
                     <Checkbox
                       id="remember"
-                      v-model:checked="passwordForm.remember"
+                      v-model:checked="
+                        passwordForm.remember
+                      "
                       name="remember"
                     />
-                    <label for="remember" class="text-sm text-muted-foreground">
+                    <label
+                      for="remember"
+                      class="text-sm text-muted-foreground"
+                    >
                       Remember me
                     </label>
                   </div>
@@ -179,10 +207,17 @@ useSeoMetaTags({
                   <Button
                     type="submit"
                     class="w-full"
-                    :class="{ 'opacity-75': passwordForm.processing }"
+                    :class="{
+                      'opacity-75':
+                        passwordForm.processing,
+                    }"
                     :disabled="isProcessing"
                   >
-                    {{ passwordForm.processing ? 'Signing in...' : 'Sign in' }}
+                    {{
+                      passwordForm.processing
+                        ? "Signing in..."
+                        : "Sign in"
+                    }}
                   </Button>
                 </div>
               </form>
@@ -191,7 +226,8 @@ useSeoMetaTags({
             <!-- Login Link -->
             <TabsContent value="login-link" class="space-y-4">
               <div class="text-sm text-muted-foreground">
-                We'll send you a login link for password-free sign in.
+                We'll send you a login link for password-free
+                sign in.
               </div>
               <form @submit.prevent="handleLoginLink">
                 <div class="grid gap-4">
@@ -204,16 +240,27 @@ useSeoMetaTags({
                       required
                       placeholder="name@example.com"
                     />
-                    <InputError :message="loginLinkForm.errors.email" />
+                    <InputError
+                      :message="
+                        loginLinkForm.errors.email
+                      "
+                    />
                   </div>
 
                   <Button
                     type="submit"
                     class="w-full"
-                    :class="{ 'opacity-75': loginLinkForm.processing }"
+                    :class="{
+                      'opacity-75':
+                        loginLinkForm.processing,
+                    }"
                     :disabled="isProcessing"
                   >
-                    {{ loginLinkForm.processing ? 'Sending...' : 'Send Login Link' }}
+                    {{
+                      loginLinkForm.processing
+                        ? "Sending..."
+                        : "Send Login Link"
+                    }}
                   </Button>
                 </div>
               </form>
@@ -227,8 +274,12 @@ useSeoMetaTags({
             <div class="absolute inset-0 flex items-center">
               <span class="w-full border-t" />
             </div>
-            <div class="relative flex justify-center text-xs uppercase">
-              <span class="bg-background px-2 text-muted-foreground">
+            <div
+              class="relative flex justify-center text-xs uppercase"
+            >
+              <span
+                class="bg-background px-2 text-muted-foreground"
+              >
                 Or continue with
               </span>
             </div>

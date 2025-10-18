@@ -1,12 +1,12 @@
 <script setup>
+import ActionSection from '@/components/ActionSection.vue'
+import Label from '@/components/ui/label/Label.vue'
+import Switch from '@/components/ui/switch/Switch.vue'
 import { Icon } from '@iconify/vue'
 import { router, usePage } from '@inertiajs/vue3'
 import { useChangeCase } from '@vueuse/integrations/useChangeCase'
 import { inject, onMounted, ref } from 'vue'
 import { toast } from 'vue-sonner'
-import ActionSection from '@/components/ActionSection.vue'
-import Label from '@/components/ui/label/Label.vue'
-import Switch from '@/components/ui/switch/Switch.vue'
 
 const props = defineProps({
   availableProviders: {
@@ -37,12 +37,9 @@ const loadingProvider = ref(null)
 function toggleLink(provider) {
   loadingProvider.value = provider
   if (!props.activeProviders.includes(provider)) {
-    toast.promise(
-      new Promise(resolve => setTimeout(resolve, 1000)),
-      {
-        loading: 'Redirecting to provider...',
-      },
-    )
+    toast.promise(new Promise(resolve => setTimeout(resolve, 1000)), {
+      loading: 'Redirecting to provider...',
+    })
     window.location.href = route('oauth.redirect', { provider })
     return
   }
@@ -51,12 +48,9 @@ function toggleLink(provider) {
     async: true,
     preserveScroll: true,
     onBefore: () => {
-      toast.promise(
-        new Promise(resolve => setTimeout(resolve, 1000)),
-        {
-          loading: 'Unlinking account...',
-        },
-      )
+      toast.promise(new Promise(resolve => setTimeout(resolve, 1000)), {
+        loading: 'Unlinking account...',
+      })
     },
     onSuccess: () => {
       setTimeout(() => {
@@ -85,18 +79,20 @@ function toggleLink(provider) {
 
     <template #content>
       <div class="max-w-xl text-sm">
-        Link your accounts to enable single sign-on and manage your connected social profiles.
+        Link your accounts to enable single sign-on and manage your
+        connected social profiles.
       </div>
 
       <div>
         <div
-          v-for="provider in availableProviders" :key="provider.slug"
+          v-for="provider in availableProviders"
+          :key="provider.slug"
           class="flex items-center space-x-4 rounded-md border p-4 mt-4"
         >
           <Icon :icon="provider.icon" class="size-8" />
           <div class="flex-1 space-y-1">
             <Label>
-              {{ useChangeCase(provider.slug, 'sentenceCase') }}
+              {{ useChangeCase(provider.slug, "sentenceCase") }}
             </Label>
           </div>
           <Switch

@@ -1,5 +1,4 @@
 <script setup>
-import { ref } from 'vue'
 import {
   HoverCard,
   HoverCardContent,
@@ -7,6 +6,7 @@ import {
 } from '@/components/ui/hover-card'
 import { Label } from '@/components/ui/label'
 import { Slider } from '@/components/ui/slider'
+import { ref } from 'vue'
 
 const props = defineProps({
   defaultValue: {
@@ -32,15 +32,24 @@ const value = ref(props.defaultValue)
             </span>
           </div>
           <Slider
-            id="temperature" v-model="value" :min="0" :max="1" :step="0.1"
-            class="[&_[role=slider]]:h-4 [&_[role=slider]]:w-4" aria-label="Temperature"
+            id="temperature"
+            v-model="value"
+            :min="0"
+            :max="1"
+            :step="0.1"
+            class="[&_[role=slider]]:h-4 [&_[role=slider]]:w-4"
+            aria-label="Temperature"
           />
         </div>
       </HoverCardTrigger>
-      <HoverCardContent align="start" class="w-[260px] text-sm" side="left">
-        Controls randomness: lowering results in less random completions. As
-        the temperature approaches zero, the model will become deterministic
-        and repetitive.
+      <HoverCardContent
+        align="start"
+        class="w-[260px] text-sm"
+        side="left"
+      >
+        Controls randomness: lowering results in less random
+        completions. As the temperature approaches zero, the model will
+        become deterministic and repetitive.
       </HoverCardContent>
     </HoverCard>
   </div>

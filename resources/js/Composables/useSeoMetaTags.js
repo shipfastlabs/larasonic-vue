@@ -4,14 +4,17 @@ import { useSeoMeta } from '@unhead/vue'
 const defaultSeoMeta = {
   title: 'Home',
   titleTemplate: '%s | Larasonic Modern Laravel SaaS Starter Kit',
-  description: 'Larasonic is a modern Laravel boilerplate for the VILT stack (Vue, Inertia, Laravel, TailwindCSS). Clone and start building scalable, maintainable, and production-ready applications quickly.',
-  keywords: 'Larasonic, Laravel boilerplate, Laravel VILT, Vue, Inertia, TailwindCSS, Laravel Octane, Docker, FilamentPHP, OpenAI integration, Laravel Cashier, Laravel Sanctum',
+  description:
+        'Larasonic is a modern Laravel boilerplate for the VILT stack (Vue, Inertia, Laravel, TailwindCSS). Clone and start building scalable, maintainable, and production-ready applications quickly.',
+  keywords:
+        'Larasonic, Laravel boilerplate, Laravel VILT, Vue, Inertia, TailwindCSS, Laravel Octane, Docker, FilamentPHP, OpenAI integration, Laravel Cashier, Laravel Sanctum',
   robots: 'index, follow',
   themeColor: '#000000',
 
   // Open Graph
   ogTitle: '%s | Larasonic Modern Laravel SaaS Starter Kit',
-  ogDescription: 'Larasonic is a modern Laravel SaaS starter kit for the VILT stack. Clone the repo, start building scalable and maintainable applications quickly.',
+  ogDescription:
+        'Larasonic is a modern Laravel SaaS starter kit for the VILT stack. Clone the repo, start building scalable and maintainable applications quickly.',
   ogUrl: 'https://larasonic.com',
   ogType: 'website',
   ogImage: 'https://larasonic.com/images/og.webp',
@@ -20,7 +23,8 @@ const defaultSeoMeta = {
 
   // Twitter
   twitterTitle: '%s | Larasonic Modern Laravel SaaS Starter Kit',
-  twitterDescription: 'Larasonic is a modern Laravel SaaS starter kit for the VILT stack. Clone the repo, start building scalable and maintainable applications quickly.',
+  twitterDescription:
+        'Larasonic is a modern Laravel SaaS starter kit for the VILT stack. Clone the repo, start building scalable and maintainable applications quickly.',
   twitterCard: 'summary_large_image',
   twitterImage: 'https://larasonic.com/images/og.webp',
   twitterSite: '@pushpak1300',
@@ -41,8 +45,6 @@ export function useSeoMetaTags(seoMeta, options = { merge: true }) {
     return useSeoMeta(defaultSeoMeta)
 
   return useSeoMeta(
-    options.merge
-      ? { ...defaultSeoMeta, ...seoMeta }
-      : seoMeta,
+    options.merge ? { ...defaultSeoMeta, ...seoMeta } : seoMeta,
   )
 }

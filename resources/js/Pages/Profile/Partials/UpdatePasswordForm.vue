@@ -1,13 +1,13 @@
 <script setup>
-import { useForm } from '@inertiajs/vue3'
-import { inject, ref } from 'vue'
-import { toast } from 'vue-sonner'
 import FormSection from '@/components/FormSection.vue'
 import InputError from '@/components/InputError.vue'
-
 import Button from '@/components/ui/button/Button.vue'
 import Input from '@/components/ui/input/Input.vue'
 import Label from '@/components/ui/label/Label.vue'
+
+import { useForm } from '@inertiajs/vue3'
+import { inject, ref } from 'vue'
+import { toast } from 'vue-sonner'
 
 const route = inject('route')
 
@@ -57,8 +57,12 @@ function updatePassword() {
       <div class="col-span-6 sm:col-span-4">
         <Label for="password">New Password</Label>
         <Input
-          id="password" ref="passwordInput" v-model="form.password" type="password"
-          class="mt-1 block w-full" autocomplete="new-password"
+          id="password"
+          ref="passwordInput"
+          v-model="form.password"
+          type="password"
+          class="mt-1 block w-full"
+          autocomplete="new-password"
         />
         <InputError :message="form.errors.password" class="mt-2" />
       </div>
@@ -66,15 +70,24 @@ function updatePassword() {
       <div class="col-span-6 sm:col-span-4">
         <Label for="password_confirmation">Confirm Password</Label>
         <Input
-          id="password_confirmation" v-model="form.password_confirmation" type="password"
-          class="mt-1 block w-full" autocomplete="new-password"
+          id="password_confirmation"
+          v-model="form.password_confirmation"
+          type="password"
+          class="mt-1 block w-full"
+          autocomplete="new-password"
         />
-        <InputError :message="form.errors.password_confirmation" class="mt-2" />
+        <InputError
+          :message="form.errors.password_confirmation"
+          class="mt-2"
+        />
       </div>
     </template>
 
     <template #actions>
-      <Button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+      <Button
+        :class="{ 'opacity-25': form.processing }"
+        :disabled="form.processing"
+      >
         Save
       </Button>
     </template>

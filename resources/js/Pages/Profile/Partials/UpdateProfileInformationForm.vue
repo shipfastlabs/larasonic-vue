@@ -1,12 +1,12 @@
 <script setup>
-import { Link, router, useForm } from '@inertiajs/vue3'
-import { inject, ref } from 'vue'
-import { toast } from 'vue-sonner'
 import FormSection from '@/components/FormSection.vue'
 import InputError from '@/components/InputError.vue'
 import Button from '@/components/ui/button/Button.vue'
 import Input from '@/components/ui/input/Input.vue'
 import Label from '@/components/ui/label/Label.vue'
+import { Link, router, useForm } from '@inertiajs/vue3'
+import { inject, ref } from 'vue'
+import { toast } from 'vue-sonner'
 
 const props = defineProps({
   user: Object,
@@ -91,15 +91,28 @@ function clearPhotoFileInput() {
 
     <template #form>
       <!-- Profile Photo -->
-      <div v-if="$page.props.jetstream.managesProfilePhotos" class="col-span-6 sm:col-span-4">
+      <div
+        v-if="$page.props.jetstream.managesProfilePhotos"
+        class="col-span-6 sm:col-span-4"
+      >
         <!-- Profile Photo File Input -->
-        <input id="photo" ref="photoInput" type="file" class="hidden" @change="updatePhotoPreview">
+        <input
+          id="photo"
+          ref="photoInput"
+          type="file"
+          class="hidden"
+          @change="updatePhotoPreview"
+        >
 
         <Label for="photo">Photo</Label>
 
         <!-- Current Profile Photo -->
         <div v-show="!photoPreview" class="mt-2">
-          <img :src="user.profile_photo_url" :alt="user.name" class="size-20 rounded-full object-cover">
+          <img
+            :src="user.profile_photo_url"
+            :alt="user.name"
+            class="size-20 rounded-full object-cover"
+          >
         </div>
 
         <!-- New Profile Photo Preview -->
@@ -110,12 +123,20 @@ function clearPhotoFileInput() {
           />
         </div>
 
-        <Button variant="secondary" class="me-2 mt-2" type="button" @click.prevent="selectNewPhoto">
+        <Button
+          variant="secondary"
+          class="me-2 mt-2"
+          type="button"
+          @click.prevent="selectNewPhoto"
+        >
           Select A New Photo
         </Button>
 
         <Button
-          v-if="user.profile_photo_path" variant="secondary" type="button" class="mt-2"
+          v-if="user.profile_photo_path"
+          variant="secondary"
+          type="button"
+          class="mt-2"
           @click.prevent="deletePhoto"
         >
           Remove Photo
@@ -128,7 +149,11 @@ function clearPhotoFileInput() {
       <div class="col-span-6 sm:col-span-4">
         <Label for="name">Name</Label>
         <Input
-          id="name" v-model="form.name" type="text" class="mt-1 block w-full" required
+          id="name"
+          v-model="form.name"
+          type="text"
+          class="mt-1 block w-full"
+          required
           autocomplete="name"
         />
         <InputError :message="form.errors.name" class="mt-2" />
@@ -148,12 +173,19 @@ function clearPhotoFileInput() {
         />
         <InputError :message="form.errors.email" class="mt-2" />
 
-        <div v-if="$page.props.jetstream.hasEmailVerification && user.email_verified_at === null">
+        <div
+          v-if="
+            $page.props.jetstream.hasEmailVerification
+              && user.email_verified_at === null
+          "
+        >
           <p class="mt-2 text-sm">
             Your email address is unverified.
 
             <Link
-              :href="route('verification.send')" method="post" as="button"
+              :href="route('verification.send')"
+              method="post"
+              as="button"
               class="rounded-md text-sm underline focus:outline-hidden focus:ring-2 focus:ring-offset-2"
               @click.prevent="sendEmailVerification"
             >
@@ -161,15 +193,22 @@ function clearPhotoFileInput() {
             </Link>
           </p>
 
-          <div v-show="verificationLinkSent" class="mt-2 text-sm font-medium">
-            A new verification link has been sent to your email address.
+          <div
+            v-show="verificationLinkSent"
+            class="mt-2 text-sm font-medium"
+          >
+            A new verification link has been sent to your email
+            address.
           </div>
         </div>
       </div>
     </template>
 
     <template #actions>
-      <Button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+      <Button
+        :class="{ 'opacity-25': form.processing }"
+        :disabled="form.processing"
+      >
         Save
       </Button>
     </template>

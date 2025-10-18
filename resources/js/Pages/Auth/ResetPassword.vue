@@ -1,17 +1,23 @@
 import { inject } from 'vue'
 
 <script setup>
-import { useForm } from '@inertiajs/vue3'
-import { inject } from 'vue'
 import InputError from '@/components/InputError.vue'
 import AuthenticationCardLogo from '@/components/LogoRedirect.vue'
 import Button from '@/components/ui/button/Button.vue'
-
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 import Input from '@/components/ui/input/Input.vue'
+
 import Label from '@/components/ui/label/Label.vue'
 import { useSeoMetaTags } from '@/composables/useSeoMetaTags.js'
 import { cn } from '@/lib/utils'
+import { useForm } from '@inertiajs/vue3'
+import { inject } from 'vue'
 
 const props = defineProps({
   email: String,
@@ -54,7 +60,12 @@ function submit() {
           <div>
             <Label for="email">Email</Label>
             <Input
-              id="email" v-model="form.email" type="email" class="mt-1 block w-full" required autofocus
+              id="email"
+              v-model="form.email"
+              type="email"
+              class="mt-1 block w-full"
+              required
+              autofocus
               autocomplete="username"
             />
             <InputError class="mt-2" :message="form.errors.email" />
@@ -63,23 +74,40 @@ function submit() {
           <div class="mt-4">
             <Label for="password">Password</Label>
             <Input
-              id="password" v-model="form.password" type="password" class="mt-1 block w-full" required
+              id="password"
+              v-model="form.password"
+              type="password"
+              class="mt-1 block w-full"
+              required
               autocomplete="new-password"
             />
-            <InputError class="mt-2" :message="form.errors.password" />
+            <InputError
+              class="mt-2"
+              :message="form.errors.password"
+            />
           </div>
 
           <div class="mt-4">
             <Label for="password_confirmation">Confirm Password</Label>
             <Input
-              id="password_confirmation" v-model="form.password_confirmation" type="password"
-              class="mt-1 block w-full" required autocomplete="new-password"
+              id="password_confirmation"
+              v-model="form.password_confirmation"
+              type="password"
+              class="mt-1 block w-full"
+              required
+              autocomplete="new-password"
             />
-            <InputError class="mt-2" :message="form.errors.password_confirmation" />
+            <InputError
+              class="mt-2"
+              :message="form.errors.password_confirmation"
+            />
           </div>
 
           <div class="mt-4 flex items-center justify-end">
-            <Button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+            <Button
+              :class="{ 'opacity-25': form.processing }"
+              :disabled="form.processing"
+            >
               Reset Password
             </Button>
           </div>

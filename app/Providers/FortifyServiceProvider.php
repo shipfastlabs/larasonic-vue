@@ -51,10 +51,29 @@ final class FortifyServiceProvider extends ServiceProvider
 
     private function configureLoginView(): void
     {
-        Fortify::loginView(fn () => Inertia::render('Auth/Login', [
+        Fortify::loginView(fn () => Inertia::render('auth/Login', [
             'availableOauthProviders' => (new ActiveOauthProviderAction())->handle(),
             'canResetPassword' => Route::has('password.request'),
             'status' => session('status'),
         ]));
+
+        Fortify::registerView(fn () => Inertia::render('auth/Register'));
+
+        Fortify::verifyEmailView(fn () => Inertia::render('auth/VerifyEmail', [
+            'status' => session('status'),
+        ]));
+
+        Fortify::requestPasswordResetLinkView(fn () => Inertia::render('auth/ForgotPassword', [
+            'status' => session('status'),
+        ]));
+
+        Fortify::resetPasswordView(fn (Request $request) => Inertia::render('auth/ResetPassword', [
+            'email' => $request->input('email'),
+            'token' => $request->route('token'),
+        ]));
+
+        Fortify::twoFactorChallengeView(fn () => Inertia::render('auth/TwoFactorChallenge'));
+
+        Fortify::confirmPasswordView(fn () => Inertia::render('auth/ConfirmPassword'));
     }
 }

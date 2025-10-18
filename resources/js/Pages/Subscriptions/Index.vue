@@ -1,10 +1,8 @@
 <script setup>
+import Separator from '@/components/ui/separator/Separator.vue'
+import SubscriptionManager from '@/pages/subscriptions/Partials/SubscriptionManager.vue'
 import { Icon } from '@iconify/vue'
 import { Deferred } from '@inertiajs/vue3'
-import Separator from '@/components/ui/separator/Separator.vue'
-import AppLayout from '@/Layouts/AppLayout.vue'
-
-import SubscriptionManager from '@/Pages/Subscriptions/Partials/SubscriptionManager.vue'
 import InvoiceManager from './Partials/InvoiceManager.vue'
 
 defineProps({
@@ -35,7 +33,8 @@ defineProps({
       <div class="max-w-7xl">
         <SubscriptionManager
           :active-subscriptions="activeSubscriptions"
-          :available-subscriptions="availableSubscriptions" class="mt-10 sm:mt-0"
+          :available-subscriptions="availableSubscriptions"
+          class="mt-10 sm:mt-0"
         />
       </div>
 
@@ -45,7 +44,10 @@ defineProps({
         </template>
         <div v-if="activeInvoices.length > 0" class="md:max-w-7xl">
           <Separator class="my-8 hidden sm:block" />
-          <InvoiceManager :invoices="activeInvoices" class="mt-10 sm:mt-0" />
+          <InvoiceManager
+            :invoices="activeInvoices"
+            class="mt-10 sm:mt-0"
+          />
         </div>
       </Deferred>
     </div>

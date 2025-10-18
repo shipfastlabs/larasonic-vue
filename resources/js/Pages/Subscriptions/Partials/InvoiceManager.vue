@@ -1,5 +1,4 @@
 <script setup>
-import { Icon } from '@iconify/vue'
 import ActionSection from '@/components/ActionSection.vue'
 import Button from '@/components/ui/button/Button.vue'
 import {
@@ -10,6 +9,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+import { Icon } from '@iconify/vue'
 
 defineProps({
   invoices: {
@@ -53,14 +53,25 @@ defineProps({
               <TableCell class="font-medium">
                 {{ invoice.id }}
               </TableCell>
-              <TableCell>{{ new Date(invoice.created * 1000).toLocaleDateString() }}</TableCell>
+              <TableCell>
+                {{
+                  new Date(
+                    invoice.created * 1000,
+                  ).toLocaleDateString()
+                }}
+              </TableCell>
               <TableCell>{{ invoice.customer_name }}</TableCell>
               <TableCell>{{ invoice.status }}</TableCell>
               <TableCell class="text-right">
                 ${{ (invoice.amount_paid / 100).toFixed(2) }}
               </TableCell>
               <TableCell class="text-center">
-                <Button variant="ghost" as="a" :href="invoice.hosted_invoice_url" target="_blank">
+                <Button
+                  variant="ghost"
+                  as="a"
+                  :href="invoice.hosted_invoice_url"
+                  target="_blank"
+                >
                   <Icon icon="lucide:download" />
                 </Button>
               </TableCell>

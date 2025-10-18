@@ -1,16 +1,16 @@
 <script setup>
-import { useForm } from '@inertiajs/vue3'
-import { inject } from 'vue'
-import { toast } from 'vue-sonner'
 import FormSection from '@/components/FormSection.vue'
 import InputError from '@/components/InputError.vue'
 import Avatar from '@/components/ui/avatar/Avatar.vue'
 import AvatarFallback from '@/components/ui/avatar/AvatarFallback.vue'
-
 import AvatarImage from '@/components/ui/avatar/AvatarImage.vue'
 import Button from '@/components/ui/button/Button.vue'
 import Input from '@/components/ui/input/Input.vue'
+
 import Label from '@/components/ui/label/Label.vue'
+import { useForm } from '@inertiajs/vue3'
+import { inject } from 'vue'
+import { toast } from 'vue-sonner'
 
 const props = defineProps({
   team: Object,
@@ -47,7 +47,10 @@ function updateTeamName() {
 
         <div class="mt-2 flex items-center">
           <Avatar>
-            <AvatarImage :src="team.owner.profile_photo_path ?? ''" alt="profile photo" />
+            <AvatarImage
+              :src="team.owner.profile_photo_path ?? ''"
+              alt="profile photo"
+            />
             <AvatarFallback class="rounded-full bg-secondary p-2">
               {{ team.name.charAt(0) }}
             </AvatarFallback>
@@ -57,7 +60,7 @@ function updateTeamName() {
             <div class="">
               {{ team.owner.name }}
             </div>
-            <div class="text-sm ">
+            <div class="text-sm">
               {{ team.owner.email }}
             </div>
           </div>
@@ -65,11 +68,14 @@ function updateTeamName() {
       </div>
 
       <!-- Team Name -->
-      <div class="col-span-6 sm:col-span-4 ">
+      <div class="col-span-6 sm:col-span-4">
         <Label for="name">Team Name</Label>
 
         <Input
-          id="name" v-model="form.name" type="text" class="mt-1 block w-full"
+          id="name"
+          v-model="form.name"
+          type="text"
+          class="mt-1 block w-full"
           :disabled="!permissions.canUpdateTeam"
         />
 
@@ -78,7 +84,10 @@ function updateTeamName() {
     </template>
 
     <template v-if="permissions.canUpdateTeam" #actions>
-      <Button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+      <Button
+        :class="{ 'opacity-25': form.processing }"
+        :disabled="form.processing"
+      >
         Save
       </Button>
     </template>

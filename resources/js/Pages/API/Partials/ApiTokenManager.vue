@@ -1,7 +1,4 @@
 <script setup>
-import { useForm } from '@inertiajs/vue3'
-import { inject, ref } from 'vue'
-import { toast } from 'vue-sonner'
 import ActionSection from '@/components/ActionSection.vue'
 import ConfirmationModal from '@/components/ConfirmationModal.vue'
 import FormSection from '@/components/FormSection.vue'
@@ -19,6 +16,9 @@ import {
 import Input from '@/components/ui/input/Input.vue'
 import Label from '@/components/ui/label/Label.vue'
 import Separator from '@/components/ui/separator/Separator.vue'
+import { useForm } from '@inertiajs/vue3'
+import { inject, ref } from 'vue'
+import { toast } from 'vue-sonner'
 
 const props = defineProps({
   tokens: Array,
@@ -58,14 +58,17 @@ function manageApiTokenPermissions(token) {
 }
 
 function updateApiToken() {
-  updateApiTokenForm.put(route('api-tokens.update', managingPermissionsFor.value), {
-    preserveScroll: true,
-    preserveState: true,
-    onSuccess: () => {
-      managingPermissionsFor.value = null
-      toast.success('Permissions have been updated')
+  updateApiTokenForm.put(
+    route('api-tokens.update', managingPermissionsFor.value),
+    {
+      preserveScroll: true,
+      preserveState: true,
+      onSuccess: () => {
+        managingPermissionsFor.value = null
+        toast.success('Permissions have been updated')
+      },
     },
-  })
+  )
 }
 
 function confirmApiTokenDeletion(token) {
@@ -73,14 +76,17 @@ function confirmApiTokenDeletion(token) {
 }
 
 function deleteApiToken() {
-  deleteApiTokenForm.delete(route('api-tokens.destroy', apiTokenBeingDeleted.value), {
-    preserveScroll: true,
-    preserveState: true,
-    onSuccess: () => {
-      apiTokenBeingDeleted.value = null
-      toast.success('Token has been deleted')
+  deleteApiTokenForm.delete(
+    route('api-tokens.destroy', apiTokenBeingDeleted.value),
+    {
+      preserveScroll: true,
+      preserveState: true,
+      onSuccess: () => {
+        apiTokenBeingDeleted.value = null
+        toast.success('Token has been deleted')
+      },
     },
-  })
+  )
 }
 
 function hasPermission(permissions, permission) {
@@ -97,7 +103,8 @@ function hasPermission(permissions, permission) {
       </template>
 
       <template #description>
-        API tokens allow third-party services to authenticate with our application on your behalf.
+        API tokens allow third-party services to authenticate with our
+        application on your behalf.
       </template>
 
       <template #form>
@@ -105,10 +112,16 @@ function hasPermission(permissions, permission) {
         <div class="col-span-6 sm:col-span-4">
           <Label for="name">Name</Label>
           <Input
-            id="name" v-model="createApiTokenForm.name" type="text" class="mt-1 block w-full"
+            id="name"
+            v-model="createApiTokenForm.name"
+            type="text"
+            class="mt-1 block w-full"
             autofocus
           />
-          <InputError :message="createApiTokenForm.errors.name" class="mt-2" />
+          <InputError
+            :message="createApiTokenForm.errors.name"
+            class="mt-2"
+          />
         </div>
 
         <!-- Token Permissions -->
@@ -116,18 +129,34 @@ function hasPermission(permissions, permission) {
           <Label for="permissions">Permissions</Label>
 
           <div class="mt-2 grid grid-cols-1 gap-4 md:grid-cols-2">
-            <div v-for="permission in availablePermissions" :key="permission" class="flex items-center space-x-2">
+            <div
+              v-for="permission in availablePermissions"
+              :key="permission"
+              class="flex items-center space-x-2"
+            >
               <Checkbox
                 :id="`create-${permission}`"
-                :checked="hasPermission(createApiTokenForm.permissions, permission)"
-                @update:checked="(checked) => {
-                  if (checked) {
-                    createApiTokenForm.permissions.push(permission)
+                :checked="
+                  hasPermission(
+                    createApiTokenForm.permissions,
+                    permission,
+                  )
+                "
+                @update:checked="
+                  (checked) => {
+                    if (checked) {
+                      createApiTokenForm.permissions.push(
+                        permission,
+                      );
+                    }
+                    else {
+                      createApiTokenForm.permissions
+                        = createApiTokenForm.permissions.filter(
+                          (p) => p !== permission,
+                        );
+                    }
                   }
-                  else {
-                    createApiTokenForm.permissions = createApiTokenForm.permissions.filter(p => p !== permission)
-                  }
-                }"
+                "
               />
               <label
                 :for="`create-${permission}`"
@@ -161,26 +190,36 @@ function hasPermission(permissions, permission) {
           </template>
 
           <template #description>
-            You may delete any of your existing tokens if they are no longer needed.
+            You may delete any of your existing tokens if they are
+            no longer needed.
           </template>
 
           <!-- API Token List -->
           <template #content>
             <div class="space-y-6">
-              <div v-for="token in tokens" :key="token.id" class="flex items-center justify-between">
+              <div
+                v-for="token in tokens"
+                :key="token.id"
+                class="flex items-center justify-between"
+              >
                 <div class="break-all dark:text-white">
                   {{ token.name }}
                 </div>
 
                 <div class="ms-2 flex items-center">
-                  <div v-if="token.last_used_ago" class="text-sm text-gray-400">
+                  <div
+                    v-if="token.last_used_ago"
+                    class="text-sm text-gray-400"
+                  >
                     Last used {{ token.last_used_ago }}
                   </div>
 
                   <button
                     v-if="availablePermissions.length > 0"
                     class="ms-6 cursor-pointer text-sm text-gray-400 underline"
-                    @click="manageApiTokenPermissions(token)"
+                    @click="
+                      manageApiTokenPermissions(token)
+                    "
                   >
                     Permissions
                   </button>
@@ -205,7 +244,8 @@ function hasPermission(permissions, permission) {
         <DialogHeader>
           <DialogTitle>API Token</DialogTitle>
           <DialogDescription>
-            Please copy your new API token. For your security, it won't be shown again.
+            Please copy your new API token. For your security, it
+            won't be shown again.
           </DialogDescription>
         </DialogHeader>
 
@@ -217,7 +257,10 @@ function hasPermission(permissions, permission) {
         </div>
 
         <DialogFooter>
-          <Button variant="secondary" @click="displayingToken = false">
+          <Button
+            variant="secondary"
+            @click="displayingToken = false"
+          >
             Close
           </Button>
         </DialogFooter>
@@ -225,7 +268,10 @@ function hasPermission(permissions, permission) {
     </Dialog>
 
     <!-- API Token Permissions Modal -->
-    <Dialog :open="managingPermissionsFor != null" @update:open="(value) => !value && (managingPermissionsFor = null)">
+    <Dialog
+      :open="managingPermissionsFor != null"
+      @update:open="(value) => !value && (managingPermissionsFor = null)"
+    >
       <DialogContent class="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>API Token Permissions</DialogTitle>
@@ -235,18 +281,34 @@ function hasPermission(permissions, permission) {
         </DialogHeader>
 
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-          <div v-for="permission in availablePermissions" :key="permission" class="flex items-center space-x-2">
+          <div
+            v-for="permission in availablePermissions"
+            :key="permission"
+            class="flex items-center space-x-2"
+          >
             <Checkbox
               :id="`update-${permission}`"
-              :checked="hasPermission(updateApiTokenForm.permissions, permission)"
-              @update:checked="(checked) => {
-                if (checked) {
-                  updateApiTokenForm.permissions.push(permission)
+              :checked="
+                hasPermission(
+                  updateApiTokenForm.permissions,
+                  permission,
+                )
+              "
+              @update:checked="
+                (checked) => {
+                  if (checked) {
+                    updateApiTokenForm.permissions.push(
+                      permission,
+                    );
+                  }
+                  else {
+                    updateApiTokenForm.permissions
+                      = updateApiTokenForm.permissions.filter(
+                        (p) => p !== permission,
+                      );
+                  }
                 }
-                else {
-                  updateApiTokenForm.permissions = updateApiTokenForm.permissions.filter(p => p !== permission)
-                }
-              }"
+              "
             />
             <label
               :for="`update-${permission}`"
@@ -258,12 +320,16 @@ function hasPermission(permissions, permission) {
         </div>
 
         <DialogFooter>
-          <Button variant="secondary" @click="managingPermissionsFor = null">
+          <Button
+            variant="secondary"
+            @click="managingPermissionsFor = null"
+          >
             Cancel
           </Button>
 
           <Button
-            class="ms-3" :class="{ 'opacity-25': updateApiTokenForm.processing }"
+            class="ms-3"
+            :class="{ 'opacity-25': updateApiTokenForm.processing }"
             :disabled="updateApiTokenForm.processing"
             @click="updateApiToken"
           >
@@ -274,7 +340,10 @@ function hasPermission(permissions, permission) {
     </Dialog>
 
     <!-- Delete Token Confirmation Modal -->
-    <ConfirmationModal :show="apiTokenBeingDeleted != null" @close="apiTokenBeingDeleted = null">
+    <ConfirmationModal
+      :show="apiTokenBeingDeleted != null"
+      @close="apiTokenBeingDeleted = null"
+    >
       <template #title>
         Delete API Token
       </template>
@@ -284,13 +353,19 @@ function hasPermission(permissions, permission) {
       </template>
 
       <template #footer>
-        <Button variant="secondary" @click="apiTokenBeingDeleted = null">
+        <Button
+          variant="secondary"
+          @click="apiTokenBeingDeleted = null"
+        >
           Cancel
         </Button>
 
         <Button
-          variant="destructive" class="ms-3" :class="{ 'opacity-25': deleteApiTokenForm.processing }"
-          :disabled="deleteApiTokenForm.processing" @click="deleteApiToken"
+          variant="destructive"
+          class="ms-3"
+          :class="{ 'opacity-25': deleteApiTokenForm.processing }"
+          :disabled="deleteApiTokenForm.processing"
+          @click="deleteApiToken"
         >
           Delete
         </Button>

@@ -27,7 +27,11 @@ const emit = defineEmits(['close'])
 </script>
 
 <template>
-  <Dialog :open="show" :class="[maxWidth ? `sm:max-w-${maxWidth}` : 'sm:max-w-2xl']" @update:open="emit('close')">
+  <Dialog
+    :open="show"
+    :class="[maxWidth ? `sm:max-w-${maxWidth}` : 'sm:max-w-2xl']"
+    @update:open="emit('close')"
+  >
     <DialogContent>
       <DialogHeader>
         <div class="flex items-center gap-4">

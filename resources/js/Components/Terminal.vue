@@ -27,7 +27,9 @@ function copyToClipboard() {
 </script>
 
 <template>
-  <div class="w-full rounded-lg shadow-lg overflow-hidden border border-muted text-white font-mono text-sm relative">
+  <div
+    class="w-full rounded-lg shadow-lg overflow-hidden border border-muted text-white font-mono text-sm relative"
+  >
     <div class="p-4">
       <div class="flex justify-between items-center mb-4">
         <div class="flex space-x-2">
@@ -40,17 +42,24 @@ function copyToClipboard() {
           aria-label="Copy to clipboard"
           @click="copyToClipboard"
         >
-          <Icon :icon="copied ? 'lucide:check' : 'lucide:copy'" class="h-5 w-5" />
+          <Icon
+            :icon="copied ? 'lucide:check' : 'lucide:copy'"
+            class="h-5 w-5"
+          />
         </button>
       </div>
       <div class="space-y-2">
         <div
           v-for="(step, index) in terminalSteps"
           :key="index"
-          :class="{ 'opacity-0': index > terminalStep, 'opacity-100': index <= terminalStep }"
+          :class="{
+            'opacity-0': index > terminalStep,
+            'opacity-100': index <= terminalStep,
+          }"
           class="transition-opacity duration-300 text-foreground"
         >
-          <span class="text-green-400 dark:text-green-500">$</span> {{ step }}
+          <span class="text-green-400 dark:text-green-500">$</span>
+          {{ step }}
         </div>
       </div>
     </div>

@@ -1,10 +1,19 @@
 <script setup>
-import axios from 'axios'
-import { inject, reactive, ref } from 'vue'
 import InputError from '@/components/InputError.vue'
 import Button from '@/components/ui/button/Button.vue'
-import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog'
 import Input from '@/components/ui/input/Input.vue'
+import axios from 'axios'
+import { inject, reactive, ref } from 'vue'
 
 defineProps({
   title: {
@@ -35,17 +44,20 @@ const passwordInput = ref(null)
 function confirmPassword() {
   form.processing = true
 
-  axios.post(route('password.confirm'), {
-    password: form.password,
-  }).then(() => {
-    form.processing = false
-    emit('confirmed', form.password)
-    closeModal()
-  }).catch((error) => {
-    form.processing = false
-    form.error = error.response.data.errors.password[0]
-    passwordInput.value.focus()
-  })
+  axios
+    .post(route('password.confirm'), {
+      password: form.password,
+    })
+    .then(() => {
+      form.processing = false
+      emit('confirmed', form.password)
+      closeModal()
+    })
+    .catch((error) => {
+      form.processing = false
+      form.error = error.response.data.errors.password[0]
+      passwordInput.value.focus()
+    })
 }
 
 function closeModal() {
@@ -92,7 +104,9 @@ function closeModal() {
 
           <Button
             variant="destructive"
-            class="ms-3" :class="{ 'opacity-25': form.processing }" :disabled="form.processing"
+            class="ms-3"
+            :class="{ 'opacity-25': form.processing }"
+            :disabled="form.processing"
             @click="confirmPassword"
           >
             {{ button }}

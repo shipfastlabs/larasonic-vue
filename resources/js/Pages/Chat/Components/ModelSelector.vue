@@ -1,5 +1,4 @@
 <script setup>
-import { ref, watch } from 'vue'
 import Label from '@/components/ui/label/Label.vue'
 import {
   Select,
@@ -9,6 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import { ref, watch } from 'vue'
 
 const props = defineProps({
   models: {
@@ -33,11 +33,7 @@ watch(selectedModel, (newVal) => {
     </SelectTrigger>
     <SelectContent>
       <SelectGroup>
-        <SelectItem
-          v-for="model in models"
-          :key="model"
-          :value="model"
-        >
+        <SelectItem v-for="model in models" :key="model" :value="model">
           <span class="text-sm">{{ model }}</span>
         </SelectItem>
       </SelectGroup>

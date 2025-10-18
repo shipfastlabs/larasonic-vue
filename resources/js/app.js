@@ -13,13 +13,15 @@ import '../css/app.css'
  * @see {@link https://unhead.unjs.io/plugins/plugins/capo} For CapoPlugin
  */
 const head = createHead({
-  plugins: [
-    CapoPlugin(),
-  ],
+  plugins: [CapoPlugin()],
 })
 
 createInertiaApp({
-  resolve: name => resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue')),
+  resolve: name =>
+    resolvePageComponent(
+      `./pages/${name}.vue`,
+      import.meta.glob('./pages/**/*.vue'),
+    ),
   setup({ el, App, props, plugin }) {
     return createApp({ render: () => h(App, props) })
       .use(plugin)

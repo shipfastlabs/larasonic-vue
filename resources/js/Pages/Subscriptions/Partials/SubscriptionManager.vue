@@ -1,10 +1,10 @@
 <script setup>
-import { Icon } from '@iconify/vue'
-import { inject } from 'vue'
 import PricingCard from '@/components/PricingCard.vue'
 import Alert from '@/components/ui/alert/Alert.vue'
 import AlertTitle from '@/components/ui/alert/AlertTitle.vue'
 import Button from '@/components/ui/button/Button.vue'
+import { Icon } from '@iconify/vue'
+import { inject } from 'vue'
 
 defineProps({
   activeSubscriptions: {
@@ -28,26 +28,39 @@ const route = inject('route')
       </h3>
     </header>
 
-    <div v-if="activeSubscriptions.length === 0" class="flex flex-col space-y-4">
+    <div
+      v-if="activeSubscriptions.length === 0"
+      class="flex flex-col space-y-4"
+    >
       <Alert class="text-md">
         <Icon icon="lucide:triangle-alert" class="size-4" />
         <AlertTitle>
-          You are not subscribed to any plan. Subscribe to a plan to continue.
+          You are not subscribed to any plan. Subscribe to a plan to
+          continue.
         </AlertTitle>
       </Alert>
 
       <PricingCard
-        v-for="subscription in availableSubscriptions" :key="subscription.price_id"
-        :plan="subscription.plan" :price="subscription.price" :description="subscription.description"
-        :features="subscription.features" button-text="Subscribe"
-        :button-href="route('subscriptions.show', { subscription: subscription.price_id })"
+        v-for="subscription in availableSubscriptions"
+        :key="subscription.price_id"
+        :plan="subscription.plan"
+        :price="subscription.price"
+        :description="subscription.description"
+        :features="subscription.features"
+        button-text="Subscribe"
+        :button-href="
+          route('subscriptions.show', {
+            subscription: subscription.price_id,
+          })
+        "
       />
     </div>
 
     <div v-else>
       <Alert>
         <AlertTitle class="flex items-center justify-between">
-          You are currently on the {{ activeSubscriptions[0].type }} Plan.
+          You are currently on the
+          {{ activeSubscriptions[0].type }} Plan.
           <Button as="a" :href="route('subscriptions.index')">
             Manage Subscription
           </Button>

@@ -7,7 +7,12 @@ import BreadcrumbItem from '@/components/ui/breadcrumb/BreadcrumbItem.vue'
 import BreadcrumbLink from '@/components/ui/breadcrumb/BreadcrumbLink.vue'
 import BreadcrumbList from '@/components/ui/breadcrumb/BreadcrumbList.vue'
 import Separator from '@/components/ui/separator/Separator.vue'
-import { Sidebar, SidebarFooter, SidebarHeader, SidebarInset } from '@/components/ui/sidebar'
+import {
+  Sidebar,
+  SidebarFooter,
+  SidebarHeader,
+  SidebarInset,
+} from '@/components/ui/sidebar'
 import SidebarMenu from '@/components/ui/sidebar/SidebarMenu.vue'
 import SidebarMenuItem from '@/components/ui/sidebar/SidebarMenuItem.vue'
 import SidebarProvider from '@/components/ui/sidebar/SidebarProvider.vue'
@@ -32,7 +37,9 @@ useSeoMetaTags({
         <SidebarHeader>
           <SidebarMenu>
             <SidebarMenuItem>
-              <AppTeamManager v-if="$page.props.jetstream.hasTeamFeatures" />
+              <AppTeamManager
+                v-if="$page.props.jetstream.hasTeamFeatures"
+              />
             </SidebarMenuItem>
           </SidebarMenu>
         </SidebarHeader>
@@ -54,7 +61,10 @@ useSeoMetaTags({
         >
           <div class="flex items-center gap-2 px-4">
             <SidebarTrigger class="-ml-1" />
-            <Separator orientation="vertical" class="mr-2 h-4 hidden md:block" />
+            <Separator
+              orientation="vertical"
+              class="mr-2 h-4 hidden md:block"
+            />
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem>

@@ -46,7 +46,7 @@ final class SubscriptionController extends Controller
         /** @var Collection<int, Subscription> $activeSubscriptions */
         $activeSubscriptions = Subscription::query()->where(['user_id' => $user->id])->active()->get();
 
-        return Inertia::render('Subscriptions/Index', [
+        return Inertia::render('subscriptions/Index', [
             'activeSubscriptions' => $activeSubscriptions,
             'availableSubscriptions' => config('subscriptions.subscriptions'),
             'activeInvoices' => Inertia::defer(fn () => $user->invoices()),

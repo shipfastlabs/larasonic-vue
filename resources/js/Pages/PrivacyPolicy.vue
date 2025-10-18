@@ -19,7 +19,10 @@ useSeoMetaTags({
           <AuthenticationCardLogo />
         </div>
 
-        <div class="prose dark:prose-invert mt-6 w-full overflow-hidden p-6 shadow-md sm:max-w-2xl sm:rounded-lg" v-html="policy" />
+        <div
+          class="prose dark:prose-invert mt-6 w-full overflow-hidden p-6 shadow-md sm:max-w-2xl sm:rounded-lg"
+          v-html="policy"
+        />
       </div>
     </div>
   </div>

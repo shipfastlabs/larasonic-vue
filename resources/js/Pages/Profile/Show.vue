@@ -1,12 +1,12 @@
 <script setup>
 import Separator from '@/components/ui/separator/Separator.vue'
 import AppLayout from '@/Layouts/AppLayout.vue'
-import DeleteUserForm from '@/Pages/Profile/Partials/DeleteUserForm.vue'
-import LinkedAccountsForm from '@/Pages/Profile/Partials/LinkedAccountsForm.vue'
-import LogoutOtherBrowserSessionsForm from '@/Pages/Profile/Partials/LogoutOtherBrowserSessionsForm.vue'
-import TwoFactorAuthenticationForm from '@/Pages/Profile/Partials/TwoFactorAuthenticationForm.vue'
-import UpdatePasswordForm from '@/Pages/Profile/Partials/UpdatePasswordForm.vue'
-import UpdateProfileInformationForm from '@/Pages/Profile/Partials/UpdateProfileInformationForm.vue'
+import DeleteUserForm from '@/pages/profile/Partials/DeleteUserForm.vue'
+import LinkedAccountsForm from '@/pages/profile/Partials/LinkedAccountsForm.vue'
+import LogoutOtherBrowserSessionsForm from '@/pages/profile/Partials/LogoutOtherBrowserSessionsForm.vue'
+import TwoFactorAuthenticationForm from '@/pages/profile/Partials/TwoFactorAuthenticationForm.vue'
+import UpdatePasswordForm from '@/pages/profile/Partials/UpdatePasswordForm.vue'
+import UpdateProfileInformationForm from '@/pages/profile/Partials/UpdateProfileInformationForm.vue'
 
 defineProps({
   confirmsTwoFactorAuthentication: {
@@ -39,7 +39,9 @@ defineProps({
     <div>
       <div class="max-w-7xl">
         <div v-if="$page.props.jetstream.canUpdateProfileInformation">
-          <UpdateProfileInformationForm :user="$page.props.auth.user" />
+          <UpdateProfileInformationForm
+            :user="$page.props.auth.user"
+          />
         </div>
 
         <div v-if="Object.keys(availableOauthProviders).length">
@@ -47,7 +49,8 @@ defineProps({
 
           <LinkedAccountsForm
             :available-providers="availableOauthProviders"
-            :active-providers="activeOauthProviders" class="mt-10 sm:mt-0"
+            :active-providers="activeOauthProviders"
+            class="mt-10 sm:mt-0"
           />
         </div>
 
@@ -57,7 +60,11 @@ defineProps({
           <UpdatePasswordForm class="mt-10 sm:mt-0" />
         </div>
 
-        <div v-if="$page.props.jetstream.canManageTwoFactorAuthentication">
+        <div
+          v-if="
+            $page.props.jetstream.canManageTwoFactorAuthentication
+          "
+        >
           <Separator class="my-8 hidden sm:block" />
           <TwoFactorAuthenticationForm
             :requires-confirmation="confirmsTwoFactorAuthentication"
@@ -67,9 +74,14 @@ defineProps({
         <div v-if="sessions.length > 0">
           <Separator class="my-8 hidden sm:block" />
 
-          <LogoutOtherBrowserSessionsForm :sessions="sessions" class="mt-10 sm:mt-0" />
+          <LogoutOtherBrowserSessionsForm
+            :sessions="sessions"
+            class="mt-10 sm:mt-0"
+          />
         </div>
-        <template v-if="$page.props.jetstream.hasAccountDeletionFeatures">
+        <template
+          v-if="$page.props.jetstream.hasAccountDeletionFeatures"
+        >
           <Separator class="my-8 hidden sm:block" />
 
           <DeleteUserForm class="mt-10 sm:mt-0" />
