@@ -15,7 +15,7 @@
 
     <!-- Structured Data (Example: JSON-LD Schema.org) -->
     <script type="application/ld+json">
-        {
+        @verbatim{
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
             "name": "Larasonic",
@@ -30,7 +30,7 @@
                 "priceCurrency": "USD",
                 "category": "Free"
             }
-        }
+        }@endverbatim
     </script>
 
     <!-- Scripts -->
