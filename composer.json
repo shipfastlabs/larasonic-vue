@@ -22,7 +22,7 @@
     "laravel/socialite": "^5.16",
     "laravel/tinker": "^2.9",
     "pinkary-project/type-guard": "^0.1.0",
-    "prism-php/prism": "^0.76.1",
+    "prism-php/prism": "^0.94.0",
     "resend/resend-php": "^0.14.0",
     "sentry/sentry-laravel": "^4.10",
     "spatie/laravel-sitemap": "^7.3",
