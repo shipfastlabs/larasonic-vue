@@ -1,4 +1,6 @@
 <script setup>
+import axios from 'axios'
+import { inject, reactive, ref } from 'vue'
 import InputError from '@/components/InputError.vue'
 import Button from '@/components/ui/button/Button.vue'
 import {
@@ -12,8 +14,6 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog'
 import Input from '@/components/ui/input/Input.vue'
-import axios from 'axios'
-import { inject, reactive, ref } from 'vue'
 
 defineProps({
   title: {

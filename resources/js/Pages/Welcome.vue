@@ -1,4 +1,6 @@
 <script setup>
+import { Icon } from '@iconify/vue'
+import { Link } from '@inertiajs/vue3'
 import FeaturesCard from '@/components/FeaturesCard.vue'
 import PricingCard from '@/components/PricingCard.vue'
 import Terminal from '@/components/Terminal.vue'
@@ -10,8 +12,6 @@ import Badge from '@/components/ui/badge/Badge.vue'
 import Button from '@/components/ui/button/Button.vue'
 import { useSeoMetaTags } from '@/composables/useSeoMetaTags.js'
 import WebLayout from '@/layouts/WebLayout.vue'
-import { Icon } from '@iconify/vue'
-import { Link } from '@inertiajs/vue3'
 
 const props = defineProps({
   canLogin: {

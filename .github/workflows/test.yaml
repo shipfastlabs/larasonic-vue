@@ -47,4 +47,4 @@ jobs:
         run: bun run build
 
       - name: Tests
-        run: ./vendor/bin/phpunit
+        run: composer run test

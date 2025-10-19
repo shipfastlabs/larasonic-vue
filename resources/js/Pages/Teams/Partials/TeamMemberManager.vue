@@ -1,8 +1,12 @@
 <script setup>
+import { router, useForm, usePage } from '@inertiajs/vue3'
+import { inject, ref } from 'vue'
+import { toast } from 'vue-sonner'
 import ActionSection from '@/components/ActionSection.vue'
 import FormSection from '@/components/FormSection.vue'
 import InputError from '@/components/InputError.vue'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+
 import Button from '@/components/ui/button/Button.vue'
 import {
   Dialog,
@@ -13,12 +17,8 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog'
 import Input from '@/components/ui/input/Input.vue'
-
 import Label from '@/components/ui/label/Label.vue'
 import Separator from '@/components/ui/separator/Separator.vue'
-import { router, useForm, usePage } from '@inertiajs/vue3'
-import { inject, ref } from 'vue'
-import { toast } from 'vue-sonner'
 
 const props = defineProps({
   team: Object,

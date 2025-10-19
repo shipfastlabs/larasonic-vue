@@ -1,7 +1,7 @@
 <script setup>
+import { CheckIcon } from 'lucide-vue-next'
 import { Button } from '@/components/ui/button'
 import { Card, CardFooter } from '@/components/ui/card'
-import { CheckIcon } from 'lucide-vue-next'
 
 defineProps({
   features: {

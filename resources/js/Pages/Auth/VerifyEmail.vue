@@ -1,4 +1,6 @@
 <script setup>
+import { Link, useForm } from '@inertiajs/vue3'
+import { computed, inject } from 'vue'
 import AuthenticationCardLogo from '@/components/LogoRedirect.vue'
 import Button from '@/components/ui/button/Button.vue'
 import {
@@ -9,8 +11,6 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import { useSeoMetaTags } from '@/composables/useSeoMetaTags.js'
-import { Link, useForm } from '@inertiajs/vue3'
-import { computed, inject } from 'vue'
 
 const props = defineProps({
   status: String,

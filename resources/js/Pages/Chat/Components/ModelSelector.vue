@@ -1,4 +1,5 @@
 <script setup>
+import { ref, watch } from 'vue'
 import Label from '@/components/ui/label/Label.vue'
 import {
   Select,
@@ -8,7 +9,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { ref, watch } from 'vue'
 
 const props = defineProps({
   models: {

@@ -1,4 +1,8 @@
 <script setup>
+import { Icon } from '@iconify/vue'
+import { Link } from '@inertiajs/vue3'
+import { useColorMode } from '@vueuse/core'
+import { computed, inject } from 'vue'
 import {
   SidebarContent,
   SidebarGroup,
@@ -7,10 +11,6 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar'
-import { Icon } from '@iconify/vue'
-import { Link } from '@inertiajs/vue3'
-import { useColorMode } from '@vueuse/core'
-import { computed, inject } from 'vue'
 
 const route = inject('route')
 const mode = useColorMode({

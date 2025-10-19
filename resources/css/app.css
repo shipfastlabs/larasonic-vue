@@ -8,8 +8,9 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: Instrument Sans, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-sans:
+    Instrument Sans, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
 
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
@@ -114,8 +115,9 @@
 @layer utilities {
   body,
   html {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-      'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans:
+      'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+      'Noto Color Emoji';
   }
 }
 

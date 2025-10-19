@@ -1,4 +1,7 @@
 <script setup>
+import { useForm } from '@inertiajs/vue3'
+import { inject, ref } from 'vue'
+import { toast } from 'vue-sonner'
 import ActionSection from '@/components/ActionSection.vue'
 import ConfirmationModal from '@/components/ConfirmationModal.vue'
 import FormSection from '@/components/FormSection.vue'
@@ -16,9 +19,6 @@ import {
 import Input from '@/components/ui/input/Input.vue'
 import Label from '@/components/ui/label/Label.vue'
 import Separator from '@/components/ui/separator/Separator.vue'
-import { useForm } from '@inertiajs/vue3'
-import { inject, ref } from 'vue'
-import { toast } from 'vue-sonner'
 
 const props = defineProps({
   tokens: Array,

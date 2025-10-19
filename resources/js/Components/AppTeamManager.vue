@@ -1,4 +1,7 @@
 <script setup>
+import { Icon } from '@iconify/vue'
+import { Link, router } from '@inertiajs/vue3'
+import { inject, ref } from 'vue'
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import {
   Command,
@@ -15,9 +18,6 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import SidebarMenuButton from '@/components/ui/sidebar/SidebarMenuButton.vue'
-import { Icon } from '@iconify/vue'
-import { Link, router } from '@inertiajs/vue3'
-import { inject, ref } from 'vue'
 
 const route = inject('route')
 const open = ref(false)

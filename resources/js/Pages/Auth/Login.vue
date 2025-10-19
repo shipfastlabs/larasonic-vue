@@ -1,4 +1,8 @@
 <script setup>
+import { Link, useForm, usePage } from '@inertiajs/vue3'
+import { useLocalStorage } from '@vueuse/core'
+import { computed, inject, onMounted } from 'vue'
+import { toast } from 'vue-sonner'
 import InputError from '@/components/InputError.vue'
 import AuthenticationCardLogo from '@/components/LogoRedirect.vue'
 import SocialLoginButton from '@/components/SocialLoginButton.vue'
@@ -16,10 +20,6 @@ import Label from '@/components/ui/label/Label.vue'
 import Sonner from '@/components/ui/sonner/Sonner.vue'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { useSeoMetaTags } from '@/composables/useSeoMetaTags.js'
-import { Link, useForm, usePage } from '@inertiajs/vue3'
-import { useLocalStorage } from '@vueuse/core'
-import { computed, inject, onMounted } from 'vue'
-import { toast } from 'vue-sonner'
 
 const props = defineProps({
   canResetPassword: Boolean,

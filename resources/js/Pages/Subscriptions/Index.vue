@@ -1,8 +1,8 @@
 <script setup>
-import Separator from '@/components/ui/separator/Separator.vue'
-import SubscriptionManager from '@/pages/subscriptions/Partials/SubscriptionManager.vue'
 import { Icon } from '@iconify/vue'
 import { Deferred } from '@inertiajs/vue3'
+import Separator from '@/components/ui/separator/Separator.vue'
+import SubscriptionManager from '@/pages/subscriptions/Partials/SubscriptionManager.vue'
 import InvoiceManager from './Partials/InvoiceManager.vue'
 
 defineProps({

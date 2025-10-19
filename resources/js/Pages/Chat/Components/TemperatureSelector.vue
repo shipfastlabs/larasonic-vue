@@ -1,4 +1,5 @@
 <script setup>
+import { ref } from 'vue'
 import {
   HoverCard,
   HoverCardContent,
@@ -6,7 +7,6 @@ import {
 } from '@/components/ui/hover-card'
 import { Label } from '@/components/ui/label'
 import { Slider } from '@/components/ui/slider'
-import { ref } from 'vue'
 
 const props = defineProps({
   defaultValue: {

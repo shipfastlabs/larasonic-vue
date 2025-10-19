@@ -1,9 +1,9 @@
 <script setup>
+import { useForm } from '@inertiajs/vue3'
+import { inject } from 'vue'
 import ActionSection from '@/components/ActionSection.vue'
 import ConfirmsPassword from '@/components/ConfirmsPassword.vue'
 import Button from '@/components/ui/button/Button.vue'
-import { useForm } from '@inertiajs/vue3'
-import { inject } from 'vue'
 
 const route = inject('route')
 const form = useForm({})

@@ -1,9 +1,9 @@
 <script setup>
+import { useForm } from '@inertiajs/vue3'
+import { inject, ref } from 'vue'
 import ActionSection from '@/components/ActionSection.vue'
 import ConfirmationModal from '@/components/ConfirmationModal.vue'
 import Button from '@/components/ui/button/Button.vue'
-import { useForm } from '@inertiajs/vue3'
-import { inject, ref } from 'vue'
 
 const props = defineProps({
   team: Object,
