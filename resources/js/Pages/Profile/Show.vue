@@ -1,12 +1,12 @@
 <script setup>
 import Separator from '@/components/ui/separator/Separator.vue'
-import AppLayout from '@/Layouts/AppLayout.vue'
-import DeleteUserForm from '@/pages/profile/Partials/DeleteUserForm.vue'
-import LinkedAccountsForm from '@/pages/profile/Partials/LinkedAccountsForm.vue'
-import LogoutOtherBrowserSessionsForm from '@/pages/profile/Partials/LogoutOtherBrowserSessionsForm.vue'
-import TwoFactorAuthenticationForm from '@/pages/profile/Partials/TwoFactorAuthenticationForm.vue'
-import UpdatePasswordForm from '@/pages/profile/Partials/UpdatePasswordForm.vue'
-import UpdateProfileInformationForm from '@/pages/profile/Partials/UpdateProfileInformationForm.vue'
+import AppLayout from '@/layouts/AppLayout.vue'
+import DeleteUserForm from '@/pages/Profile/Partials/DeleteUserForm.vue'
+import LinkedAccountsForm from '@/pages/Profile/Partials/LinkedAccountsForm.vue'
+import LogoutOtherBrowserSessionsForm from '@/pages/Profile/Partials/LogoutOtherBrowserSessionsForm.vue'
+import TwoFactorAuthenticationForm from '@/pages/Profile/Partials/TwoFactorAuthenticationForm.vue'
+import UpdatePasswordForm from '@/pages/Profile/Partials/UpdatePasswordForm.vue'
+import UpdateProfileInformationForm from '@/pages/Profile/Partials/UpdateProfileInformationForm.vue'
 
 defineProps({
   confirmsTwoFactorAuthentication: {
@@ -37,7 +37,7 @@ defineProps({
     </template>
 
     <div>
-      <div class="max-w-7xl">
+      <div class="max-w-full">
         <div v-if="$page.props.jetstream.canUpdateProfileInformation">
           <UpdateProfileInformationForm
             :user="$page.props.auth.user"

@@ -15,7 +15,7 @@ final class ActiveOauthProviderAction
      */
     public function handle(): array
     {
-        /** @var array<int, array{slug: string, active: bool, icon: string}> */
+        /** @var array<int, array{slug: string, active: bool, icon: string}> $providers */
         $providers = Config::array('oauth.providers');
 
         return array_filter($providers, fn (array $provider): bool => $provider['active']);

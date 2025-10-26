@@ -17,8 +17,9 @@ import SidebarMenu from '@/components/ui/sidebar/SidebarMenu.vue'
 import SidebarMenuItem from '@/components/ui/sidebar/SidebarMenuItem.vue'
 import SidebarProvider from '@/components/ui/sidebar/SidebarProvider.vue'
 import SidebarTrigger from '@/components/ui/sidebar/SidebarTrigger.vue'
-import Sonner from '@/components/ui/sonner/Sonner.vue'
+import { Toaster } from '@/components/ui/sonner'
 import { useSeoMetaTags } from '@/composables/useSeoMetaTags.js'
+import 'vue-sonner/style.css'
 
 const props = defineProps({
   title: String,
@@ -31,14 +32,14 @@ useSeoMetaTags({
 
 <template>
   <div>
-    <Sonner position="top-center" />
+    <Toaster position="top-center" />
     <SidebarProvider>
       <Sidebar collapsible="icon">
         <SidebarHeader>
           <SidebarMenu>
             <SidebarMenuItem>
               <AppTeamManager
-                v-if="$page.props.jetstream.hasTeamFeatures"
+                v-if="$page.props?.jetstream?.hasTeamFeatures"
               />
             </SidebarMenuItem>
           </SidebarMenu>

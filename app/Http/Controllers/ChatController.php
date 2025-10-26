@@ -17,7 +17,7 @@ final class ChatController extends Controller
         /** @var User $user */
         $user = Auth::user();
 
-        return Inertia::render('chat/Index', [
+        return Inertia::render('Chat/Index', [
             'subscriptionEnabled' => $user->subscribed('Larasonic Pro ✨'),
             'systemPrompt' => view('prompts.system')->render(),
             'models' => PrismServer::prisms()->pluck('name'),

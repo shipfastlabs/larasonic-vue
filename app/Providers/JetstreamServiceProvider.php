@@ -42,7 +42,7 @@ final class JetstreamServiceProvider extends ServiceProvider
         Jetstream::deleteUsersUsing(DeleteUser::class);
 
         Jetstream::inertia()->whenRendering(
-            'profile/Show',
+            'Profile/Show',
             fn (Request $request, array $data): array => array_merge($data, [
                 'availableOauthProviders' => (new ActiveOauthProviderAction)->handle(),
                 'activeOauthProviders' => $request->user()?->oauthConnections->pluck('provider'),

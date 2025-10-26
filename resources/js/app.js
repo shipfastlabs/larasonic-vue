@@ -1,7 +1,6 @@
 import { createInertiaApp } from '@inertiajs/vue3'
-import { createHead } from '@unhead/vue'
+import { createHead } from '@unhead/vue/client'
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
-import { CapoPlugin } from 'unhead'
 import { createApp, h } from 'vue'
 import { ZiggyVue } from 'ziggy-js'
 import './bootstrap'
@@ -10,11 +9,8 @@ import '../css/app.css'
 /**
  * This is used from unhead plugin to use seo meta tags
  * @see {@link https://unhead.unjs.io/setup/unhead/introduction} For createHead instance
- * @see {@link https://unhead.unjs.io/plugins/plugins/capo} For CapoPlugin
  */
-const head = createHead({
-  plugins: [CapoPlugin()],
-})
+const head = createHead({})
 
 createInertiaApp({
   resolve: name =>

@@ -17,9 +17,10 @@ import {
 import Checkbox from '@/components/ui/checkbox/Checkbox.vue'
 import Input from '@/components/ui/input/Input.vue'
 import Label from '@/components/ui/label/Label.vue'
-import Sonner from '@/components/ui/sonner/Sonner.vue'
+import { Toaster } from '@/Components/ui/sonner'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { useSeoMetaTags } from '@/composables/useSeoMetaTags.js'
+import 'vue-sonner/style.css'
 
 const props = defineProps({
   canResetPassword: Boolean,
@@ -97,7 +98,7 @@ useSeoMetaTags({
 </script>
 
 <template>
-  <Sonner position="top-center" />
+  <Toaster position="top-center" />
 
   <div
     class="flex min-h-screen flex-col items-center justify-center bg-linear-to-b from-background/50 to-background"
