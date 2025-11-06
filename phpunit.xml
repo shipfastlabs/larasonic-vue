@@ -32,5 +32,6 @@
         <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="SESSION_DRIVER" value="database"/>
         <env name="TELESCOPE_ENABLED" value="false"/>
+        <env name="APP_DEBUG" value="false"/>
     </php>
 </phpunit>
