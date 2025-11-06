@@ -40,8 +40,14 @@ jobs:
       - name: Copy Environment File
         run: cp .env.example .env
 
+      - name: Create Database
+        run: mkdir -p database && touch database/database.sqlite
+
       - name: Generate Application Key
         run: php artisan key:generate
+
+      - name: Run Migrations
+        run: php artisan migrate --force
 
       - name: Publish Ziggy Configuration
         run: php artisan ziggy:generate
