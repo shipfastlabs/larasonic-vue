@@ -8,5 +8,5 @@ export default antfu({
     html: true,
     markdown: 'prettier',
   },
-  ignores: ['storage/**/*', '**/*.{yaml,yml,php}', 'resources/js/components/ui/**/*', 'public/**/*'],
+  ignores: ['storage/**/*', '**/*.{yaml,yml,php}', 'resources/js/Components/ui/**/*', 'public/**/*'],
 })
